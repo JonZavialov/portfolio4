@@ -21,7 +21,7 @@ function loadNav(){
             </ul>
             <li style="cursor: pointer;" onmouseup="nft()">My NFTs</li>
         </ul>
-        <li><a href=\"https://github.com/JonZavialov/portfolio2\" target=\"_blank\">Repository</a></li>
+        <li><a href=\"https://github.com/JonZavialov/portfolio4\" target=\"_blank\">Repository</a></li>
     `
     //TOFDO: populate navbar with links to all apps
     $("#treeDisplay").html(navBar)
