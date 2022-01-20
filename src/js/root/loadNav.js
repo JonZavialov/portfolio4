@@ -23,6 +23,6 @@ function loadNav(){
         </ul>
         <li><a href=\"https://github.com/JonZavialov/portfolio2\" target=\"_blank\">Repository</a></li>
     `
-
+    //TOFDO: populate navbar with links to all apps
     $("#treeDisplay").html(navBar)
 }
