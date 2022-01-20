@@ -33,16 +33,13 @@ class Icon{
     }
 
     onClick(){
-        let borderColor
         if(this.selected){
             //object was double clicked
-            if(this.parent == "desktop") borderColor = "#008080"
-            else borderColor = "white"
-            this.iconElem.style.borderColor = borderColor
-            this.selected = false
+            this.removeBorder()
             this.doubleClick()
         }else{
             //object was single clicked
+            let borderColor
             if(this.parent == "desktop") borderColor = "white"
             else borderColor = "blue"
             this.iconElem.style.borderColor = borderColor
@@ -58,5 +55,13 @@ class Icon{
         if(this.selected) return
         this.iconElem.style.borderColor = "white"
         this.selected = true
+    }
+
+    removeBorder(){
+        let borderColor
+        if(this.parent == "desktop") borderColor = "#008080"
+        else borderColor = "white"
+        this.iconElem.style.borderColor = borderColor
+        this.selected = false
     }
 }

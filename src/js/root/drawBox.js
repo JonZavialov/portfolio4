@@ -32,6 +32,7 @@ function initDraw() {
 
     canvas.onmousedown = function (e) {
         if(e.button !== 0) return
+        if(e.target.id != "icon") removeAllBorders()
         mouse.startX = mouse.x
         mouse.startY = mouse.y
         element = document.createElement('div')
