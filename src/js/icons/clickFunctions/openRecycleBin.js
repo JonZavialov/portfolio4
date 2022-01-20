@@ -1,3 +1,3 @@
 function openRecycleBin(){
-    console.log('souse')
+    console.log('op')
 }

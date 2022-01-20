@@ -58,3 +58,9 @@ body{
     margin: 0 0 0 0;
     height: 45px;
 }
+
+.rectangle {
+    border: 1px solid #0078D7;
+    position: absolute;
+    background: rgba(170, 204, 238, .3);
+}

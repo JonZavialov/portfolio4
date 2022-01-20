@@ -38,19 +38,25 @@ class Icon{
             //object was double clicked
             if(this.parent == "desktop") borderColor = "#008080"
             else borderColor = "white"
-            $(`.${this.className}`).css("border-color", borderColor)
+            this.iconElem.style.borderColor = borderColor
             this.selected = false
             this.doubleClick()
         }else{
             //object was single clicked
             if(this.parent == "desktop") borderColor = "white"
             else borderColor = "blue"
-            $(`.${this.className}`).css("border-color", borderColor)
+            this.iconElem.style.borderColor = borderColor
             this.selected = true
         }
     }
 
     doubleClick(){
         if(typeof this.clickFunction === "function") this.clickFunction()
+    }
+
+    selectWithBox(){
+        if(this.selected) return
+        this.iconElem.style.borderColor = "white"
+        this.selected = true
     }
 }

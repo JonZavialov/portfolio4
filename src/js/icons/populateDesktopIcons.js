@@ -8,6 +8,7 @@ function populateDesktopIcons(){
             let iconClass = new Icon(icon.displayName, icon.iconImage, key, "desktop", window[icon.clickFunction])
             iconClass.generateElement()
             iconClass.render()
+            iconClasses.push(iconClass)
         }
     })
 }
