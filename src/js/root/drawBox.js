@@ -31,6 +31,13 @@ function initDraw() {
     }
 
     canvas.onmousedown = function (e) {
+        let noSelect = [
+            ".window",
+            "#icon"
+        ]
+        for(let i = 0; i < noSelect.length; i++){
+            if(e.target.closest(noSelect[i])) return
+        }
         if(e.button !== 0) return
         if(e.target.id != "icon") removeAllBorders()
         mouse.startX = mouse.x
@@ -44,7 +51,7 @@ function initDraw() {
 
     body.onmouseup = function (e){
         if(element) element.remove()
-        
+                
         //check for drawn rectangles and remove them
         var rectangles = document.getElementsByClassName( 'rectangle' )
         for( i=0; i<rectangles.length; i++ ) {
@@ -78,5 +85,9 @@ async function checkCollide(){
                 }
             }
         }
+    }
+
+    if(doElsCollide($(".rectangle")[0],$("#taskbar")[0])){
+        $(".rectangle").remove()
     }
 }
