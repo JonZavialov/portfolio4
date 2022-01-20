@@ -23,8 +23,8 @@ class Icon{
         iconLabel.innerHTML = this.displayName
         this.iconElem.appendChild(iconLabel)
 
-        this.iconElem.onmousedown = () => {
-            this.onClick()
+        this.iconElem.onmousedown = (e) => {
+            this.onClick(e)
         }
     }
 
@@ -32,7 +32,8 @@ class Icon{
         $("#iconsContainer").append(this.iconElem)
     }
 
-    onClick(){
+    onClick(e){
+        removeAllBorders(e.target.className)
         if(this.selected){
             //object was double clicked
             this.removeBorder()
@@ -57,11 +58,11 @@ class Icon{
         this.selected = true
     }
 
-    removeBorder(){
+    removeBorder(unselect = true){
         let borderColor
         if(this.parent == "desktop") borderColor = "#008080"
         else borderColor = "white"
         this.iconElem.style.borderColor = borderColor
-        this.selected = false
+        if(unselect) this.selected = false
     }
 }

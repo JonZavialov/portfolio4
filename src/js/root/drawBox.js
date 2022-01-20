@@ -39,7 +39,6 @@ function initDraw() {
             if(e.target.closest(noSelect[i])) return
         }
         if(e.button !== 0) return
-        if(e.target.id != "icon") removeAllBorders()
         mouse.startX = mouse.x
         mouse.startY = mouse.y
         element = document.createElement('div')
@@ -47,6 +46,7 @@ function initDraw() {
         element.style.left = mouse.x + 'px'
         element.style.top = mouse.y + 'px'
         canvas.appendChild(element)
+        removeAllBorders()
     }
 
     body.onmouseup = function (e){
@@ -74,14 +74,13 @@ doElsCollide = function(el1, el2) {
 }
 
 async function checkCollide(){
-    var icons = $("#icon")
+    var icons = $("[id=icon]")
     for( i=0; i<icons.length; i++ ) {
         let collide = doElsCollide($(".rectangle")[0],icons[i])
         if(collide){
-            for(let i = 0; i < iconClasses.length; i++){
-                if(iconClasses[i].className == icons[i].className.split(" ")[0]){
-                    iconClasses[i].selectWithBox()
-                    break
+            for(let j = 0; j < iconClasses.length; j++){
+                if(iconClasses[j].className == icons[i].className.split(" ")[0]){
+                    iconClasses[j].selectWithBox()
                 }
             }
         }

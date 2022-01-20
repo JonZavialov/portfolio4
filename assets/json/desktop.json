@@ -3,5 +3,15 @@
         "displayName": "Recycle Bin",
         "iconImage": "/assets/images/icons/recycle.png",
         "clickFunction": "openRecycleBin"
+    },
+    "myComputer": {
+        "displayName": "My Computer",
+        "iconImage": "/assets/images/icons/computer.png",
+        "clickFunction": "openMyComputer"
+    },
+    "myDocuments": {
+        "displayName": "My Documents",
+        "iconImage": "/assets/images/icons/documents.png",
+        "clickFunction": "openMyDocuments"
     }
 }
