@@ -1,0 +1,26 @@
+#icon{
+    width: fit-content;
+    text-align: center;
+    border-style: dotted;
+    border-color: transparent;
+    padding: 2px;
+    border-width: 1px;
+}
+
+#icon p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-family: "Pixelated MS Sans Serif",Arial;
+    color: white
+}
+
+#icon img{
+    width: 48px;
+    pointer-events: none;
+}
+
+#iconsContainer{
+    margin-top: 25px;
+    margin-left: 50px;
+    display: flex;
+}

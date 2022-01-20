@@ -1,6 +1,7 @@
 {
     "recycleBin": {
         "displayName": "Recycle Bin",
-        "iconImage": "/assets/images/icons/recycle.png"
+        "iconImage": "/assets/images/icons/recycle.png",
+        "clickFunction": "openRecycleBin"
     }
 }
