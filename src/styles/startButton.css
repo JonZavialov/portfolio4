@@ -1,0 +1,47 @@
+#startButton img{
+    width: 25px;
+    padding: 3px;
+}
+
+.hoverHighlight:hover{
+    background-color: #000079;
+    color: white;
+}
+
+#startMenu{
+    height: 348px;
+    width: 200px;
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+}
+
+#startMenu .title-bar {
+    transform: rotate(-90deg) translate(-165px, -165px);
+    width: 343px;
+}
+
+#startMenu hr{
+    width: 165px
+}
+
+#startMenuBody{
+    margin-left: 25px;
+    transform: translate(0px, -23px);
+}
+
+#startMenuPair{
+    height: fit-content;
+    width: 100%;
+    margin-top: 7.5px;
+    display: flex;
+}
+
+#startMenuPair img{
+    float: left;
+    width: 32px;
+}
+
+#startMenuPairText{
+    margin-left: 5px;
+}

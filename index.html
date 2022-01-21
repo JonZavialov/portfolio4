@@ -16,10 +16,12 @@
     <script src="./src/js/icons/clickFunctions/openMyDocuments.js"></script>
     <script src="./src/js/icons/clickFunctions/openCalculator.js"></script>
     <script src="./src/js/icons/clickFunctions/openMyApps.js"></script>
+    <script src="./src/js/root/startButton.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css">
     <link rel="stylesheet" type="text/css" href="./src/styles/icons.css">
     <link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css">
+    <link rel="stylesheet" type="text/css" href="./src/styles/startButton.css">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
 
     <title>Jonathan Zavialov</title>
@@ -30,6 +32,7 @@
         loadNav()
         populateDesktopIcons()
         initDraw()
+        $("#startButton").click(() => {startButton()})
       })
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>

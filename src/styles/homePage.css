@@ -52,6 +52,7 @@ body{
 
 #middleSection{
     height: 100%;
+    position: relative;
 }
 
 .rectangle {

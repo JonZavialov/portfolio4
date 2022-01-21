@@ -49,7 +49,7 @@ function initDraw() {
         removeAllBorders()
     }
 
-    body.onmouseup = function (e){
+    body.onmouseup = function (){
         if(element) element.remove()
                 
         //check for drawn rectangles and remove them
