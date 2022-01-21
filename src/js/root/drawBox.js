@@ -10,7 +10,7 @@ function initDraw() {
     }
 
     function setMousePosition(e) {
-        var ev = e || window.event; //Moz || IE
+        var ev = e || window.event //Moz || IE
         if (ev.pageX) { //Moz
             mouse.x = ev.pageX + window.pageXOffset
             mouse.y = ev.pageY + window.pageYOffset
@@ -60,23 +60,33 @@ function initDraw() {
     }
 }
 
-doElsCollide = function(el1, el2) {
-    if(!el1 || !el2) return
-    el1.offsetBottom = el1.offsetTop + el1.offsetHeight
-    el1.offsetRight = el1.offsetLeft + el1.offsetWidth
-    el2.offsetBottom = el2.offsetTop + el2.offsetHeight
-    el2.offsetRight = el2.offsetLeft + el2.offsetWidth
+var doElsCollide = function( $div1, $div2 ) {
+	if($div1.length == 0 || $div2.length == 0) return false
+    
+    // Div 1 data
+	var d1_offset             = $div1.offset()
+	var d1_height             = $div1.outerHeight( true )
+	var d1_width              = $div1.outerWidth( true )
+	var d1_distance_from_top  = d1_offset.top + d1_height
+	var d1_distance_from_left = d1_offset.left + d1_width
 
-    return !((el1.offsetBottom < el2.offsetTop) ||
-             (el1.offsetTop > el2.offsetBottom) ||
-             (el1.offsetRight < el2.offsetLeft) ||
-             (el1.offsetLeft > el2.offsetRight))
+	// Div 2 data
+	var d2_offset             = $div2.offset()
+	var d2_height             = $div2.outerHeight( true )
+	var d2_width              = $div2.outerWidth( true )
+	var d2_distance_from_top  = d2_offset.top + d2_height
+	var d2_distance_from_left = d2_offset.left + d2_width
+
+	var not_colliding = ( d1_distance_from_top < d2_offset.top || d1_offset.top > d2_distance_from_top || d1_distance_from_left < d2_offset.left || d1_offset.left > d2_distance_from_left )
+
+	// Return whether it IS colliding
+	return ! not_colliding
 }
 
 async function checkCollide(){
     var icons = $("[id=icon]")
     for( i=0; i<icons.length; i++ ) {
-        let collide = doElsCollide($(".rectangle")[0],icons[i])
+        let collide = doElsCollide($(".rectangle"),$(`.${icons[i].className.split(" ")[0]}`))
         if(collide){
             for(let j = 0; j < iconClasses.length; j++){
                 if(iconClasses[j].className == icons[i].className.split(" ")[0]){
@@ -86,7 +96,7 @@ async function checkCollide(){
         }
     }
 
-    if(doElsCollide($(".rectangle")[0],$("#taskbar")[0])){
+    if(doElsCollide($(".rectangle"),$("#taskbar"))){
         $(".rectangle").remove()
     }
 }
