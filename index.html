@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css">
     <link rel="stylesheet" type="text/css" href="./src/styles/icons.css">
+    <link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
 
     <title>Jonathan Zavialov</title>
@@ -37,11 +38,17 @@
       <div id="desktop">
         <h1>Jonathan Zavialov</h1>
         <div id="middleSection">
-          <hr>
+          <hr id="headerHr">
           <div id="iconsContainer"></div>
         </div>  
         <div id="taskbar" class="window">
-          <div class="window-body"></div>
+          <div class="window-body">
+            <button id="startButton">
+              <img src="/assets/images/windows_logo.png" alt="startButton">
+              <p><b>Start</b></p>
+            </button>
+            <hr id="taskbarDivider">
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,29 @@
+#taskbar{
+    margin: 0 0 0 0;
+    height: 45px;
+    overflow: hidden;
+}
+
+#taskbar .window-body{
+    margin: 0;
+    height: 100%;
+}
+
+#startButton img{
+    float: left;
+    margin-left: 5px
+}
+
+#startButton{
+    padding: 0;
+    height: 34.23px;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+#taskbarDivider{
+    height: 21px;
+    margin-left: 82px;
+    position: fixed;
+    transform: translateY(-32px);
+}

@@ -41,7 +41,7 @@ body{
     margin-left: 35px;
 }
 
-#desktop hr{
+#headerHr{
     width: 600px;
     margin-left: 0;
     background-color: #A4A4A4;
@@ -52,11 +52,6 @@ body{
 
 #middleSection{
     height: 100%;
-}
-
-#taskbar{
-    margin: 0 0 0 0;
-    height: 45px;
 }
 
 .rectangle {
