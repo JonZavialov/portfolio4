@@ -47,6 +47,7 @@ function initDraw() {
         element.style.top = mouse.y + 'px'
         canvas.appendChild(element)
         removeAllBorders()
+        closeButton()
     }
 
     body.onmouseup = function (){

@@ -54,6 +54,7 @@ function startButton(){
 }
 
 async function closeButton(){
+    if(!$("#startMenu")[0]) return
     $("#startMenu").remove()
     $("#startButton").unbind()
     $("#startButton").click(() => { 
