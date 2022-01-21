@@ -13,5 +13,15 @@
         "displayName": "My Documents",
         "iconImage": "/assets/images/icons/documents.png",
         "clickFunction": "openMyDocuments"
+    },
+    "myApps": {
+        "displayName": "My Apps",
+        "iconImage": "/assets/images/icons/appsdir.png",
+        "clickFunction": "openMyApps"
+    },
+    "calculator": {
+        "displayName": "Calculator",
+        "iconImage": "/assets/images/icons/calculator.png",
+        "clickFunction": "openCalculator"
     }
 }

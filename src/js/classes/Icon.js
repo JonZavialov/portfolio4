@@ -28,8 +28,8 @@ class Icon{
         }
     }
 
-    render(){
-        $("#iconsContainer").append(this.iconElem)
+    renderIntoColumn(element){
+        element.appendChild(this.iconElem)
     }
 
     onClick(e){
