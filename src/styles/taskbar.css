@@ -2,11 +2,6 @@
   margin: 0 0 0 0;
   height: 45px;
   overflow: hidden;
-}
-
-#taskbar .window-body {
-  margin: 0;
-  height: 100%;
   display: flex;
 }
 
@@ -55,4 +50,25 @@
 
 #desktopClockTimeDisplay {
   font-weight: bold;
+}
+
+#desktopSpeakerIcon {
+  border: 1px dotted #c0c0c0;
+}
+
+#desktopSpeakerIcon.toggled {
+  border-color: black;
+}
+
+#volumeSlider {
+  height: 85px;
+}
+
+#volumeSliderContainer {
+  width: 50px;
+  text-align: center;
+}
+
+#volumeSlider #range25 {
+  width: 70px;
 }

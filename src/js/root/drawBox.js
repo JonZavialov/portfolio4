@@ -38,6 +38,7 @@ function initDraw() {
     for (let i = 0; i < noSelect.length; i++) {
       if (e.target.closest(noSelect[i])) return;
     }
+    if (clickedOnVolumeSlider(e)) return;
     if (e.button !== 0) return;
     mouse.startX = mouse.x;
     mouse.startY = mouse.y;
@@ -48,6 +49,7 @@ function initDraw() {
     canvas.appendChild(element);
     removeAllBorders();
     closeButton();
+    if (!clickedOnVolumeSlider(e)) removeSpeaker();
   };
 
   body.onmouseup = function () {
