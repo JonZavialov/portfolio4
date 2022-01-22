@@ -1,5 +1,5 @@
-function startButton(){
-    if($("#startMenu")[0]) return
+function startButton() {
+    if ($("#startMenu")[0]) return
     let element = document.createElement("div")
     element.id = "startMenu"
     element.className = "window"
@@ -53,42 +53,42 @@ function startButton(){
     })
 }
 
-async function closeButton(){
-    if(!$("#startMenu")[0]) return
+async function closeButton() {
+    if (!$("#startMenu")[0]) return
     $("#startMenu").remove()
     $("#startButton").unbind()
-    $("#startButton").click(() => { 
+    $("#startButton").click(() => {
         startButton()
     })
 }
 
-async function startMenuButton(button){
+async function startMenuButton(button) {
     let methods = {
-        "email": function() {
+        "email": function () {
             window.location.assign('mailto: jonzavialov@gmail.com')
         },
-        "linkedin": function() {
+        "linkedin": function () {
             window.open('https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/', '_blank').focus()
         },
-        "insta": function() {
+        "insta": function () {
             window.open('https://www.instagram.com/thesuperiorphotographer', '_blank').focus()
         },
-        "youtube": function() {
+        "youtube": function () {
             window.open('https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g', '_blank').focus()
         },
-        "github": function() {
+        "github": function () {
             window.open('https://github.com/JonZavialov', '_blank').focus()
         },
-        "credits": function() {
+        "credits": function () {
             credits()
         },
-        "console": function() {
+        "console": function () {
             initMsdos()
         },
-        "restart": function() {
+        "restart": function () {
             window.location.replace('/')
         }
     }
     let methodNames = Object.keys(methods)
-    if(methodNames.indexOf(button) != -1) methods[button]()
+    if (methodNames.indexOf(button) != -1) methods[button]()
 }

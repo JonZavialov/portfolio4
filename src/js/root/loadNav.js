@@ -1,4 +1,4 @@
-function loadNav(){
+function loadNav() {
     let navBar = `
         <li><a href=\"/home\">Home</a></li>
         <ul>

@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="./assets/images/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="./src/js/root/loadNav.js"></script>
-    <script src="./src/js/classes/Icon.js"></script>
-    <script src="./src/js/icons/populateDesktopIcons.js"></script>
-    <script src="./src/js/icons/clickFunctions/openRecycleBin.js"></script>
-    <script src="./src/js/root/drawBox.js"></script>
-    <script src="./src/js/icons/removeAllBorders.js"></script>
-    <script src="./src/js/icons/clickFunctions/openMyComputer.js"></script>
-    <script src="./src/js/icons/clickFunctions/openMyDocuments.js"></script>
-    <script src="./src/js/icons/clickFunctions/openCalculator.js"></script>
-    <script src="./src/js/icons/clickFunctions/openMyApps.js"></script>
-    <script src="./src/js/root/startButton.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="./assets/images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css">
-    <link rel="stylesheet" type="text/css" href="./src/styles/icons.css">
-    <link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css">
-    <link rel="stylesheet" type="text/css" href="./src/styles/startButton.css">
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <script src="./src/js/root/loadNav.js"></script>
+  <script src="./src/js/classes/Icon.js"></script>
+  <script src="./src/js/icons/populateDesktopIcons.js"></script>
+  <script src="./src/js/icons/clickFunctions/openRecycleBin.js"></script>
+  <script src="./src/js/root/drawBox.js"></script>
+  <script src="./src/js/icons/removeAllBorders.js"></script>
+  <script src="./src/js/icons/clickFunctions/openMyComputer.js"></script>
+  <script src="./src/js/icons/clickFunctions/openMyDocuments.js"></script>
+  <script src="./src/js/icons/clickFunctions/openCalculator.js"></script>
+  <script src="./src/js/icons/clickFunctions/openMyApps.js"></script>
+  <script src="./src/js/root/startButton.js"></script>
 
-    <title>Jonathan Zavialov</title>
-  </head>
-  <body>
-    <script>
-      $(document).ready(function(){
-        loadNav()
-        populateDesktopIcons()
-        initDraw()
-        $("#startButton").click(() => {startButton()})
+  <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css">
+  <link rel="stylesheet" type="text/css" href="./src/styles/icons.css">
+  <link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css">
+  <link rel="stylesheet" type="text/css" href="./src/styles/startButton.css">
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+
+  <title>Jonathan Zavialov</title>
+</head>
+
+<body>
+  <script>
+    $(document).ready(function () {
+      loadNav()
+      populateDesktopIcons()
+      initDraw()
+      $("#startButton").click(() => {
+        startButton()
       })
-    </script>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
-      <ul id="treeDisplay" class="tree-view"></ul>
-      <div id="desktop">
-        <h1>Jonathan Zavialov</h1>
-        <div id="middleSection">
-          <hr id="headerHr">
-          <div id="iconsContainer"></div>
-        </div>  
-        <div id="taskbar" class="window">
-          <div class="window-body">
-            <button id="startButton">
-              <img src="/assets/images/windows_logo.png" alt="startButton">
-              <p><b>Start</b></p>
-            </button>
-            <hr id="taskbarDivider">
-            <div id="taskbarIcons"></div>
-            <button id="desktopClock">
+    })
+  </script>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <ul id="treeDisplay" class="tree-view"></ul>
+    <div id="desktop">
+      <h1>Jonathan Zavialov</h1>
+      <div id="middleSection">
+        <hr id="headerHr">
+        <div id="iconsContainer"></div>
+      </div>
+      <div id="taskbar" class="window">
+        <div class="window-body">
+          <button id="startButton">
+            <img src="/assets/images/windows_logo.png" alt="startButton">
+            <p><b>Start</b></p>
+          </button>
+          <hr id="taskbarDivider">
+          <div id="taskbarIcons"></div>
+          <button id="desktopClock">
 
-            </button>
-          </div>
+          </button>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

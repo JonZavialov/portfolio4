@@ -21,7 +21,7 @@ function initDraw() {
     canvas.onmousemove = function (e) {
         checkCollide()
         setMousePosition(e)
-        if(e.button != 0) return
+        if (e.button != 0) return
         if (element !== null) {
             element.style.width = Math.abs(mouse.x - mouse.startX) + 'px'
             element.style.height = Math.abs(mouse.y - mouse.startY) + 'px'
@@ -35,10 +35,10 @@ function initDraw() {
             ".window",
             "#icon"
         ]
-        for(let i = 0; i < noSelect.length; i++){
-            if(e.target.closest(noSelect[i])) return
+        for (let i = 0; i < noSelect.length; i++) {
+            if (e.target.closest(noSelect[i])) return
         }
-        if(e.button !== 0) return
+        if (e.button !== 0) return
         mouse.startX = mouse.x
         mouse.startY = mouse.y
         element = document.createElement('div')
@@ -50,54 +50,54 @@ function initDraw() {
         closeButton()
     }
 
-    body.onmouseup = function (){
-        if(element) element.remove()
-                
+    body.onmouseup = function () {
+        if (element) element.remove()
+
         //check for drawn rectangles and remove them
-        var rectangles = document.getElementsByClassName( 'rectangle' )
-        for( i=0; i<rectangles.length; i++ ) {
+        var rectangles = document.getElementsByClassName('rectangle')
+        for (i = 0; i < rectangles.length; i++) {
             rectangles[i].remove()
         }
     }
 }
 
-var doElsCollide = function( $div1, $div2 ) {
-	if($div1.length == 0 || $div2.length == 0) return false
-    
+var doElsCollide = function ($div1, $div2) {
+    if ($div1.length == 0 || $div2.length == 0) return false
+
     // Div 1 data
-	var d1_offset             = $div1.offset()
-	var d1_height             = $div1.outerHeight( true )
-	var d1_width              = $div1.outerWidth( true )
-	var d1_distance_from_top  = d1_offset.top + d1_height
-	var d1_distance_from_left = d1_offset.left + d1_width
+    var d1_offset = $div1.offset()
+    var d1_height = $div1.outerHeight(true)
+    var d1_width = $div1.outerWidth(true)
+    var d1_distance_from_top = d1_offset.top + d1_height
+    var d1_distance_from_left = d1_offset.left + d1_width
 
-	// Div 2 data
-	var d2_offset             = $div2.offset()
-	var d2_height             = $div2.outerHeight( true )
-	var d2_width              = $div2.outerWidth( true )
-	var d2_distance_from_top  = d2_offset.top + d2_height
-	var d2_distance_from_left = d2_offset.left + d2_width
+    // Div 2 data
+    var d2_offset = $div2.offset()
+    var d2_height = $div2.outerHeight(true)
+    var d2_width = $div2.outerWidth(true)
+    var d2_distance_from_top = d2_offset.top + d2_height
+    var d2_distance_from_left = d2_offset.left + d2_width
 
-	var not_colliding = ( d1_distance_from_top < d2_offset.top || d1_offset.top > d2_distance_from_top || d1_distance_from_left < d2_offset.left || d1_offset.left > d2_distance_from_left )
+    var not_colliding = (d1_distance_from_top < d2_offset.top || d1_offset.top > d2_distance_from_top || d1_distance_from_left < d2_offset.left || d1_offset.left > d2_distance_from_left)
 
-	// Return whether it IS colliding
-	return ! not_colliding
+    // Return whether it IS colliding
+    return !not_colliding
 }
 
-async function checkCollide(){
+async function checkCollide() {
     var icons = $("[id=icon]")
-    for( i=0; i<icons.length; i++ ) {
-        let collide = doElsCollide($(".rectangle"),$(`.${icons[i].className.split(" ")[0]}`))
-        if(collide){
-            for(let j = 0; j < iconClasses.length; j++){
-                if(iconClasses[j].className == icons[i].className.split(" ")[0]){
+    for (i = 0; i < icons.length; i++) {
+        let collide = doElsCollide($(".rectangle"), $(`.${icons[i].className.split(" ")[0]}`))
+        if (collide) {
+            for (let j = 0; j < iconClasses.length; j++) {
+                if (iconClasses[j].className == icons[i].className.split(" ")[0]) {
                     iconClasses[j].selectWithBox()
                 }
             }
         }
     }
 
-    if(doElsCollide($(".rectangle"),$("#taskbar"))){
+    if (doElsCollide($(".rectangle"), $("#taskbar"))) {
         $(".rectangle").remove()
     }
 }

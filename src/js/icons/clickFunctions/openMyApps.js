@@ -1,3 +1,3 @@
-function openMyApps(){
+function openMyApps() {
     console.log("openMyApps")
 }
