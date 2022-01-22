@@ -3,7 +3,7 @@ function toggleSpeaker() {
   if ($("#desktopSpeakerIcon")[0].className.indexOf("toggled") == -1) {
     //speaker is not toggled
     $("#desktopSpeakerIcon").addClass("toggled");
-    $("#middleSection").append(generateVolumeSlider());
+    $("#volumeContainer").append(generateVolumeSlider());
   } else {
     //speaker is toggled
     removeSpeaker();
@@ -26,6 +26,7 @@ function generateVolumeSlider() {
   } catch {
     volumeLevel = 50;
   }
+
   let containerContainer = document.createElement("div");
   containerContainer.className = "window";
   containerContainer.id = "volumeSliderContainer";
@@ -63,15 +64,44 @@ function generateVolumeSlider() {
   volumeSliderContainer.appendChild(slider);
   containerContainer.appendChild(label);
   containerContainer.appendChild(volumeSliderContainer);
+
+  let body = document.body;
+  let html = document.documentElement;
+
+  let height = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+  let width = Math.max(
+    body.scrollWidth,
+    body.offsetWidth,
+    html.clientWidth,
+    html.scrollWidth,
+    html.offsetWidth
+  );
+
+  containerContainer.style.top = height - 161 + "px";
+  containerContainer.style.left = mouse.x - 31 + "px";
+
   return containerContainer;
 }
 
 function clickedOnVolumeSlider(e) {
-  let target = e.target;
+  if ($("#volumeSliderContainer").length == 0) return;
+  let topCoords = $("#volumeSliderContainer")[0].getBoundingClientRect().top;
+  let leftCoords = $("#volumeSliderContainer")[0].getBoundingClientRect().left;
+  let bottomCoords = $("#volumeSliderContainer")[0].getBoundingClientRect()
+    .bottom;
+  let rightCoords = $("#volumeSliderContainer")[0].getBoundingClientRect()
+    .right;
   if (
-    target.id == "volumeSlider" ||
-    target.className == "is-vertical" ||
-    target.id == "range25"
+    mouse.y > topCoords &&
+    mouse.y < bottomCoords &&
+    mouse.x > leftCoords &&
+    mouse.x < rightCoords
   )
     return true;
   return false;

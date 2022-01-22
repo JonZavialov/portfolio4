@@ -2,7 +2,7 @@ function initDraw() {
   let canvas = $("#desktop")[0];
   let body = $("body")[0];
 
-  var mouse = {
+  mouse = {
     x: 0,
     y: 0,
     startX: 0,
