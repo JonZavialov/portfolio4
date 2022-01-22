@@ -15,6 +15,10 @@
   margin-left: 5px;
 }
 
+#startButton p {
+  font-weight: bold;
+}
+
 #startButton {
   padding: 0;
   height: 34.23px;
@@ -39,4 +43,16 @@
   margin-right: 2px;
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  width: 220px;
+}
+
+#desktopClock img {
+  width: 25px;
+  margin-top: 4px;
+  float: left;
+  margin-left: 10px;
+}
+
+#desktopClockTimeDisplay {
+  font-weight: bold;
 }

@@ -17,6 +17,7 @@
     <script src="./src/js/icons/clickFunctions/openCalculator.js"></script>
     <script src="./src/js/icons/clickFunctions/openMyApps.js"></script>
     <script src="./src/js/root/startButton.js"></script>
+    <script src="./src/js/root/initClock.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css" />
     <link rel="stylesheet" type="text/css" href="./src/styles/icons.css" />
@@ -37,6 +38,7 @@
         loadNav();
         populateDesktopIcons();
         initDraw();
+        initClock();
         $("#startButton").click(() => {
           startButton();
         });
@@ -55,11 +57,23 @@
           <div class="window-body">
             <button id="startButton">
               <img src="/assets/images/windows_logo.png" alt="startButton" />
-              <p><b>Start</b></p>
+              <p>Start</p>
             </button>
             <hr id="taskbarDivider" />
             <div id="taskbarIcons"></div>
-            <button id="desktopClock"></button>
+            <button id="desktopClock">
+              <img
+                id="desktopClockIcon"
+                src="/assets/images/clock.png"
+                alt="clock"
+              />
+              <img
+                id="desktopSpeakerIcon"
+                src="/assets/images/speaker.png"
+                alt="speaker"
+              />
+              <p id="desktopClockTimeDisplay"></p>
+            </button>
           </div>
         </div>
       </div>
