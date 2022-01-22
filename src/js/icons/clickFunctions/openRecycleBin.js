@@ -1,3 +1,3 @@
 function openRecycleBin() {
-    console.log('opened recycle bin')
+  console.log("opened recycle bin");
 }

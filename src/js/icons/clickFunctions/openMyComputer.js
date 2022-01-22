@@ -1,3 +1,3 @@
 function openMyComputer() {
-    console.log('opened my computer')
+  console.log("opened my computer");
 }

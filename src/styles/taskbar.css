@@ -1,41 +1,42 @@
-#taskbar{
-    margin: 0 0 0 0;
-    height: 45px;
-    overflow: hidden;
+#taskbar {
+  margin: 0 0 0 0;
+  height: 45px;
+  overflow: hidden;
 }
 
-#taskbar .window-body{
-    margin: 0;
-    height: 100%;
-    display: flex;
+#taskbar .window-body {
+  margin: 0;
+  height: 100%;
+  display: flex;
 }
 
-#startButton img{
-    float: left;
-    margin-left: 5px
+#startButton img {
+  float: left;
+  margin-left: 5px;
 }
 
-#startButton{
-    padding: 0;
-    height: 34.23px;
-    margin-top: 2px;
-    margin-left: 2px;
+#startButton {
+  padding: 0;
+  height: 34.23px;
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
-#taskbarDivider{
-    height: 26px;
-    margin-left: 5px;
-    margin-right: 5px;
+#taskbarDivider {
+  height: 26px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-#taskbarIcons{
-    width: 100%;
+#taskbarIcons {
+  width: 100%;
 }
 
-#desktopClock{
-    padding: 0;
-    height: 34.23px;
-    margin-top: 2px;
-    margin-right: 2px;
-    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+#desktopClock {
+  padding: 0;
+  height: 34.23px;
+  margin-top: 2px;
+  margin-right: 2px;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }

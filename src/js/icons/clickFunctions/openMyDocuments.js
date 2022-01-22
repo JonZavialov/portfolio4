@@ -1,3 +1,3 @@
 function openMyDocuments() {
-    console.log('opened my documents')
+  console.log("opened my documents");
 }
