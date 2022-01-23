@@ -1,8 +1,15 @@
 class Window {
-  constructor(displayName, id, iconPath = null, closeFunction = null) {
+  constructor(
+    displayName,
+    id,
+    taskbar = false,
+    iconPath = null,
+    closeFunction = null
+  ) {
     this.displayName = displayName;
-    this.iconPath = iconPath;
     this.id = id;
+    this.taskbar = taskbar;
+    this.iconPath = iconPath;
     this.closeFunction = closeFunction;
   }
 
@@ -37,6 +44,16 @@ class Window {
 
   render() {
     $("#desktop").append(this.elem);
+
+    if (this.taskbar) {
+      this.taskbarElement = new TaskbarElement(
+        this.displayName,
+        this.id,
+        this.iconPath
+      );
+      this.taskbarElement.generateElement();
+      this.taskbarElement.render();
+    }
   }
 
   #createTitleBar() {
@@ -60,7 +77,7 @@ class Window {
     closeButton.ariaLabel = "Close";
     if (!this.closeFunction) {
       closeButton.onclick = () => {
-        this.elem.remove();
+        this.close();
       };
     } else closeButton.onclick = this.closeFunction;
 
@@ -70,5 +87,10 @@ class Window {
     titleBar.appendChild(titleBarControls);
 
     return titleBar;
+  }
+
+  close() {
+    this.elem.remove();
+    if (this.taskbarElement) this.taskbarElement.checkForClose();
   }
 }

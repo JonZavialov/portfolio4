@@ -74,3 +74,20 @@
 #volumeSlider #range25 {
   width: 70px;
 }
+
+.taskbar-element {
+  padding: 0;
+  display: flex;
+  margin-top: 2px;
+}
+
+.taskbar-element img {
+  width: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.taskbar-element p {
+  margin-left: 5px;
+  margin-right: 5px;
+}

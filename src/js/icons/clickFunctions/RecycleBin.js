@@ -1,6 +1,6 @@
 class RecycleBin extends Window {
   constructor() {
-    super("Recycle Bin", "recycleBin", "assets/images/icons/recycle.png");
+    super("Recycle Bin", "recycleBin", true, "assets/images/icons/recycle.png");
     this.#generate();
   }
 
