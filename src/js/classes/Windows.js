@@ -24,6 +24,15 @@ class Window {
       handle: `#${this.id}Header`,
       containment: "#desktop",
     });
+
+    let length = $(".window")
+      .map((elmnt) => {
+        return elmnt;
+      })
+      .get().length;
+
+    this.elem.style.top = 70 + 30 * length + "px";
+    this.elem.style.left = 250 + 50 * length + "px";
   }
 
   render() {
