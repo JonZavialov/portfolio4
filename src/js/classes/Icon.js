@@ -67,6 +67,6 @@ class Icon {
   }
 
   makeDraggable() {
-    $(this.iconElem).draggable();
+    $(this.iconElem).draggable({ containment: "#desktop" });
   }
 }

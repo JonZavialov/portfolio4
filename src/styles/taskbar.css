@@ -3,6 +3,7 @@
   height: 45px;
   overflow: hidden;
   display: flex;
+  z-index: 101;
 }
 
 #startButton img {
