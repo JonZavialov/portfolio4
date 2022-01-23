@@ -38,8 +38,10 @@ class Window {
       })
       .get().length;
 
-    this.elem.style.top = 70 + 30 * length + "px";
-    this.elem.style.left = 250 + 50 * length + "px";
+    this.elem.style.top =
+      $("#desktop")[0].getBoundingClientRect().top + 60 + 30 * length + "px";
+    this.elem.style.left =
+      $("#desktop")[0].getBoundingClientRect().left + 50 * length + "px";
   }
 
   render() {
