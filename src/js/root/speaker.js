@@ -84,7 +84,8 @@ function generateVolumeSlider() {
   );
 
   containerContainer.style.top = height - 161 + "px";
-  containerContainer.style.left = mouse.x - 31 + "px";
+  containerContainer.style.left =
+    $("#desktopSpeakerIcon")[0].getBoundingClientRect().x - 21 + "px";
 
   return containerContainer;
 }
