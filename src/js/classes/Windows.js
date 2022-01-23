@@ -1,19 +1,12 @@
 class Window {
-  constructor(
-    displayName,
-    id,
-    contentElements,
-    iconPath = null,
-    closeFunction = null
-  ) {
+  constructor(displayName, id, iconPath = null, closeFunction = null) {
     this.displayName = displayName;
     this.iconPath = iconPath;
     this.id = id;
-    this.contentElements = contentElements;
     this.closeFunction = closeFunction;
   }
 
-  generateElement() {
+  generateElement(contentElements) {
     this.elem = document.createElement("div");
     this.elem.className = "window";
     this.elem.id = this.id;
@@ -21,7 +14,7 @@ class Window {
     let titleBar = this.#createTitleBar();
     let windowBody = document.createElement("div");
     windowBody.className = "window-body";
-    windowBody.appendChild(this.contentElements);
+    windowBody.appendChild(contentElements);
 
     this.elem.appendChild(titleBar);
     this.elem.appendChild(windowBody);
@@ -56,6 +49,11 @@ class Window {
 
     let closeButton = document.createElement("button");
     closeButton.ariaLabel = "Close";
+    if (!this.closeFunction) {
+      closeButton.onclick = () => {
+        this.elem.remove();
+      };
+    } else closeButton.onclick = this.closeFunction;
 
     titleBarControls.appendChild(minimizeButton);
     titleBarControls.appendChild(closeButton);
