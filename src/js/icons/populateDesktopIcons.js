@@ -15,6 +15,7 @@ function populateDesktopIcons() {
       );
       iconClass.generateElement();
       iconClass.renderIntoColumn(iconsColumn);
+      iconClass.makeDraggable()
       iconClasses.push(iconClass);
       if ((i + 1) % 4 == 0) iconsColumn = makeIconsColumn();
     }

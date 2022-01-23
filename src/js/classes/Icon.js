@@ -65,4 +65,8 @@ class Icon {
     this.iconElem.style.borderColor = borderColor;
     if (unselect) this.selected = false;
   }
+
+  makeDraggable() {
+    $(this.iconElem).draggable();
+  }
 }
