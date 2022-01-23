@@ -67,3 +67,7 @@ body {
   position: absolute;
   background: rgba(170, 204, 238, 0.3);
 }
+
+.title-bar-controls button[aria-label="Close"] {
+  margin-left: 0 !important;
+}
