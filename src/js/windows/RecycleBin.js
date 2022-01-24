@@ -15,13 +15,12 @@ class RecycleBin extends Window {
       parent.appendChild(this.currentRow);
     }
 
-    let recycledIcon = this.#generateRecycledIcon(icon);
+    let recycledIcon = RecycleBin.#generateRecycledIcon(icon);
     recycledIcon.generateElement();
     recycledIcon.renderIntoColumn(this.currentRow);
   }
 
-  #generateRecycledIcon(icon) {
-    //todo: static
+  static #generateRecycledIcon(icon) {
     let recycledIcon = new Icon(
       icon.displayName,
       icon.iconImagePath,
