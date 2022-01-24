@@ -21,6 +21,7 @@ class RecycleBin extends Window {
   }
 
   #generateRecycledIcon(icon) {
+    //todo: static
     let recycledIcon = new Icon(
       icon.displayName,
       icon.iconImagePath,
