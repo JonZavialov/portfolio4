@@ -103,8 +103,10 @@ class Icon {
 
     try {
       recycleBinWindows.forEach((recycleClass) => {
-        recycleClass.addRecycledIcon(
-          this,
+        let newIcon = recycleClass.generateRecycledIcon(this)
+        newIcon.generateElement()
+        recycleClass.addIcon(
+          newIcon,
           recycleClass.elem.getElementsByClassName("recycleBinContents")[0],
           recycledIcons.length
         );
