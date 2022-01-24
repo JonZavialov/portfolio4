@@ -15,7 +15,7 @@ class Window {
 
   generateElement(contentElements) {
     this.elem = document.createElement("div");
-    this.elem.className = "window";
+    this.elem.className = "window windowClass";
     this.elem.id = this.id;
 
     let titleBar = this.#createTitleBar();
@@ -30,6 +30,7 @@ class Window {
     $(this.elem).draggable({
       handle: `#${this.id}Header`,
       containment: "#desktop",
+      stack: ".windowClass",
     });
 
     let length = $(".window")

@@ -1,5 +1,11 @@
 class Icon {
-  constructor(displayName, iconImagePath, className, parent, clickFunction) {
+  constructor(
+    displayName,
+    iconImagePath,
+    className,
+    parent,
+    clickFunction = null
+  ) {
     this.displayName = displayName;
     this.iconImagePath = iconImagePath;
     this.className = className;
@@ -49,6 +55,7 @@ class Icon {
   }
 
   doubleClick() {
+    if (!this.clickFunction) return;
     if (typeof this.clickFunction === "function") this.clickFunction();
   }
 
@@ -67,6 +74,6 @@ class Icon {
   }
 
   makeDraggable() {
-    $(this.iconElem).draggable({ containment: "#desktop" });
+    $(this.iconElem).draggable({ containment: "#desktop", stack: "#icon" });
   }
 }
