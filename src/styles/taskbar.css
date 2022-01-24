@@ -30,6 +30,7 @@
 
 #taskbarIcons {
   width: 100%;
+  display: flex;
 }
 
 #desktopClock {
@@ -79,6 +80,8 @@
   padding: 0;
   display: flex;
   margin-top: 2px;
+  margin-right: 5px;
+  height: 34px;
 }
 
 .taskbar-element img {
