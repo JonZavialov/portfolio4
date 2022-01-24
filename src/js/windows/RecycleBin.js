@@ -1,5 +1,6 @@
 class RecycleBin extends Window {
   constructor() {
+    //TODO: make folder class
     super("Recycle Bin", "recycleBin", true, "assets/images/icons/recycle.png");
     this.#generate();
   }
@@ -15,12 +16,12 @@ class RecycleBin extends Window {
       parent.appendChild(this.currentRow);
     }
 
-    let recycledIcon = RecycleBin.#generateRecycledIcon(icon);
+    let recycledIcon = this.#generateRecycledIcon(icon);
     recycledIcon.generateElement();
     recycledIcon.renderIntoColumn(this.currentRow);
   }
 
-  static #generateRecycledIcon(icon) {
+  #generateRecycledIcon(icon) {
     let recycledIcon = new Icon(
       icon.displayName,
       icon.iconImagePath,
@@ -34,7 +35,7 @@ class RecycleBin extends Window {
 
   #generate() {
     let contents = document.createElement("div");
-    contents.className = "recycleBinContents";
+    contents.className = "recycleBinContents folderContent";
     let i = 0;
     recycledIcons.forEach((icon) => {
       i++;
