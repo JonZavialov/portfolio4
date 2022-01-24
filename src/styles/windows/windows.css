@@ -1,3 +1,4 @@
 .window .title-bar-text img {
   width: 12px;
+  transform: translateY(1px);
 }

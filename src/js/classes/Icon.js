@@ -4,14 +4,16 @@ class Icon {
     iconImagePath,
     className,
     parent,
-    clickFunction = null
+    clickFunction = null,
+    selectable = true
   ) {
     this.displayName = displayName;
     this.iconImagePath = iconImagePath;
-    this.className = className;
+    this.className = className + "Icon";
     this.parent = parent;
     this.selected = false;
     this.clickFunction = clickFunction;
+    this.selectable = selectable;
   }
 
   generateElement() {
@@ -19,7 +21,7 @@ class Icon {
     this.iconElem.className = this.className + " " + this.parent + "Icon";
     this.iconElem.id = "icon";
     if (this.parent == "desktop") this.iconElem.style.borderColor = "#008080";
-    else this.iconElem.style.borderColor = "white";
+    else this.iconElem.style.borderColor = "#e7e7e7";
 
     let iconImage = document.createElement("img");
     iconImage.src = this.iconImagePath;
@@ -27,6 +29,8 @@ class Icon {
 
     let iconLabel = document.createElement("p");
     iconLabel.innerHTML = this.displayName;
+    if (this.parent == "desktop") iconLabel.style.color = "white";
+    else iconLabel.style.color = "black";
     this.iconElem.appendChild(iconLabel);
 
     this.iconElem.onmousedown = (e) => {
@@ -39,6 +43,7 @@ class Icon {
   }
 
   onClick(e) {
+    if (!this.selectable) return;
     removeAllBorders(e.target.className);
     if (this.selected) {
       //object was double clicked
@@ -47,7 +52,7 @@ class Icon {
     } else {
       //object was single clicked
       let borderColor;
-      if (this.parent == "desktop") borderColor = "white";
+      if (this.parent == "desktop") borderColor = "#e7e7e7";
       else borderColor = "blue";
       this.iconElem.style.borderColor = borderColor;
       this.selected = true;
@@ -61,19 +66,49 @@ class Icon {
 
   selectWithBox() {
     if (this.selected) return;
-    this.iconElem.style.borderColor = "white";
+    this.iconElem.style.borderColor = "#e7e7e7";
     this.selected = true;
   }
 
   removeBorder(unselect = true) {
     let borderColor;
     if (this.parent == "desktop") borderColor = "#008080";
-    else borderColor = "white";
+    else borderColor = "#e7e7e7";
     this.iconElem.style.borderColor = borderColor;
     if (unselect) this.selected = false;
   }
 
   makeDraggable() {
-    $(this.iconElem).draggable({ containment: "#desktop", stack: "#icon" });
+    $(this.iconElem).draggable({ containment: "#desktop" });
+  }
+
+  checkForRecycle() {
+    if (this.className == "recycleBinIcon") return;
+    if (doElsCollide($(this.iconElem), $(".recycleBinIcon"))) {
+      this.hoveringOverRecycleBin = true;
+      this.iconElem.style.opacity = 0.5;
+      this.removeBorder();
+    } else {
+      this.hoveringOverRecycleBin = false;
+      this.iconElem.style.opacity = 1;
+    }
+  }
+
+  checkForReleasedOverRecycle() {
+    if (!this.hoveringOverRecycleBin) return;
+
+    this.iconElem.style.transform = "scale(0)";
+    iconClasses.splice(iconClasses.indexOf(this), 1);
+    recycledIcons.push(this);
+
+    try {
+      recycleBinWindows.forEach((recycleClass) => {
+        recycleClass.addRecycledIcon(
+          this,
+          recycleClass.elem.getElementsByClassName("recycleBinContents")[0],
+          recycledIcons.length
+        );
+      });
+    } catch {}
   }
 }

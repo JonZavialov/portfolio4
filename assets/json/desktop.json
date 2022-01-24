@@ -1,27 +1,27 @@
 {
-    "recycleBin": {
-        "displayName": "Recycle Bin",
-        "iconImage": "/assets/images/icons/recycle.png",
-        "clickFunction": "openRecycleBin"
-    },
-    "myComputer": {
-        "displayName": "My Computer",
-        "iconImage": "/assets/images/icons/computer.png",
-        "clickFunction": "openMyComputer"
-    },
-    "myDocuments": {
-        "displayName": "My Documents",
-        "iconImage": "/assets/images/icons/documents.png",
-        "clickFunction": "openMyDocuments"
-    },
-    "myApps": {
-        "displayName": "My Apps",
-        "iconImage": "/assets/images/icons/appsdir.png",
-        "clickFunction": "openMyApps"
-    },
-    "calculator": {
-        "displayName": "Calculator",
-        "iconImage": "/assets/images/icons/calculator.png",
-        "clickFunction": "openCalculator"
-    }
+  "recycleBin": {
+    "displayName": "Recycle Bin",
+    "iconImage": "/assets/images/icons/recycle.png",
+    "clickFunction": "openRecycleBin"
+  },
+  "myComputer": {
+    "displayName": "My Computer",
+    "iconImage": "/assets/images/icons/computer.png",
+    "clickFunction": "openMyComputer"
+  },
+  "myDocuments": {
+    "displayName": "My Documents",
+    "iconImage": "/assets/images/icons/documents.png",
+    "clickFunction": "openMyDocuments"
+  },
+  "myApps": {
+    "displayName": "My Apps",
+    "iconImage": "/assets/images/icons/appsdir.png",
+    "clickFunction": "openMyApps"
+  },
+  "calculator": {
+    "displayName": "Calculator",
+    "iconImage": "/assets/images/icons/calculator.png",
+    "clickFunction": "openCalculator"
+  }
 }

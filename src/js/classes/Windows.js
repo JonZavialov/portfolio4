@@ -95,5 +95,6 @@ class Window {
   close() {
     this.elem.remove();
     if (this.taskbarElement) this.taskbarElement.checkForClose();
+    if (this.closeCallback) this.closeCallback();
   }
 }

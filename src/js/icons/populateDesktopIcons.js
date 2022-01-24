@@ -1,5 +1,6 @@
 function populateDesktopIcons() {
   iconClasses = [];
+  recycledIcons = [];
   $.getJSON("/assets/json/desktop.json", (data) => {
     let keys = Object.keys(data);
     let iconsColumn = makeIconsColumn();
@@ -15,10 +16,16 @@ function populateDesktopIcons() {
       );
       iconClass.generateElement();
       iconClass.renderIntoColumn(iconsColumn);
-      iconClass.makeDraggable()
+      iconClass.makeDraggable();
       iconClasses.push(iconClass);
       if ((i + 1) % 4 == 0) iconsColumn = makeIconsColumn();
     }
+  });
+
+  $("#desktop").mouseup(() => {
+    iconClasses.forEach((icon) => {
+      icon.checkForReleasedOverRecycle();
+    });
   });
 }
 
