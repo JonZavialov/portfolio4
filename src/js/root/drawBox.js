@@ -37,10 +37,12 @@ function initDraw() {
   };
 
   canvas.onmousedown = function (e) {
+    closeButton();
     let noSelect = [".window", "#icon"];
     for (let i = 0; i < noSelect.length; i++) {
       if (e.target.closest(noSelect[i])) return;
     }
+    removeAllBorders();
     if (clickedOnVolumeSlider(e)) return;
     if (e.button !== 0) return;
     mouse.startX = mouse.x;
@@ -50,8 +52,6 @@ function initDraw() {
     element.style.left = mouse.x + "px";
     element.style.top = mouse.y + "px";
     canvas.appendChild(element);
-    removeAllBorders();
-    closeButton();
     if (!clickedOnVolumeSlider(e)) removeSpeaker();
   };
 
