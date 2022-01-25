@@ -12,11 +12,13 @@ class Folder extends Window{
     generate(iconsList) {
         let contents = document.createElement("div");
         contents.className = this.id + "Contents folderContent";
-        let i = 0;
-        iconsList.forEach((icon) => {
-            i++;
-            this.addIcon(icon, contents, i);
-        });
+        if(iconsList){
+            let i = 0;
+            iconsList.forEach((icon) => {
+                i++;
+                this.addIcon(icon, contents, i);
+            });
+        }
         this.generateElement(contents);
     }
 

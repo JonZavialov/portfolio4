@@ -38,7 +38,7 @@ class Window {
         return elmnt;
       })
       .get().length;
-
+      
     this.elem.style.top =
       $("#desktop")[0].getBoundingClientRect().top + 60 + 30 * length + "px";
     this.elem.style.left =
