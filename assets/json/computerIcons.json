@@ -1,0 +1,10 @@
+{
+    "storage": {
+    "displayName": "Storage (C:)",
+    "iconImage": "/assets/images/icons/drive.png"
+  },
+  "floppy": {
+    "displayName": "3.5 Floppy (A:)",
+    "iconImage": "/assets/images/icons/floppy.png"
+  }
+}

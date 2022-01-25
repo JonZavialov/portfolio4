@@ -4,9 +4,11 @@ class Folder extends Window{
         id,
         taskbar = false,
         iconPath = null,
-        closeFunction = null
+        closeFunction = null,
+        callback = null
     ) {
         super(displayName, id, taskbar, iconPath, closeFunction);
+        this.callback = callback;
     }
 
     generate(iconsList) {
@@ -20,6 +22,7 @@ class Folder extends Window{
             });
         }
         this.generateElement(contents);
+        if(this.callback) this.callback()
     }
 
     addIcon(icon, parent, listIndex) {
@@ -28,6 +31,7 @@ class Folder extends Window{
             this.currentRow.className = "recycleBinRow";
             parent.appendChild(this.currentRow);
         }
+        //console.log('rendering', icon.iconElem, "into", this.currentRow);
         icon.renderIntoColumn(this.currentRow);
     }
 }
