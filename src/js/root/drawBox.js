@@ -38,7 +38,6 @@ function initDraw() {
 
   canvas.onmousedown = function (e) {
     closeButton();
-    console.log(iconClasses);
     if (e.target.closest("#icon")) return;
     removeAllBorders();
     let noSelect = [".window"];
