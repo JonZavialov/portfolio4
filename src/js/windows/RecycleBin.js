@@ -6,7 +6,7 @@ class RecycleBin extends Folder {
       let recycledIcon = this.generateRecycledIcon(icon);
       recycledIcon.generateElement();
       recycledIconsList.push(recycledIcon);
-    })
+    });
     this.generate(recycledIconsList);
   }
 

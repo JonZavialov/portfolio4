@@ -1,14 +1,21 @@
 class MyComputer extends Folder {
   constructor(callback) {
-    super("My Computer", "myComputer", true, "assets/images/icons/computer.png", null, callback);
+    super(
+      "My Computer",
+      "myComputer",
+      true,
+      "assets/images/icons/computer.png",
+      null,
+      callback
+    );
     this.#setDrivesList();
   }
 
-  #setDrivesList(){
+  #setDrivesList() {
     //necessary for getDrivesList to run asynchronously
     this.drivesList = this.#getDrivesList((list) => {
       this.generate(list);
-    })
+    });
   }
 
   #getDrivesList(callback) {
@@ -16,7 +23,7 @@ class MyComputer extends Folder {
     $.getJSON("/assets/json/computerIcons.json", (data) => {
       let ids = Object.keys(data);
       for (let i = 0; i < ids.length; i++) {
-        let id = ids[i]
+        let id = ids[i];
         let iconData = data[id];
         let iconClass = new Icon(
           iconData.displayName,
@@ -27,11 +34,11 @@ class MyComputer extends Folder {
         iconClass.generateElement();
         drivesList.push(iconClass);
 
-        if(i == ids.length - 1){
-          callback(drivesList)
+        if (i == ids.length - 1) {
+          callback(drivesList);
         }
       }
-    })
+    });
   }
 }
 
