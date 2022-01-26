@@ -36,17 +36,17 @@ class MyApps extends Folder {
       for (let i = 0; i < ids.length; i++) {
         let id = ids[i];
         let iconData = data[id];
-        if (iconData["type"] != "app") continue;
-        let iconClass = new Icon(
-          iconData.displayName,
-          iconData.iconImage,
-          id + "App",
-          "myApps",
-          window[iconData.clickFunction]
-        );
-        iconClass.generateElement();
-        appsList.push(iconClass);
-
+        if (iconData["type"] === "app") {
+          let iconClass = new Icon(
+            iconData.displayName,
+            iconData.iconImage,
+            id + "App",
+            "myApps",
+            window[iconData.clickFunction]
+          );
+          iconClass.generateElement();
+          appsList.push(iconClass);
+        }
         if (i == ids.length - 1) {
           callback(appsList);
         }

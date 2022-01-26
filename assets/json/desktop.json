@@ -33,5 +33,17 @@
     "iconImage": "/assets/images/icons/txt.png",
     "clickFunction": "openTextEditor",
     "type": "app"
+  },
+  "jonpng": {
+    "displayName": "jon.png",
+    "iconImage": "/assets/images/icons/image.png",
+    "clickFunction": "openJonpng",
+    "type": "document"
+  },
+  "credits": {
+    "displayName": "credits.txt",
+    "iconImage": "/assets/images/icons/txt.png",
+    "clickFunction": "openCredits",
+    "type": "document"
   }
 }
