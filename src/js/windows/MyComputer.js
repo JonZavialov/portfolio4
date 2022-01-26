@@ -9,12 +9,23 @@ class MyComputer extends Folder {
       callback
     );
     this.#setDrivesList();
+    this.icons = [];
+  }
+
+  closeCallback() {
+    this.icons.forEach((icon) => {
+      iconClasses.splice(iconClasses.indexOf(icon), 1);
+    });
   }
 
   #setDrivesList() {
     //necessary for getDrivesList to run asynchronously
     this.drivesList = this.#getDrivesList((list) => {
       this.generate(list);
+      list.forEach((icon) => {
+        iconClasses.push(icon);
+        this.icons.push(icon);
+      });
     });
   }
 

@@ -83,7 +83,7 @@ class Icon {
   }
 
   checkForRecycle() {
-    if (this.className == "recycleBinIcon") return;
+    if (this.className == "recycleBinIcon" || this.parent !== "desktop") return;
     if (doElsCollide($(this.iconElem), $(".recycleBinIcon"))) {
       this.hoveringOverRecycleBin = true;
       this.iconElem.style.opacity = 0.5;

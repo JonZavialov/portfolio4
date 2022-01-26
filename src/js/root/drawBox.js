@@ -38,11 +38,13 @@ function initDraw() {
 
   canvas.onmousedown = function (e) {
     closeButton();
-    let noSelect = [".window", "#icon"];
+    console.log(iconClasses);
+    if (e.target.closest("#icon")) return;
+    removeAllBorders();
+    let noSelect = [".window"];
     for (let i = 0; i < noSelect.length; i++) {
       if (e.target.closest(noSelect[i])) return;
     }
-    removeAllBorders();
     if (clickedOnVolumeSlider(e)) return;
     if (e.button !== 0) return;
     mouse.startX = mouse.x;

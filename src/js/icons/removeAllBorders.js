@@ -5,7 +5,7 @@ function removeAllBorders(dontRemove = null) {
       if (iconClasses[j].className == icons[i].className.split(" ")[0]) {
         if (dontRemove == icons[i].className)
           iconClasses[j].removeBorder(false);
-        else iconClasses[i].removeBorder();
+        else iconClasses[j].removeBorder();
       }
     }
   }
