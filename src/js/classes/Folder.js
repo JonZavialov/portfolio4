@@ -32,5 +32,6 @@ class Folder extends Window {
       parent.appendChild(this.currentRow);
     }
     icon.renderIntoColumn(this.currentRow);
+    icon.iconElem.style.marginLeft = "18px";
   }
 }

@@ -7,21 +7,31 @@
   "myComputer": {
     "displayName": "My Computer",
     "iconImage": "/assets/images/icons/computer.png",
-    "clickFunction": "openMyComputer"
-  },
-  "myDocuments": {
-    "displayName": "My Documents",
-    "iconImage": "/assets/images/icons/documents.png",
-    "clickFunction": "openMyDocuments"
+    "clickFunction": "openMyComputer",
+    "type": "folder"
   },
   "myApps": {
     "displayName": "My Apps",
     "iconImage": "/assets/images/icons/appsdir.png",
-    "clickFunction": "openMyApps"
+    "clickFunction": "openMyApps",
+    "type": "folder"
+  },
+  "myDocuments": {
+    "displayName": "My Documents",
+    "iconImage": "/assets/images/icons/documents.png",
+    "clickFunction": "openMyDocuments",
+    "type": "folder"
   },
   "calculator": {
     "displayName": "Calculator",
     "iconImage": "/assets/images/icons/calculator.png",
-    "clickFunction": "openCalculator"
+    "clickFunction": "openCalculator",
+    "type": "app"
+  },
+  "textEditor": {
+    "displayName": "Text Editor",
+    "iconImage": "/assets/images/icons/txt.png",
+    "clickFunction": "openTextEditor",
+    "type": "app"
   }
 }
