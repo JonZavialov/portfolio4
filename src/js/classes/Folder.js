@@ -29,7 +29,7 @@ class Folder extends Window {
     if (listIndex == 1 || (listIndex - 1) % 5 == 0) {
       this.currentRow = document.createElement('div');
       this.currentRow.className = 'recycleBinRow';
-      parent.appendChild(this.currentRow);
+      parent.append(this.currentRow);
     }
     icon.renderIntoColumn(this.currentRow);
     icon.iconElem.style.marginLeft = '18px';

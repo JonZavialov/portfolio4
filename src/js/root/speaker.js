@@ -59,11 +59,9 @@ function generateVolumeSlider() {
     volumeChanged(input.value);
   };
 
-  slider.appendChild(input);
-  volumeSliderContainer.appendChild(triangle);
-  volumeSliderContainer.appendChild(slider);
-  containerContainer.appendChild(label);
-  containerContainer.appendChild(volumeSliderContainer);
+  slider.append(input);
+  volumeSliderContainer.append(triangle, slider);
+  containerContainer.append(label, volumeSliderContainer);
 
   let body = document.body;
   let html = document.documentElement;

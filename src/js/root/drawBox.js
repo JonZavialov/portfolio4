@@ -52,7 +52,7 @@ function initDraw() {
     element.className = 'rectangle';
     element.style.left = mouse.x + 'px';
     element.style.top = mouse.y + 'px';
-    canvas.appendChild(element);
+    canvas.append(element);
     if (!clickedOnVolumeSlider(e)) removeSpeaker();
   };
 

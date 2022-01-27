@@ -25,13 +25,13 @@ class Icon {
 
     let iconImage = document.createElement('img');
     iconImage.src = this.iconImagePath;
-    this.iconElem.appendChild(iconImage);
+    this.iconElem.append(iconImage);
 
     let iconLabel = document.createElement('p');
     iconLabel.innerHTML = this.displayName;
     if (this.parent == 'desktop') iconLabel.style.color = 'white';
     else iconLabel.style.color = 'black';
-    this.iconElem.appendChild(iconLabel);
+    this.iconElem.append(iconLabel);
 
     this.iconElem.onmousedown = (e) => {
       this.onClick(e);
@@ -39,7 +39,7 @@ class Icon {
   }
 
   renderIntoColumn(element) {
-    element.appendChild(this.iconElem);
+    element.append(this.iconElem);
   }
 
   onClick(e) {

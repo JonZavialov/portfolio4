@@ -21,10 +21,9 @@ class Window {
     let titleBar = this.#createTitleBar();
     let windowBody = document.createElement('div');
     windowBody.className = 'window-body';
-    windowBody.appendChild(contentElements);
+    windowBody.append(contentElements);
 
-    this.elem.appendChild(titleBar);
-    this.elem.appendChild(windowBody);
+    this.elem.append(titleBar, windowBody);
     this.elem.style.position = 'absolute';
 
     $(this.elem).draggable({
@@ -84,10 +83,8 @@ class Window {
       };
     } else closeButton.onclick = this.closeFunction;
 
-    titleBarControls.appendChild(minimizeButton);
-    titleBarControls.appendChild(closeButton);
-    titleBar.appendChild(titleBarText);
-    titleBar.appendChild(titleBarControls);
+    titleBarControls.append(minimizeButton, closeButton);
+    titleBar.append(titleBarText, titleBarControls);
 
     return titleBar;
   }
