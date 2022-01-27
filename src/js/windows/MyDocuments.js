@@ -1,4 +1,9 @@
 class MyDocuments extends Folder {
+  /**
+   * The My Documents folder.
+   * @param  {function} callback - The function that will be called when the folder is opened.
+   * @constructor
+   */
   constructor(callback) {
     super(
       'My Documents',
@@ -12,14 +17,20 @@ class MyDocuments extends Folder {
     this.icons = [];
   }
 
+  /**
+   * Called in addition to the close function when the folder is closed.
+   */
   closeCallback() {
     this.icons.forEach((icon) => {
       iconClasses.splice(iconClasses.indexOf(icon), 1);
     });
   }
 
+  /**
+   * Sets the list of Documents to be displayed in the folder. Necessary for getDocumentsList to run asynchronously.
+   * @private
+   */
   #setDocumentsList() {
-    //necessary for getDocumentsList to run asynchronously
     this.documentsList = this.#getDocumentsList((list) => {
       this.generate(list);
       list.forEach((icon) => {
@@ -29,6 +40,11 @@ class MyDocuments extends Folder {
     });
   }
 
+  /**
+   * Retrieves the list of documents from the server.
+   * @param  {function} callback
+   * @private
+   */
   #getDocumentsList(callback) {
     let documentsList = [];
     $.getJSON('/assets/json/desktop.json', (data) => {
@@ -55,6 +71,9 @@ class MyDocuments extends Folder {
   }
 }
 
+/**
+ * Opens the My Documents folder.
+ */
 function openMyDocuments() {
   let myDocuments = new MyDocuments(() => {
     myDocuments.render();

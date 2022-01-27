@@ -1,3 +1,6 @@
+/**
+ * Initializes the clock in the taskbar.
+ */
 function initClock() {
   //TODO: make clicking on clock icon open calendar app
   setInterval(() => {

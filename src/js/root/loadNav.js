@@ -1,3 +1,6 @@
+/**
+ * Renders the navigation bar into the DOM.
+ */
 function loadNav() {
   let navBar = `
         <li><a href=\"/home\">Home</a></li>

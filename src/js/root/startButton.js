@@ -1,3 +1,6 @@
+/**
+ * Renders the start menu into the DOM.
+ */
 function startButton() {
   if ($('#startMenu')[0]) return;
   let element = document.createElement('div');
@@ -53,6 +56,9 @@ function startButton() {
   });
 }
 
+/**
+ * Closes the start menu.
+ */
 async function closeButton() {
   if (!$('#startMenu')[0]) return;
   $('#startMenu').remove();
@@ -62,12 +68,16 @@ async function closeButton() {
   });
 }
 
+/**
+ * Called when a button in the start menu is clicked.
+ * @param  {string} button - The button that was clicked.
+ */
 async function startMenuButton(button) {
   let methods = {
-    email: function () {
+    'email': function () {
       window.location.assign('mailto: jonzavialov@gmail.com');
     },
-    linkedin: function () {
+    'linkedin': function () {
       window
         .open(
           'https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/',
@@ -75,12 +85,12 @@ async function startMenuButton(button) {
         )
         .focus();
     },
-    insta: function () {
+    'insta': function () {
       window
         .open('https://www.instagram.com/thesuperiorphotographer', '_blank')
         .focus();
     },
-    youtube: function () {
+    'youtube': function () {
       window
         .open(
           'https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g',
@@ -88,16 +98,16 @@ async function startMenuButton(button) {
         )
         .focus();
     },
-    github: function () {
+    'github': function () {
       window.open('https://github.com/JonZavialov', '_blank').focus();
     },
-    credits: function () {
+    'credits': function () {
       credits();
     },
-    console: function () {
+    'console': function () {
       initMsdos();
     },
-    restart: function () {
+    'restart': function () {
       window.location.replace('/');
     },
   };

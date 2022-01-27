@@ -1,4 +1,9 @@
 class MyComputer extends Folder {
+  /**
+   * The My Computer folder.
+   * @param  {function} callback - The function that will be called when the folder is opened.
+   * @constructor
+   */
   constructor(callback) {
     super(
       'My Computer',
@@ -12,14 +17,20 @@ class MyComputer extends Folder {
     this.icons = [];
   }
 
+  /**
+   * Called in addition to the close function when the folder is closed.
+   */
   closeCallback() {
     this.icons.forEach((icon) => {
       iconClasses.splice(iconClasses.indexOf(icon), 1);
     });
   }
 
+  /**
+   * Sets the list of drives to be displayed in the folder. Necessary for getDrivesList to run asynchronously.
+   * @private
+   */
   #setDrivesList() {
-    //necessary for getDrivesList to run asynchronously
     this.drivesList = this.#getDrivesList((list) => {
       this.generate(list);
       list.forEach((icon) => {
@@ -29,6 +40,11 @@ class MyComputer extends Folder {
     });
   }
 
+  /**
+   * Retrieves the list of drives from the server.
+   * @param  {function} callback
+   * @private
+   */
   #getDrivesList(callback) {
     let drivesList = [];
     $.getJSON('/assets/json/computerIcons.json', (data) => {
@@ -53,6 +69,9 @@ class MyComputer extends Folder {
   }
 }
 
+/**
+ * Opens the My Computer folder.
+ */
 function openMyComputer() {
   let myComputer = new MyComputer(() => {
     myComputer.render();

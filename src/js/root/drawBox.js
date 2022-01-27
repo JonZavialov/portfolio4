@@ -1,3 +1,6 @@
+/**
+ * Initializes the drawBox function for the desktop.
+ */
 function initDraw() {
   let canvas = $('#desktop')[0];
   let body = $('body')[0];
@@ -67,6 +70,9 @@ function initDraw() {
   };
 }
 
+/**
+ * Checks if any icons or the taskbar are colliding with the box.
+ */
 async function checkCollide() {
   var icons = $('[id=icon]');
   for (i = 0; i < icons.length; i++) {

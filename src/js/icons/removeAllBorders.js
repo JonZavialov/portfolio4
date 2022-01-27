@@ -1,3 +1,7 @@
+/**
+ * Removes all borders from the icons present in the DOM.
+ * @param  {string} [dontRemove=null] - The class name of an icon that should not be removed.
+ */
 function removeAllBorders(dontRemove = null) {
   var icons = $('[id=icon]');
   for (i = 0; i < icons.length; i++) {

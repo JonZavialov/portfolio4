@@ -1,3 +1,9 @@
+/**
+ * Returns whether two elements collide.
+ * @param  {jQuery} $div1 - The first element.
+ * @param  {jQuery} $div2 - The second element.
+ * @returns {boolean} - Whether the two elements collide.
+ */
 function doElsCollide($div1, $div2) {
   if ($div1.length == 0 || $div2.length == 0) return false;
 

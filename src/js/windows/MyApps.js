@@ -1,4 +1,9 @@
 class MyApps extends Folder {
+  /**
+   * The My Apps folder.
+   * @param  {function} callback - The function that will be called when the folder is opened.
+   * @constructor
+   */
   constructor(callback) {
     super(
       'My Apps',
@@ -12,14 +17,20 @@ class MyApps extends Folder {
     this.icons = [];
   }
 
+  /**
+   * Called in addition to the close function when the folder is closed.
+   */
   closeCallback() {
     this.icons.forEach((icon) => {
       iconClasses.splice(iconClasses.indexOf(icon), 1);
     });
   }
 
+  /**
+   * Sets the list of apps to be displayed in the folder. Necessary for getAppsList to run asynchronously.
+   * @private
+   */
   #setAppsList() {
-    //necessary for getAppsList to run asynchronously
     this.appsList = this.#getAppsList((list) => {
       this.generate(list);
       list.forEach((icon) => {
@@ -29,6 +40,11 @@ class MyApps extends Folder {
     });
   }
 
+  /**
+   * Retrieves the list of apps from the server.
+   * @param  {function} callback
+   * @private
+   */
   #getAppsList(callback) {
     let appsList = [];
     $.getJSON('/assets/json/desktop.json', (data) => {
@@ -55,6 +71,9 @@ class MyApps extends Folder {
   }
 }
 
+/**
+ * Opens the My Apps folder.
+ */
 function openMyApps() {
   let myApps = new MyApps(() => {
     myApps.render();

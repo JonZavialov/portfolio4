@@ -1,3 +1,6 @@
+/**
+ * Populates the desktop icons, and adds them to the global iconClasses array.
+ */
 function populateDesktopIcons() {
   iconClasses = [];
   recycledIcons = [];
@@ -29,6 +32,10 @@ function populateDesktopIcons() {
   });
 }
 
+/**
+ * Creates a new column for the desktop icons.
+ * @returns {HTMLElement} - The new column.
+ */
 function makeIconsColumn() {
   let iconsColumn = document.createElement('div');
   iconsColumn.id = 'iconsColumn';

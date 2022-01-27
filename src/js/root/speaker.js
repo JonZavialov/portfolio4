@@ -1,3 +1,6 @@
+/**
+ * Toggles the volume slider.
+ */
 function toggleSpeaker() {
   if ($('#desktopSpeakerIcon').length == 0) return;
   if ($('#desktopSpeakerIcon')[0].className.indexOf('toggled') == -1) {
@@ -10,7 +13,10 @@ function toggleSpeaker() {
   }
 }
 
-function removeSpeaker(e) {
+/**
+ * Removes the volume slider.
+ */
+function removeSpeaker() {
   if (
     $('#volumeSliderContainer').length == 0 ||
     $('#desktopSpeakerIcon').length == 0
@@ -20,6 +26,10 @@ function removeSpeaker(e) {
   $('#volumeSliderContainer').remove();
 }
 
+/**
+ * Generates the DOM element for the volume slider.
+ * @returns {HTMLElement} - The DOM element for the volume slider.
+ */
 function generateVolumeSlider() {
   try {
     volumeLevel;
@@ -73,13 +83,6 @@ function generateVolumeSlider() {
     html.scrollHeight,
     html.offsetHeight
   );
-  let width = Math.max(
-    body.scrollWidth,
-    body.offsetWidth,
-    html.clientWidth,
-    html.scrollWidth,
-    html.offsetWidth
-  );
 
   containerContainer.style.top = height - 161 + 'px';
   containerContainer.style.left =
@@ -88,7 +91,11 @@ function generateVolumeSlider() {
   return containerContainer;
 }
 
-function clickedOnVolumeSlider(e) {
+/**
+ * Checks if the user clicked on the volume slider.
+ * @returns {boolean} - Whether the user clicked on the volume slider.
+ */
+function clickedOnVolumeSlider() {
   if ($('#volumeSliderContainer').length == 0) return;
   let topCoords = $('#volumeSliderContainer')[0].getBoundingClientRect().top;
   let leftCoords = $('#volumeSliderContainer')[0].getBoundingClientRect().left;
@@ -106,6 +113,10 @@ function clickedOnVolumeSlider(e) {
   return false;
 }
 
+/**
+ * Sets the global volume level variable.
+ * @param  {number} level
+ */
 function volumeChanged(level) {
   volumeLevel = level;
 }

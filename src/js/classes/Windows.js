@@ -77,6 +77,7 @@ class Window {
   /**
    * Creates the title bar for the window.
    * @private
+   * @returns {HTMLElement} - The title bar element.
    */
   #createTitleBar() {
     let titleBar = document.createElement('div');
