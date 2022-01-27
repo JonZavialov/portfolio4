@@ -1,3 +1,3 @@
 function openCalculator() {
-	console.log('openCalculator');
+  console.log('openCalculator');
 }

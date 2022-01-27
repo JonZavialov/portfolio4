@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="./assets/images/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./assets/images/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
-		<script src="./src/js/classes/Windows.js"></script>
-		<script src="./src/js/classes/Folder.js"></script>
-		<script src="./src/js/root/loadNav.js"></script>
-		<script src="./src/js/classes/Icon.js"></script>
-		<script src="./src/js/icons/populateDesktopIcons.js"></script>
-		<script src="./src/js/root/drawBox.js"></script>
-		<script src="./src/js/icons/removeAllBorders.js"></script>
-		<script src="./src/js/windows/MyComputer.js"></script>
-		<script src="./src/js/windows/MyDocuments.js"></script>
-		<script src="./src/js/windows/Calculator.js"></script>
-		<script src="./src/js/windows/MyApps.js"></script>
-		<script src="./src/js/windows/TextEditor.js"></script>
-		<script src="./src/js/root/startButton.js"></script>
-		<script src="./src/js/root/initClock.js"></script>
-		<script src="./src/js/root/speaker.js"></script>
-		<script src="./src/js/windows/RecycleBin.js"></script>
-		<script src="./src/js/classes/TaskbarElement.js"></script>
-		<script src="./src/js/root/doElsCollide.js"></script>
-		<script src="./src/js/windows/Jonpng.js"></script>
-		<script src="./src/js/windows/Credits.js"></script>
+    <script src="./src/js/classes/Windows.js"></script>
+    <script src="./src/js/classes/Folder.js"></script>
+    <script src="./src/js/root/loadNav.js"></script>
+    <script src="./src/js/classes/Icon.js"></script>
+    <script src="./src/js/icons/populateDesktopIcons.js"></script>
+    <script src="./src/js/root/drawBox.js"></script>
+    <script src="./src/js/icons/removeAllBorders.js"></script>
+    <script src="./src/js/windows/MyComputer.js"></script>
+    <script src="./src/js/windows/MyDocuments.js"></script>
+    <script src="./src/js/windows/Calculator.js"></script>
+    <script src="./src/js/windows/MyApps.js"></script>
+    <script src="./src/js/windows/TextEditor.js"></script>
+    <script src="./src/js/root/startButton.js"></script>
+    <script src="./src/js/root/initClock.js"></script>
+    <script src="./src/js/root/speaker.js"></script>
+    <script src="./src/js/windows/RecycleBin.js"></script>
+    <script src="./src/js/classes/TaskbarElement.js"></script>
+    <script src="./src/js/root/doElsCollide.js"></script>
+    <script src="./src/js/windows/Jonpng.js"></script>
+    <script src="./src/js/windows/Credits.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="./src/styles/homePage.css" />
-		<link rel="stylesheet" type="text/css" href="./src/styles/icons.css" />
-		<link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="./src/styles/windows/recycleBin.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="./src/styles/windows/windows.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="./src/styles/startButton.css"
-		/>
-		<link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles/icons.css" />
+    <link rel="stylesheet" type="text/css" href="./src/styles/taskbar.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/styles/windows/recycleBin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/styles/windows/windows.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./src/styles/startButton.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
 
-		<title>Jonathan Zavialov</title>
-	</head>
+    <title>Jonathan Zavialov</title>
+  </head>
 
-	<body>
-		<script>
-			$(document).ready(function () {
-				loadNav();
-				populateDesktopIcons();
-				initDraw();
-				initClock();
-				$('#startButton').click(() => {
-					startButton();
-				});
-			});
-		</script>
-		<noscript>You need to enable JavaScript to run this app.</noscript>
-		<div id="volumeContainer"></div>
-		<div id="root">
-			<ul id="treeDisplay" class="tree-view"></ul>
-			<div id="desktop">
-				<h1>Jonathan Zavialov</h1>
-				<div id="middleSection">
-					<hr id="headerHr" />
-					<div id="iconsContainer"></div>
-				</div>
-				<div id="taskbar" class="window">
-					<button id="startButton">
-						<img src="/assets/images/windows_logo.png" alt="startButton" />
-						<p>Start</p>
-					</button>
-					<hr id="taskbarDivider" />
-					<div id="taskbarIcons"></div>
-					<button id="desktopClock">
-						<img
-							id="desktopClockIcon"
-							src="/assets/images/clock.png"
-							alt="clock"
-						/>
-						<img
-							id="desktopSpeakerIcon"
-							src="/assets/images/speaker.png"
-							alt="speaker"
-							onclick="toggleSpeaker()"
-						/>
-						<p id="desktopClockTimeDisplay"></p>
-					</button>
-				</div>
-			</div>
-		</div>
-	</body>
+  <body>
+    <script>
+      $(document).ready(function () {
+        loadNav();
+        populateDesktopIcons();
+        initDraw();
+        initClock();
+        $('#startButton').click(() => {
+          startButton();
+        });
+      });
+    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="volumeContainer"></div>
+    <div id="root">
+      <ul id="treeDisplay" class="tree-view"></ul>
+      <div id="desktop">
+        <h1>Jonathan Zavialov</h1>
+        <div id="middleSection">
+          <hr id="headerHr" />
+          <div id="iconsContainer"></div>
+        </div>
+        <div id="taskbar" class="window">
+          <button id="startButton">
+            <img src="/assets/images/windows_logo.png" alt="startButton" />
+            <p>Start</p>
+          </button>
+          <hr id="taskbarDivider" />
+          <div id="taskbarIcons"></div>
+          <button id="desktopClock">
+            <img
+              id="desktopClockIcon"
+              src="/assets/images/clock.png"
+              alt="clock"
+            />
+            <img
+              id="desktopSpeakerIcon"
+              src="/assets/images/speaker.png"
+              alt="speaker"
+              onclick="toggleSpeaker()"
+            />
+            <p id="desktopClockTimeDisplay"></p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

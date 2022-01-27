@@ -1,9 +1,9 @@
 function startButton() {
-	if ($('#startMenu')[0]) return;
-	let element = document.createElement('div');
-	element.id = 'startMenu';
-	element.className = 'window';
-	element.innerHTML = `
+  if ($('#startMenu')[0]) return;
+  let element = document.createElement('div');
+  element.id = 'startMenu';
+  element.className = 'window';
+  element.innerHTML = `
     <div class="title-bar">
         <div class="title-bar-text">
             Windows98
@@ -46,61 +46,61 @@ function startButton() {
         </div>
     </div>
     `;
-	$('#middleSection').append(element);
-	$('#startButton').unbind();
-	$('#startButton').click(() => {
-		closeButton();
-	});
+  $('#middleSection').append(element);
+  $('#startButton').unbind();
+  $('#startButton').click(() => {
+    closeButton();
+  });
 }
 
 async function closeButton() {
-	if (!$('#startMenu')[0]) return;
-	$('#startMenu').remove();
-	$('#startButton').unbind();
-	$('#startButton').click(() => {
-		startButton();
-	});
+  if (!$('#startMenu')[0]) return;
+  $('#startMenu').remove();
+  $('#startButton').unbind();
+  $('#startButton').click(() => {
+    startButton();
+  });
 }
 
 async function startMenuButton(button) {
-	let methods = {
-		email: function () {
-			window.location.assign('mailto: jonzavialov@gmail.com');
-		},
-		linkedin: function () {
-			window
-				.open(
-					'https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/',
-					'_blank'
-				)
-				.focus();
-		},
-		insta: function () {
-			window
-				.open('https://www.instagram.com/thesuperiorphotographer', '_blank')
-				.focus();
-		},
-		youtube: function () {
-			window
-				.open(
-					'https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g',
-					'_blank'
-				)
-				.focus();
-		},
-		github: function () {
-			window.open('https://github.com/JonZavialov', '_blank').focus();
-		},
-		credits: function () {
-			credits();
-		},
-		console: function () {
-			initMsdos();
-		},
-		restart: function () {
-			window.location.replace('/');
-		},
-	};
-	let methodNames = Object.keys(methods);
-	if (methodNames.indexOf(button) != -1) methods[button]();
+  let methods = {
+    email: function () {
+      window.location.assign('mailto: jonzavialov@gmail.com');
+    },
+    linkedin: function () {
+      window
+        .open(
+          'https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/',
+          '_blank'
+        )
+        .focus();
+    },
+    insta: function () {
+      window
+        .open('https://www.instagram.com/thesuperiorphotographer', '_blank')
+        .focus();
+    },
+    youtube: function () {
+      window
+        .open(
+          'https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g',
+          '_blank'
+        )
+        .focus();
+    },
+    github: function () {
+      window.open('https://github.com/JonZavialov', '_blank').focus();
+    },
+    credits: function () {
+      credits();
+    },
+    console: function () {
+      initMsdos();
+    },
+    restart: function () {
+      window.location.replace('/');
+    },
+  };
+  let methodNames = Object.keys(methods);
+  if (methodNames.indexOf(button) != -1) methods[button]();
 }

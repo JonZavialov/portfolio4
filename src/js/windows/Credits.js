@@ -1,3 +1,3 @@
 function openCredits() {
-	console.log('openCredits');
+  console.log('openCredits');
 }

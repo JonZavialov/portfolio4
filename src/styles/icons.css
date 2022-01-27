@@ -1,37 +1,37 @@
 #icon {
-	width: fit-content;
-	text-align: center;
-	border-style: dotted;
-	border-color: transparent;
-	padding: 2px;
-	border-width: 1px;
+  width: fit-content;
+  text-align: center;
+  border-style: dotted;
+  border-color: transparent;
+  padding: 2px;
+  border-width: 1px;
 }
 
 #icon p {
-	margin-top: 3px;
-	margin-bottom: 3px;
-	font-family: 'Pixelated MS Sans Serif', Arial;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-family: 'Pixelated MS Sans Serif', Arial;
 }
 
 #icon img {
-	width: 48px;
-	pointer-events: none;
+  width: 48px;
+  pointer-events: none;
 }
 
 #iconsContainer {
-	margin-top: 7px;
-	margin-left: 32px;
-	display: flex;
-	flex-direction: row;
+  margin-top: 7px;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: row;
 }
 
 #iconsColumn {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-left: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 18px;
 }
 
 .desktopIcon {
-	margin-top: 18px;
+  margin-top: 18px;
 }
