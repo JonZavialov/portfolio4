@@ -1,4 +1,14 @@
 class Icon {
+  /**
+   * The Icon class.
+   * @param  {string} displayName - The name that will be displayed for the icon.
+   * @param  {string} iconImagePath - The path to the image that will be displayed for the icon.
+   * @param  {string} className - The class name of the icon which will be used to identify it.
+   * @param  {string} parent - The element which contains the icon.
+   * @param  {function} [clickFunction=null] - The function that will be called when the icon is double clicked.
+   * @param  {boolean} [selectable=true] - Whether or not the icon can be selected.
+   * @constructor
+   */
   constructor(
     displayName,
     iconImagePath,
@@ -16,6 +26,9 @@ class Icon {
     this.selectable = selectable;
   }
 
+  /**
+   * Generates the DOM element for the icon.
+   */
   generateElement() {
     this.iconElem = document.createElement('div');
     this.iconElem.className = this.className + ' ' + this.parent + 'Icon';
@@ -38,10 +51,19 @@ class Icon {
     };
   }
 
+  /**
+   * Renders the icon to the provided element.
+   * @param  {HTMLElement} element - The element to generate the icon into.
+   */
   renderIntoColumn(element) {
     element.append(this.iconElem);
   }
 
+  /**
+   * Called when the icon is clicked.
+   * @param  {clickEvent} e - The click event.
+   * @listens clickEvent
+   */
   onClick(e) {
     if (!this.selectable) return;
     removeAllBorders(e.target.className);
@@ -59,17 +81,27 @@ class Icon {
     }
   }
 
+  /**
+   * Called when the icon is double clicked.
+   */
   doubleClick() {
     if (!this.clickFunction) return;
     if (typeof this.clickFunction === 'function') this.clickFunction();
   }
 
+  /**
+   * Called when the draggable box selects the icon.
+   */
   selectWithBox() {
     if (this.selected) return;
     this.iconElem.style.borderColor = '#e7e7e7';
     this.selected = true;
   }
 
+  /**
+   * Removes the border from the icon.
+   * @param  {boolean} [unselect=true]
+   */
   removeBorder(unselect = true) {
     let borderColor;
     if (this.parent == 'desktop') borderColor = '#008080';
@@ -78,10 +110,16 @@ class Icon {
     if (unselect) this.selected = false;
   }
 
+  /**
+   * Makes the icon draggable.
+   */
   makeDraggable() {
     $(this.iconElem).draggable({ containment: '#desktop' });
   }
 
+  /**
+   * Checks if the icon is hovering over the recycle bin.
+   */
   checkForRecycle() {
     if (this.className == 'recycleBinIcon' || this.parent !== 'desktop') return;
     if (doElsCollide($(this.iconElem), $('.recycleBinIcon'))) {
@@ -94,6 +132,9 @@ class Icon {
     }
   }
 
+  /**
+   * Checks if the icon was released over the recycle bin.
+   */
   checkForReleasedOverRecycle() {
     if (!this.hoveringOverRecycleBin) return;
 

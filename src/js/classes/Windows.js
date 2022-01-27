@@ -1,4 +1,13 @@
 class Window {
+  /**
+   * The window class.
+   * @param  {string} displayName - The name that will be displayed for the window.
+   * @param  {string} id - The id of the window which will be used to identify it.
+   * @param  {boolean} [taskbar=false] - Whether or not the window instance will be displayed in the taskbar.
+   * @param  {?string} [iconPath=null] - The path to the icon that will be displayed for the window.
+   * @param  {function} [closeFunction=null] - The function that will be called when the window is closed. If null, the default close function will be used.
+   * @constructor
+   */
   constructor(
     displayName,
     id,
@@ -13,6 +22,10 @@ class Window {
     this.closeFunction = closeFunction;
   }
 
+  /**
+   * Generates the DOM element for the window.
+   * @param  {HTMLElement} contentElements - The elements that will be displayed in the window.
+   */
   generateElement(contentElements) {
     this.elem = document.createElement('div');
     this.elem.className = 'window windowClass';
@@ -44,6 +57,9 @@ class Window {
       $('#desktop')[0].getBoundingClientRect().left + 50 * length + 'px';
   }
 
+  /**
+   * Renders the window into the DOM.
+   */
   render() {
     $('#desktop').append(this.elem);
 
@@ -58,6 +74,10 @@ class Window {
     }
   }
 
+  /**
+   * Creates the title bar for the window.
+   * @private
+   */
   #createTitleBar() {
     let titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
@@ -89,6 +109,9 @@ class Window {
     return titleBar;
   }
 
+  /**
+   * Closes the window and removes taskbar elements.
+   */
   close() {
     this.elem.remove();
     if (this.taskbarElement) this.taskbarElement.checkForClose();
