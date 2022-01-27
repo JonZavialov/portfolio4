@@ -2,13 +2,13 @@
  * Toggles the volume slider.
  */
 function toggleSpeaker() {
-  if ($('#desktopSpeakerIcon').length == 0) return;
-  if ($('#desktopSpeakerIcon')[0].className.indexOf('toggled') == -1) {
-    //speaker is not toggled
+  if ($('#desktopSpeakerIcon').length === 0) return;
+  if ($('#desktopSpeakerIcon')[0].className.indexOf('toggled') === -1) {
+    // speaker is not toggled
     $('#desktopSpeakerIcon').addClass('toggled');
     $('#volumeContainer').append(generateVolumeSlider());
   } else {
-    //speaker is toggled
+    // speaker is toggled
     removeSpeaker();
   }
 }
@@ -18,8 +18,8 @@ function toggleSpeaker() {
  */
 function removeSpeaker() {
   if (
-    $('#volumeSliderContainer').length == 0 ||
-    $('#desktopSpeakerIcon').length == 0
+    $('#volumeSliderContainer').length === 0 ||
+    $('#desktopSpeakerIcon').length === 0
   )
     return;
   $('#desktopSpeakerIcon').removeClass('toggled');
@@ -33,31 +33,31 @@ function removeSpeaker() {
 function generateVolumeSlider() {
   try {
     volumeLevel;
-  } catch {
+  } catch (e) {
     volumeLevel = 50;
   }
 
-  let containerContainer = document.createElement('div');
+  const containerContainer = document.createElement('div');
   containerContainer.className = 'window';
   containerContainer.id = 'volumeSliderContainer';
 
-  let volumeSliderContainer = document.createElement('div');
+  const volumeSliderContainer = document.createElement('div');
   volumeSliderContainer.id = 'volumeSlider';
   volumeSliderContainer.className = 'field-row';
 
-  let triangle = document.createElement('img');
+  const triangle = document.createElement('img');
   triangle.src = '/assets/images/volume_triangle.png';
   triangle.alt = 'triangle';
   triangle.id = 'volumeTriangle';
 
-  let label = document.createElement('label');
+  const label = document.createElement('label');
   label.for = 'range25';
   label.innerText = 'Volume';
 
-  let slider = document.createElement('div');
+  const slider = document.createElement('div');
   slider.className = 'is-vertical';
 
-  let input = document.createElement('input');
+  const input = document.createElement('input');
   input.id = 'range25';
   input.className = 'has-box-indicator volumeSliderElement';
   input.type = 'range';
@@ -73,10 +73,10 @@ function generateVolumeSlider() {
   volumeSliderContainer.append(triangle, slider);
   containerContainer.append(label, volumeSliderContainer);
 
-  let body = document.body;
-  let html = document.documentElement;
+  const { body } = document;
+  const html = document.documentElement;
 
-  let height = Math.max(
+  const height = Math.max(
     body.scrollHeight,
     body.offsetHeight,
     html.clientHeight,
@@ -84,9 +84,10 @@ function generateVolumeSlider() {
     html.offsetHeight
   );
 
-  containerContainer.style.top = height - 161 + 'px';
-  containerContainer.style.left =
-    $('#desktopSpeakerIcon')[0].getBoundingClientRect().x - 21 + 'px';
+  containerContainer.style.top = `${height - 161}px`;
+  containerContainer.style.left = `${
+    $('#desktopSpeakerIcon')[0].getBoundingClientRect().x - 21
+  }px`;
 
   return containerContainer;
 }
@@ -96,12 +97,13 @@ function generateVolumeSlider() {
  * @returns {boolean} - Whether the user clicked on the volume slider.
  */
 function clickedOnVolumeSlider() {
-  if ($('#volumeSliderContainer').length == 0) return;
-  let topCoords = $('#volumeSliderContainer')[0].getBoundingClientRect().top;
-  let leftCoords = $('#volumeSliderContainer')[0].getBoundingClientRect().left;
-  let bottomCoords = $('#volumeSliderContainer')[0].getBoundingClientRect()
+  if ($('#volumeSliderContainer').length === 0) return;
+  const topCoords = $('#volumeSliderContainer')[0].getBoundingClientRect().top;
+  const leftCoords = $('#volumeSliderContainer')[0].getBoundingClientRect()
+    .left;
+  const bottomCoords = $('#volumeSliderContainer')[0].getBoundingClientRect()
     .bottom;
-  let rightCoords = $('#volumeSliderContainer')[0].getBoundingClientRect()
+  const rightCoords = $('#volumeSliderContainer')[0].getBoundingClientRect()
     .right;
   if (
     mouse.y > topCoords &&

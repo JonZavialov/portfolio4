@@ -3,7 +3,7 @@
  */
 function startButton() {
   if ($('#startMenu')[0]) return;
-  let element = document.createElement('div');
+  const element = document.createElement('div');
   element.id = 'startMenu';
   element.className = 'window';
   element.innerHTML = `
@@ -72,8 +72,9 @@ async function closeButton() {
  * Called when a button in the start menu is clicked.
  * @param  {string} button - The button that was clicked.
  */
-async function startMenuButton(button) {
-  let methods = {
+function startMenuButton(button) {
+  console.log(button);
+  const methods = {
     'email': function () {
       window.location.assign('mailto: jonzavialov@gmail.com');
     },
@@ -111,6 +112,6 @@ async function startMenuButton(button) {
       window.location.replace('/');
     },
   };
-  let methodNames = Object.keys(methods);
-  if (methodNames.indexOf(button) != -1) methods[button]();
+  const methodNames = Object.keys(methods);
+  if (methodNames.indexOf(button) !== -1) methods[button]();
 }

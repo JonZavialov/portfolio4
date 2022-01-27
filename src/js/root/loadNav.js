@@ -2,8 +2,8 @@
  * Renders the navigation bar into the DOM.
  */
 function loadNav() {
-  let navBar = `
-        <li><a href=\"/home\">Home</a></li>
+  const navBar = `
+        <li><a href="/home">Home</a></li>
         <ul>
             <li style="cursor: pointer;" onmouseup="recycleBin()">Recycle Bin</li>
             <li style="cursor: pointer;" onmouseup="myComputer()">My Computer</li>
@@ -24,8 +24,8 @@ function loadNav() {
             </ul>
             <li style="cursor: pointer;" onmouseup="nft()">My NFTs</li>
         </ul>
-        <li><a href=\"https://github.com/JonZavialov/portfolio4\" target=\"_blank\">Repository</a></li>
+        <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
     `;
-  //TODO: populate navbar with links to all apps
+  // TODO: populate navbar with links to all apps
   $('#treeDisplay').html(navBar);
 }

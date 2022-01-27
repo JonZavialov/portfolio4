@@ -2,8 +2,8 @@
  * Initializes the drawBox function for the desktop.
  */
 function initDraw() {
-  let canvas = $('#desktop')[0];
-  let body = $('body')[0];
+  const canvas = $('#desktop')[0];
+  const body = $('body')[0];
 
   mouse = {
     x: 0,
@@ -13,48 +13,48 @@ function initDraw() {
   };
 
   function setMousePosition(e) {
-    var ev = e || window.event; //Moz || IE
+    const ev = e || window.event; // Moz || IE
     if (ev.pageX) {
-      //Moz
+      // Moz
       mouse.x = ev.pageX + window.pageXOffset;
       mouse.y = ev.pageY + window.pageYOffset;
     }
   }
 
-  var element = null;
+  let element = null;
   canvas.onmousemove = function (e) {
     checkCollide();
     setMousePosition(e);
     iconClasses.forEach((icon) => {
       icon.checkForRecycle();
     });
-    if (e.button != 0) return;
+    if (e.button !== 0) return;
     if (element !== null) {
-      element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
-      element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+      element.style.width = `${Math.abs(mouse.x - mouse.startX)}px`;
+      element.style.height = `${Math.abs(mouse.y - mouse.startY)}px`;
       element.style.left =
-        mouse.x - mouse.startX < 0 ? mouse.x + 'px' : mouse.startX + 'px';
+        mouse.x - mouse.startX < 0 ? `${mouse.x}px` : `${mouse.startX}px`;
       element.style.top =
-        mouse.y - mouse.startY < 0 ? mouse.y + 'px' : mouse.startY + 'px';
+        mouse.y - mouse.startY < 0 ? `${mouse.y}px` : `${mouse.startY}px`;
     }
   };
 
   canvas.onmousedown = function (e) {
-    closeButton();
     if (e.target.closest('#icon')) return;
     removeAllBorders();
-    let noSelect = ['.window'];
-    for (let i = 0; i < noSelect.length; i++) {
+    const noSelect = ['.window'];
+    for (let i = 0; i < noSelect.length; i += 1) {
       if (e.target.closest(noSelect[i])) return;
     }
+    closeButton();
     if (clickedOnVolumeSlider(e)) return;
     if (e.button !== 0) return;
     mouse.startX = mouse.x;
     mouse.startY = mouse.y;
     element = document.createElement('div');
     element.className = 'rectangle';
-    element.style.left = mouse.x + 'px';
-    element.style.top = mouse.y + 'px';
+    element.style.left = `${mouse.x}px`;
+    element.style.top = `${mouse.y}px`;
     canvas.append(element);
     if (!clickedOnVolumeSlider(e)) removeSpeaker();
   };
@@ -62,9 +62,9 @@ function initDraw() {
   body.onmouseup = function () {
     if (element) element.remove();
 
-    //check for drawn rectangles and remove them
-    var rectangles = document.getElementsByClassName('rectangle');
-    for (i = 0; i < rectangles.length; i++) {
+    // check for drawn rectangles and remove them
+    const rectangles = document.getElementsByClassName('rectangle');
+    for (i = 0; i < rectangles.length; i += 1) {
       rectangles[i].remove();
     }
   };
@@ -74,15 +74,15 @@ function initDraw() {
  * Checks if any icons or the taskbar are colliding with the box.
  */
 async function checkCollide() {
-  var icons = $('[id=icon]');
-  for (i = 0; i < icons.length; i++) {
-    let collide = doElsCollide(
+  const icons = $('[id=icon]');
+  for (i = 0; i < icons.length; i += 1) {
+    const collide = doElsCollide(
       $('.rectangle'),
       $(`.${icons[i].className.split(' ')[0]}`)
     );
     if (collide) {
-      for (let j = 0; j < iconClasses.length; j++) {
-        if (iconClasses[j].className == icons[i].className.split(' ')[0]) {
+      for (let j = 0; j < iconClasses.length; j += 1) {
+        if (iconClasses[j].className === icons[i].className.split(' ')[0]) {
           iconClasses[j].selectWithBox();
         }
       }

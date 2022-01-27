@@ -13,7 +13,7 @@ class MyApps extends Folder {
       null,
       callback
     );
-    this.#setAppsList();
+    this.setAppsList();
     this.icons = [];
   }
 
@@ -28,10 +28,9 @@ class MyApps extends Folder {
 
   /**
    * Sets the list of apps to be displayed in the folder. Necessary for getAppsList to run asynchronously.
-   * @private
    */
-  #setAppsList() {
-    this.appsList = this.#getAppsList((list) => {
+  setAppsList() {
+    this.appsList = this.getAppsList((list) => {
       this.generate(list);
       list.forEach((icon) => {
         iconClasses.push(icon);
@@ -43,27 +42,26 @@ class MyApps extends Folder {
   /**
    * Retrieves the list of apps from the server.
    * @param  {function} callback
-   * @private
    */
-  #getAppsList(callback) {
-    let appsList = [];
+  getAppsList(callback) {
+    const appsList = [];
     $.getJSON('/assets/json/desktop.json', (data) => {
-      let ids = Object.keys(data);
-      for (let i = 0; i < ids.length; i++) {
-        let id = ids[i];
-        let iconData = data[id];
-        if (iconData['type'] === 'app') {
-          let iconClass = new Icon(
+      const ids = Object.keys(data);
+      for (let i = 0; i < ids.length; i += 1) {
+        const id = ids[i];
+        const iconData = data[id];
+        if (iconData.type === 'app') {
+          const iconClass = new Icon(
             iconData.displayName,
             iconData.iconImage,
-            id + 'App',
+            `${id}App`,
             'myApps',
             window[iconData.clickFunction]
           );
           iconClass.generateElement();
           appsList.push(iconClass);
         }
-        if (i == ids.length - 1) {
+        if (i === ids.length - 1) {
           callback(appsList);
         }
       }
@@ -75,7 +73,7 @@ class MyApps extends Folder {
  * Opens the My Apps folder.
  */
 function openMyApps() {
-  let myApps = new MyApps(() => {
+  const myApps = new MyApps(() => {
     myApps.render();
   });
 }

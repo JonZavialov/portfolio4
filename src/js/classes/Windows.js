@@ -4,7 +4,7 @@ class Window {
    * @param  {string} displayName - The name that will be displayed for the window.
    * @param  {string} id - The id of the window which will be used to identify it.
    * @param  {boolean} [taskbar=false] - Whether or not the window instance will be displayed in the taskbar.
-   * @param  {?string} [iconPath=null] - The path to the icon that will be displayed for the window.
+   * @param  {string} [iconPath=null] - The path to the icon that will be displayed for the window.
    * @param  {function} [closeFunction=null] - The function that will be called when the window is closed. If null, the default close function will be used.
    * @constructor
    */
@@ -31,8 +31,8 @@ class Window {
     this.elem.className = 'window windowClass';
     this.elem.id = this.id;
 
-    let titleBar = this.#createTitleBar();
-    let windowBody = document.createElement('div');
+    const titleBar = this.createTitleBar();
+    const windowBody = document.createElement('div');
     windowBody.className = 'window-body';
     windowBody.append(contentElements);
 
@@ -45,16 +45,16 @@ class Window {
       stack: '.windowClass',
     });
 
-    let length = $('.window')
-      .map((elmnt) => {
-        return elmnt;
-      })
-      .get().length;
+    const { length } = $('.window')
+      .map((elmnt) => elmnt)
+      .get();
 
-    this.elem.style.top =
-      $('#desktop')[0].getBoundingClientRect().top + 60 + 30 * length + 'px';
-    this.elem.style.left =
-      $('#desktop')[0].getBoundingClientRect().left + 50 * length + 'px';
+    this.elem.style.top = `${
+      $('#desktop')[0].getBoundingClientRect().top + 60 + 30 * length
+    }px`;
+    this.elem.style.left = `${
+      $('#desktop')[0].getBoundingClientRect().left + 50 * length
+    }px`;
   }
 
   /**
@@ -79,24 +79,24 @@ class Window {
    * @private
    * @returns {HTMLElement} - The title bar element.
    */
-  #createTitleBar() {
-    let titleBar = document.createElement('div');
+  createTitleBar() {
+    const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
-    titleBar.id = this.id + 'Header';
+    titleBar.id = `${this.id}Header`;
 
-    let titleBarText = document.createElement('div');
+    const titleBarText = document.createElement('div');
     titleBarText.className = 'title-bar-text';
     if (this.iconPath)
       titleBarText.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> ${this.displayName}`;
     else titleBarText.innerHTML = this.displayName;
 
-    let titleBarControls = document.createElement('div');
+    const titleBarControls = document.createElement('div');
     titleBarControls.className = 'title-bar-controls';
 
-    let minimizeButton = document.createElement('button');
+    const minimizeButton = document.createElement('button');
     minimizeButton.ariaLabel = 'Minimize';
 
-    let closeButton = document.createElement('button');
+    const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
     if (!this.closeFunction) {
       closeButton.onclick = () => {

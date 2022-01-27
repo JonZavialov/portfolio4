@@ -13,7 +13,7 @@ class MyDocuments extends Folder {
       null,
       callback
     );
-    this.#setDocumentsList();
+    this.setDocumentsList();
     this.icons = [];
   }
 
@@ -30,8 +30,8 @@ class MyDocuments extends Folder {
    * Sets the list of Documents to be displayed in the folder. Necessary for getDocumentsList to run asynchronously.
    * @private
    */
-  #setDocumentsList() {
-    this.documentsList = this.#getDocumentsList((list) => {
+  setDocumentsList() {
+    this.documentsList = this.getDocumentsList((list) => {
       this.generate(list);
       list.forEach((icon) => {
         iconClasses.push(icon);
@@ -45,25 +45,25 @@ class MyDocuments extends Folder {
    * @param  {function} callback
    * @private
    */
-  #getDocumentsList(callback) {
-    let documentsList = [];
+  getDocumentsList(callback) {
+    const documentsList = [];
     $.getJSON('/assets/json/desktop.json', (data) => {
-      let ids = Object.keys(data);
-      for (let i = 0; i < ids.length; i++) {
-        let id = ids[i];
-        let iconData = data[id];
-        if (iconData['type'] === 'document') {
-          let iconClass = new Icon(
+      const ids = Object.keys(data);
+      for (let i = 0; i < ids.length; i += 1) {
+        const id = ids[i];
+        const iconData = data[id];
+        if (iconData.type === 'document') {
+          const iconClass = new Icon(
             iconData.displayName,
             iconData.iconImage,
-            id + 'Documents',
+            `${id}Documents`,
             'myDocuments',
             window[iconData.clickFunction]
           );
           iconClass.generateElement();
           documentsList.push(iconClass);
         }
-        if (i == ids.length - 1) {
+        if (i === ids.length - 1) {
           callback(documentsList);
         }
       }
@@ -75,7 +75,7 @@ class MyDocuments extends Folder {
  * Opens the My Documents folder.
  */
 function openMyDocuments() {
-  let myDocuments = new MyDocuments(() => {
+  const myDocuments = new MyDocuments(() => {
     myDocuments.render();
   });
 }

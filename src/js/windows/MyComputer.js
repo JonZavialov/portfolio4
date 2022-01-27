@@ -13,7 +13,7 @@ class MyComputer extends Folder {
       null,
       callback
     );
-    this.#setDrivesList();
+    this.setDrivesList();
     this.icons = [];
   }
 
@@ -28,10 +28,9 @@ class MyComputer extends Folder {
 
   /**
    * Sets the list of drives to be displayed in the folder. Necessary for getDrivesList to run asynchronously.
-   * @private
    */
-  #setDrivesList() {
-    this.drivesList = this.#getDrivesList((list) => {
+  setDrivesList() {
+    this.drivesList = this.getDrivesList((list) => {
       this.generate(list);
       list.forEach((icon) => {
         iconClasses.push(icon);
@@ -43,16 +42,15 @@ class MyComputer extends Folder {
   /**
    * Retrieves the list of drives from the server.
    * @param  {function} callback
-   * @private
    */
-  #getDrivesList(callback) {
-    let drivesList = [];
+  getDrivesList(callback) {
+    const drivesList = [];
     $.getJSON('/assets/json/computerIcons.json', (data) => {
-      let ids = Object.keys(data);
-      for (let i = 0; i < ids.length; i++) {
-        let id = ids[i];
-        let iconData = data[id];
-        let iconClass = new Icon(
+      const ids = Object.keys(data);
+      for (let i = 0; i < ids.length; i += 1) {
+        const id = ids[i];
+        const iconData = data[id];
+        const iconClass = new Icon(
           iconData.displayName,
           iconData.iconImage,
           id,
@@ -61,7 +59,7 @@ class MyComputer extends Folder {
         iconClass.generateElement();
         drivesList.push(iconClass);
 
-        if (i == ids.length - 1) {
+        if (i === ids.length - 1) {
           callback(drivesList);
         }
       }
@@ -73,7 +71,7 @@ class MyComputer extends Folder {
  * Opens the My Computer folder.
  */
 function openMyComputer() {
-  let myComputer = new MyComputer(() => {
+  const myComputer = new MyComputer(() => {
     myComputer.render();
   });
 }

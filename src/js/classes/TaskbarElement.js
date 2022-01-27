@@ -18,7 +18,7 @@ class TaskbarElement {
   generateElement() {
     this.elem = document.createElement('button');
     this.elem.className = 'taskbar-element';
-    this.elem.id = this.id + 'TaskbarElement';
+    this.elem.id = `${this.id}TaskbarElement`;
     this.elem.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> <p>${this.displayName}</p>`;
   }
 
@@ -26,7 +26,7 @@ class TaskbarElement {
    * Renders the taskbar element into the DOM.
    */
   render() {
-    if ($("[id='" + this.id + "']").length > 1) return;
+    if ($(`[id='${this.id}']`).length > 1) return;
     $('#taskbarIcons').append(this.elem);
   }
 
@@ -34,7 +34,7 @@ class TaskbarElement {
    * Checks if the window that the taskbar element is associated with is closed.
    */
   checkForClose() {
-    if ($("[id='" + this.id + "']").length == 0)
-      $('#' + this.id + 'TaskbarElement').remove();
+    if ($(`[id='${this.id}']`).length === 0)
+      $(`#${this.id}TaskbarElement`).remove();
   }
 }

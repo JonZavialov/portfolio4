@@ -5,12 +5,12 @@ function populateDesktopIcons() {
   iconClasses = [];
   recycledIcons = [];
   $.getJSON('/assets/json/desktop.json', (data) => {
-    let keys = Object.keys(data);
+    const keys = Object.keys(data);
     let iconsColumn = makeIconsColumn();
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i];
-      let icon = data[key];
-      let iconClass = new Icon(
+    for (let i = 0; i < keys.length; i += 1) {
+      const key = keys[i];
+      const icon = data[key];
+      const iconClass = new Icon(
         icon.displayName,
         icon.iconImage,
         key,
@@ -21,7 +21,7 @@ function populateDesktopIcons() {
       iconClass.renderIntoColumn(iconsColumn);
       iconClass.makeDraggable();
       iconClasses.push(iconClass);
-      if ((i + 1) % 4 == 0) iconsColumn = makeIconsColumn();
+      if ((i + 1) % 4 === 0) iconsColumn = makeIconsColumn();
     }
   });
 
@@ -37,7 +37,7 @@ function populateDesktopIcons() {
  * @returns {HTMLElement} - The new column.
  */
 function makeIconsColumn() {
-  let iconsColumn = document.createElement('div');
+  const iconsColumn = document.createElement('div');
   iconsColumn.id = 'iconsColumn';
   $('#iconsContainer').append(iconsColumn);
   return iconsColumn;

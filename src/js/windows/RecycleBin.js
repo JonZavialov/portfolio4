@@ -4,9 +4,9 @@ class RecycleBin extends Folder {
    */
   constructor() {
     super('Recycle Bin', 'recycleBin', true, 'assets/images/icons/recycle.png');
-    let recycledIconsList = [];
+    const recycledIconsList = [];
     recycledIcons.forEach((icon) => {
-      let recycledIcon = this.generateRecycledIcon(icon);
+      const recycledIcon = this.generateRecycledIcon(icon);
       recycledIcon.generateElement();
       recycledIconsList.push(recycledIcon);
     });
@@ -26,7 +26,7 @@ class RecycleBin extends Folder {
    * @returns {Icon} - The recycled icon.
    */
   generateRecycledIcon(icon) {
-    let recycledIcon = new Icon(
+    const recycledIcon = new Icon(
       icon.displayName,
       icon.iconImagePath,
       icon.className,
@@ -42,11 +42,11 @@ class RecycleBin extends Folder {
  * Opens the Recycle Bin folder.
  */
 function openRecycleBin() {
-  let recycleBin = new RecycleBin();
+  const recycleBin = new RecycleBin();
   recycleBin.render();
   try {
     recycleBinWindows.push(recycleBin);
-  } catch {
+  } catch (e) {
     recycleBinWindows = [];
     recycleBinWindows.push(recycleBin);
   }

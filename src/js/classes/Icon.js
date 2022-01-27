@@ -19,7 +19,7 @@ class Icon {
   ) {
     this.displayName = displayName;
     this.iconImagePath = iconImagePath;
-    this.className = className + 'Icon';
+    this.className = `${className}Icon`;
     this.parent = parent;
     this.selected = false;
     this.clickFunction = clickFunction;
@@ -31,18 +31,18 @@ class Icon {
    */
   generateElement() {
     this.iconElem = document.createElement('div');
-    this.iconElem.className = this.className + ' ' + this.parent + 'Icon';
+    this.iconElem.className = `${this.className} ${this.parent}Icon`;
     this.iconElem.id = 'icon';
-    if (this.parent == 'desktop') this.iconElem.style.borderColor = '#008080';
+    if (this.parent === 'desktop') this.iconElem.style.borderColor = '#008080';
     else this.iconElem.style.borderColor = '#e7e7e7';
 
-    let iconImage = document.createElement('img');
+    const iconImage = document.createElement('img');
     iconImage.src = this.iconImagePath;
     this.iconElem.append(iconImage);
 
-    let iconLabel = document.createElement('p');
+    const iconLabel = document.createElement('p');
     iconLabel.innerHTML = this.displayName;
-    if (this.parent == 'desktop') iconLabel.style.color = 'white';
+    if (this.parent === 'desktop') iconLabel.style.color = 'white';
     else iconLabel.style.color = 'black';
     this.iconElem.append(iconLabel);
 
@@ -61,20 +61,20 @@ class Icon {
 
   /**
    * Called when the icon is clicked.
-   * @param  {clickEvent} e - The click event.
-   * @listens clickEvent
+   * @param  {MouseEvent} e - The click event.
+   * @listens MouseEvent
    */
   onClick(e) {
     if (!this.selectable) return;
     removeAllBorders(e.target.className);
     if (this.selected) {
-      //object was double clicked
+      // object was double clicked
       this.removeBorder();
       this.doubleClick();
     } else {
-      //object was single clicked
+      // object was single clicked
       let borderColor;
-      if (this.parent == 'desktop') borderColor = '#e7e7e7';
+      if (this.parent === 'desktop') borderColor = '#e7e7e7';
       else borderColor = 'blue';
       this.iconElem.style.borderColor = borderColor;
       this.selected = true;
@@ -104,7 +104,7 @@ class Icon {
    */
   removeBorder(unselect = true) {
     let borderColor;
-    if (this.parent == 'desktop') borderColor = '#008080';
+    if (this.parent === 'desktop') borderColor = '#008080';
     else borderColor = '#e7e7e7';
     this.iconElem.style.borderColor = borderColor;
     if (unselect) this.selected = false;
@@ -121,7 +121,8 @@ class Icon {
    * Checks if the icon is hovering over the recycle bin.
    */
   checkForRecycle() {
-    if (this.className == 'recycleBinIcon' || this.parent !== 'desktop') return;
+    if (this.className === 'recycleBinIcon' || this.parent !== 'desktop')
+      return;
     if (doElsCollide($(this.iconElem), $('.recycleBinIcon'))) {
       this.hoveringOverRecycleBin = true;
       this.iconElem.style.opacity = 0.5;
@@ -144,7 +145,7 @@ class Icon {
 
     try {
       recycleBinWindows.forEach((recycleClass) => {
-        let newIcon = recycleClass.generateRecycledIcon(this);
+        const newIcon = recycleClass.generateRecycledIcon(this);
         newIcon.generateElement();
         recycleClass.addIcon(
           newIcon,
@@ -152,6 +153,7 @@ class Icon {
           recycledIcons.length
         );
       });
-    } catch {}
+      // eslint-disable-next-line no-empty
+    } catch (e) {}
   }
 }

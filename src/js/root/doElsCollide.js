@@ -5,28 +5,28 @@
  * @returns {boolean} - Whether the two elements collide.
  */
 function doElsCollide($div1, $div2) {
-  if ($div1.length == 0 || $div2.length == 0) return false;
+  if ($div1.length === 0 || $div2.length === 0) return false;
 
   // Div 1 data
-  var d1_offset = $div1.offset();
-  var d1_height = $div1.outerHeight();
-  var d1_width = $div1.outerWidth();
-  var d1_distance_from_top = d1_offset.top + d1_height;
-  var d1_distance_from_left = d1_offset.left + d1_width;
+  const d1Offset = $div1.offset();
+  const d1Height = $div1.outerHeight();
+  const d1Width = $div1.outerWidth();
+  const d1DistanceFromTop = d1Offset.top + d1Height;
+  const d1DistanceFromLeft = d1Offset.left + d1Width;
 
   // Div 2 data
-  var d2_offset = $div2.offset();
-  var d2_height = $div2.outerHeight();
-  var d2_width = $div2.outerWidth();
-  var d2_distance_from_top = d2_offset.top + d2_height;
-  var d2_distance_from_left = d2_offset.left + d2_width;
+  const d2Offset = $div2.offset();
+  const d2Height = $div2.outerHeight();
+  const d2Width = $div2.outerWidth();
+  const d2DistanceFromTop = d2Offset.top + d2Height;
+  const d2DistanceFromLeft = d2Offset.left + d2Width;
 
-  var not_colliding =
-    d1_distance_from_top < d2_offset.top ||
-    d1_offset.top > d2_distance_from_top ||
-    d1_distance_from_left < d2_offset.left ||
-    d1_offset.left > d2_distance_from_left;
+  const notColliding =
+    d1DistanceFromTop < d2Offset.top ||
+    d1Offset.top > d2DistanceFromTop ||
+    d1DistanceFromLeft < d2Offset.left ||
+    d1Offset.left > d2DistanceFromLeft;
 
   // Return whether it IS colliding
-  return !not_colliding;
+  return !notColliding;
 }
