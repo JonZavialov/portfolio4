@@ -1,100 +1,100 @@
 #taskbar {
-  margin: 0 0 0 0;
-  height: 45px;
-  overflow: hidden;
-  display: flex;
-  z-index: 101;
+	margin: 0 0 0 0;
+	height: 45px;
+	overflow: hidden;
+	display: flex;
+	z-index: 101;
 }
 
 #startButton img {
-  float: left;
-  margin-left: 5px;
+	float: left;
+	margin-left: 5px;
 }
 
 #startButton p {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #startButton {
-  padding: 0;
-  height: 34.23px;
-  margin-top: 2px;
-  margin-left: 2px;
+	padding: 0;
+	height: 34.23px;
+	margin-top: 2px;
+	margin-left: 2px;
 }
 
 #taskbarDivider {
-  height: 26px;
-  margin-left: 5px;
-  margin-right: 5px;
+	height: 26px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #taskbarIcons {
-  width: 100%;
-  display: flex;
+	width: 100%;
+	display: flex;
 }
 
 #desktopClock {
-  padding: 0;
-  height: 34.23px;
-  margin-top: 2px;
-  margin-right: 2px;
-  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
-    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
-  width: 220px;
+	padding: 0;
+	height: 34.23px;
+	margin-top: 2px;
+	margin-right: 2px;
+	box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+		inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+	width: 220px;
 }
 
 #desktopClock img {
-  width: 25px;
-  margin-top: 4px;
-  float: left;
-  margin-left: 10px;
+	width: 25px;
+	margin-top: 4px;
+	float: left;
+	margin-left: 10px;
 }
 
 #desktopClockTimeDisplay {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #desktopSpeakerIcon {
-  border: 1px dotted #c0c0c0;
+	border: 1px dotted #c0c0c0;
 }
 
 #desktopSpeakerIcon.toggled {
-  border-color: black;
+	border-color: black;
 }
 
 #volumeSlider {
-  height: 85px;
+	height: 85px;
 }
 
 #volumeSliderContainer {
-  width: 50px;
-  text-align: center;
-  position: absolute;
+	width: 50px;
+	text-align: center;
+	position: absolute;
 }
 
 #volumeSlider #range25 {
-  width: 70px;
+	width: 70px;
 }
 
 .taskbar-element {
-  padding: 0;
-  display: flex;
-  margin-top: 2px;
-  margin-right: 5px;
-  height: 34px;
+	padding: 0;
+	display: flex;
+	margin-top: 2px;
+	margin-right: 5px;
+	height: 34px;
 }
 
 .taskbar-element img {
-  width: 25px;
-  margin-top: 5px;
-  margin-left: 5px;
+	width: 25px;
+	margin-top: 5px;
+	margin-left: 5px;
 }
 
 .taskbar-element p {
-  margin-left: 5px;
-  margin-right: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 button:not(:disabled):active.taskbar-element {
-  padding: 0;
+	padding: 0;
 }

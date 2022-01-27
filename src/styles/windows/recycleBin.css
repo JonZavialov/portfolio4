@@ -1,10 +1,10 @@
 .recycleBinContents #icon {
-  margin-right: 15px;
-  height: fit-content;
+	margin-right: 15px;
+	height: fit-content;
 }
 
 .recycleBinRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }

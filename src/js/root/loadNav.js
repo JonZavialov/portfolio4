@@ -1,5 +1,5 @@
 function loadNav() {
-  let navBar = `
+	let navBar = `
         <li><a href=\"/home\">Home</a></li>
         <ul>
             <li style="cursor: pointer;" onmouseup="recycleBin()">Recycle Bin</li>
@@ -23,6 +23,6 @@ function loadNav() {
         </ul>
         <li><a href=\"https://github.com/JonZavialov/portfolio4\" target=\"_blank\">Repository</a></li>
     `;
-  //TODO: populate navbar with links to all apps
-  $("#treeDisplay").html(navBar);
+	//TODO: populate navbar with links to all apps
+	$('#treeDisplay').html(navBar);
 }

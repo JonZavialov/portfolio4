@@ -1,3 +1,3 @@
 function openTextEditor() {
-  console.log("opening text editor");
+	console.log('opening text editor');
 }

@@ -1,0 +1,6 @@
+{
+	"singleQuote": true,
+	"quoteProps": "preserve",
+	"bracketSpacing": true,
+	"useTabs": true
+}
