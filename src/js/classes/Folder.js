@@ -48,7 +48,7 @@ class Folder extends Window {
   addIcon(icon, parent, listIndex) {
     if (listIndex === 1 || (listIndex - 1) % 5 === 0) {
       this.currentRow = document.createElement('div');
-      this.currentRow.className = 'recycleBinRow';
+      this.currentRow.className = 'folderRow';
       parent.append(this.currentRow);
     }
     icon.renderIntoColumn(this.currentRow);

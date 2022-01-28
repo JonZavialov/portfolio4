@@ -1,0 +1,43 @@
+#calculator {
+  width: 219px;
+}
+
+.calculatorMainButtons button {
+  min-width: unset;
+  min-height: unset;
+  font-size: 15px;
+  width: 47px;
+  height: 30px;
+  float: right;
+}
+
+.calculatorRow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.calculatorDisplay {
+  width: 189px;
+  margin-left: 5px;
+  background-color: white;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  font-size: 14px;
+  padding: 4px;
+  text-align: right;
+}
+
+.redText {
+  color: red;
+}
+
+.calculatorBlankButton {
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  margin-bottom: 0px;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: translate(5px, -209px);
+}
