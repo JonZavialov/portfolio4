@@ -28,6 +28,7 @@
     <script src="./src/js/windows/Jonpng.js"></script>
     <script src="./src/js/windows/Credits.js"></script>
     <script src="./src/js/classes/CalculatorButton.js"></script>
+    <script src="./src/js/root/checkForBooted.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./src/styles/homePage.css" />
     <link rel="stylesheet" type="text/css" href="./src/styles/icons.css" />
@@ -60,6 +61,7 @@
   <body>
     <script>
       $(document).ready(function () {
+        checkForBooted();
         loadNav();
         populateDesktopIcons();
         initDraw();
