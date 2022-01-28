@@ -46,7 +46,7 @@ class Window {
     });
 
     const { length } = $('.window')
-      .map((elmnt) => elmnt)
+      .map((element) => element)
       .get();
 
     this.elem.style.top = `${
