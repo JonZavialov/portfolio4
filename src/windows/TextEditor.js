@@ -11,6 +11,7 @@ class TextEditor extends Window {
       () => this.onClose()
     );
 
+    // TODO: add ability to open the text editor with text already in it
     this.getInnerHTML();
     this.generateElement(this.textWindow);
   }
