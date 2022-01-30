@@ -1,0 +1,9 @@
+#textEditor textarea {
+  width: 250px;
+  height: 250px;
+  min-width: 150px;
+  min-height: 30px;
+  max-width: 550px;
+  max-height: 750px;
+  font-size: 14px;
+}
