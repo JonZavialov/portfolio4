@@ -40,7 +40,7 @@ class TextEditor extends Window {
       this.displayName,
       this.id,
       'You have unsaved changes!',
-      this.userSaved,
+      () => this.userSaved(),
       'Save',
       () => this.closeErrorWindow(),
       () => this.userDeniedSave()
@@ -53,7 +53,26 @@ class TextEditor extends Window {
    * Saves the text to a file, called when the user presses the OK button on the error window.
    */
   userSaved() {
-    // save the contents of the textarea to a file
+    const pom = document.createElement('a');
+    pom.setAttribute(
+      'href',
+      `data:text/plain;charset=utf-8,${encodeURIComponent(
+        this.textWindow.value
+      )}`
+    );
+    pom.setAttribute(
+      'download',
+      this.textWindow.value.substring(0, 10).replaceAll('.', '')
+    );
+
+    pom.style.display = 'none';
+    document.body.appendChild(pom);
+
+    pom.click();
+
+    document.body.removeChild(pom);
+    this.close();
+    this.noSaveError.close();
   }
 
   /**
@@ -68,7 +87,6 @@ class TextEditor extends Window {
    * Called when the user presses the Cancel button on the error window.
    */
   closeErrorWindow() {
-    console.log('closing error window only');
     this.noSaveError.close();
     this.errorPresent = false;
   }
