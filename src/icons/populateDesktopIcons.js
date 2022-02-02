@@ -24,7 +24,7 @@ function populateDesktopIcons() {
       if ((i + 1) % 4 === 0) iconsColumn = makeIconsColumn();
     }
   });
-
+  // TODO: add about me folder
   $('#desktop').mouseup(() => {
     iconClasses.forEach((icon) => {
       icon.checkForReleasedOverRecycle();
