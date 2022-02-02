@@ -100,6 +100,7 @@ class Window {
 
     const minimizeButton = document.createElement('button');
     minimizeButton.ariaLabel = 'Minimize';
+    // TODO: Add functionality to minimize the window.
 
     const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
