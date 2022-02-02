@@ -3,7 +3,7 @@ class Window {
    * The window class.
    * @param  {string} displayName - The name that will be displayed for the window.
    * @param  {string} id - The id of the window which will be used to identify it.
-   * @param  {boolean} [taskbar=false] - Whether or not the window instance will  be displayed in the taskbar.
+   * @param  {boolean} [taskbar=false] - Whether or not the window instance will be displayed in the taskbar.
    * @param  {string} [iconPath=null] - The path to the icon that will be displayed for the window.
    * @param  {function} [closeFunction=null] - The function that will be called when the window is closed. If null, the default close function will be used.
    * @param  {string} [windowName=null] - An alternate name for the window, provided if the title of the window is not the same as the taskbar title.
