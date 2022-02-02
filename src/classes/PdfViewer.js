@@ -13,8 +13,11 @@ class PdfViewer extends Window{
 
     /**
      * Generates the DOM element of the window.
+     * @returns {HTMLElement} - The DOM element of the window.
      */
     getInnerHTML(){
-        return "pdf"
+        const viewer = document.createElement('div');
+        viewer.innerHTML = "test";
+        return viewer;
     }
 }
