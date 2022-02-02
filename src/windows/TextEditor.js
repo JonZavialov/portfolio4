@@ -1,8 +1,9 @@
 class TextEditor extends Window {
   /**
    * The text editor app.
+   * @param {string} [preLoadedText=''] - The text to pre-load into the text editor.
    */
-  constructor() {
+  constructor(preLoadedText = '') {
     super(
       'Text Editor',
       'textEditor',
@@ -12,6 +13,7 @@ class TextEditor extends Window {
     );
 
     // TODO: add ability to open the text editor with preloaded text
+    this.preLoadedText = preLoadedText;
     this.getInnerHTML();
     this.generateElement(this.textWindow);
   }
@@ -21,13 +23,14 @@ class TextEditor extends Window {
    */
   getInnerHTML() {
     this.textWindow = document.createElement('textarea');
+    this.textWindow.value = this.preLoadedText;
   }
 
   /**
    * Called when the window is closed.
    */
   onClose() {
-    if (this.textWindow.value === '') {
+    if (this.textWindow.value === this.preLoadedText) {
       this.close();
       return;
     }
@@ -38,6 +41,7 @@ class TextEditor extends Window {
       this.id,
       'You have unsaved changes!',
       this.userSaved,
+      'Save',
       () => this.closeErrorWindow(),
       () => this.userDeniedSave()
     );

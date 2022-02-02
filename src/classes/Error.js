@@ -5,14 +5,16 @@ class Error extends Window {
    * @param  {string} id - The id of the window which will be used to identify it.
    * @param  {string} errorText - The text that will be displayed in the error window.
    * @param  {function} okFunction - The function that will be called when the OK button is clicked.
-   * @param  {} [cancelFunction=null] - The function that will be called when the Cancel button is clicked.
-   * @param  {} [closeFunction=null] - The function that will be called when the error is closed. If null, the default close function will be used.
+   * @param  {string} [altOKText='OK'] - Alternate text that will be displayed on the OK button.
+   * @param  {function} [cancelFunction=null] - The function that will be called when the Cancel button is clicked.
+   * @param  {function} [closeFunction=null] - The function that will be called when the error is closed. If null, the default close function will be used.
    */
   constructor(
     displayName,
     id,
     errorText,
     okFunction,
+    altOKText = 'OK',
     cancelFunction = null,
     closeFunction = null
   ) {
@@ -20,6 +22,7 @@ class Error extends Window {
     this.errorText = errorText;
     this.okFunction = okFunction;
     this.cancelFunction = cancelFunction;
+    this.altOKText = altOKText;
 
     this.generateElement(this.generate());
   }
@@ -40,17 +43,15 @@ class Error extends Window {
     parent.append(footer);
 
     const okButton = document.createElement('button');
-    okButton.innerHTML = 'OK';
+    okButton.innerHTML = this.altOKText;
     okButton.onclick = () => this.okFunction();
     footer.append(okButton);
 
     const cancelButton = document.createElement('button');
     cancelButton.innerHTML = 'Cancel';
-    if (this.cancelFunction) {
-      cancelButton.onclick = () => this.cancelFunction();
-    } else {
-      cancelButton.onclick = () => this.close();
-    }
+    if (this.cancelFunction) cancelButton.onclick = () => this.cancelFunction();
+    else cancelButton.onclick = () => this.close();
+
     footer.append(cancelButton);
 
     return parent;

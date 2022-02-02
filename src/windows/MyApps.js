@@ -61,9 +61,7 @@ class MyApps extends Folder {
           iconClass.generateElement();
           appsList.push(iconClass);
         }
-        if (i === ids.length - 1) {
-          callback(appsList);
-        }
+        if (i === ids.length - 1) callback(appsList);
       }
     });
   }
@@ -73,7 +71,5 @@ class MyApps extends Folder {
  * Opens the My Apps folder.
  */
 function openMyApps() {
-  const myApps = new MyApps(() => {
-    myApps.render();
-  });
+  const myApps = new MyApps(() => myApps.render());
 }

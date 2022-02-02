@@ -69,7 +69,5 @@ class MyComputer extends Folder {
  * Opens the My Computer folder.
  */
 function openMyComputer() {
-  const myComputer = new MyComputer(() => {
-    myComputer.render();
-  });
+  const myComputer = new MyComputer(() => myComputer.render());
 }

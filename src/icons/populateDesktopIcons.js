@@ -25,11 +25,9 @@ function populateDesktopIcons() {
     }
   });
   // TODO: add about me folder
-  $('#desktop').mouseup(() => {
-    iconClasses.forEach((icon) => {
-      icon.checkForReleasedOverRecycle();
-    });
-  });
+  $('#desktop').mouseup(() =>
+    iconClasses.forEach((icon) => icon.checkForReleasedOverRecycle())
+  );
 }
 
 /**

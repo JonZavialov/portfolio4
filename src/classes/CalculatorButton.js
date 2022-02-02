@@ -8,9 +8,7 @@ class CalculatorButton {
   constructor(content, type, parentClass) {
     this.content = content;
     this.type = type;
-    this.onclickFunction = () => {
-      parentClass.processInput(content, type);
-    };
+    this.onclickFunction = () => parentClass.processInput(content, type);
   }
 
   /**

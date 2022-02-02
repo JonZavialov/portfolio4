@@ -73,7 +73,5 @@ class MyDocuments extends Folder {
  * Opens the My Documents folder.
  */
 function openMyDocuments() {
-  const myDocuments = new MyDocuments(() => {
-    myDocuments.render();
-  });
+  const myDocuments = new MyDocuments(() => myDocuments.render());
 }

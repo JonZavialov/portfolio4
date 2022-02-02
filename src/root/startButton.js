@@ -51,9 +51,7 @@ function startButton() {
     `;
   $('#middleSection').append(element);
   $('#startButton').unbind();
-  $('#startButton').click(() => {
-    closeButton();
-  });
+  $('#startButton').click(() => closeButton());
 }
 
 /**
@@ -63,9 +61,7 @@ async function closeButton() {
   if (!$('#startMenu')[0]) return;
   $('#startMenu').remove();
   $('#startButton').unbind();
-  $('#startButton').click(() => {
-    startButton();
-  });
+  $('#startButton').click(() => startButton());
 }
 
 /**

@@ -7,10 +7,7 @@ function toggleSpeaker() {
     // speaker is not toggled
     $('#desktopSpeakerIcon').addClass('toggled');
     $('#volumeContainer').append(generateVolumeSlider());
-  } else {
-    // speaker is toggled
-    removeSpeaker();
-  }
+  } else removeSpeaker();
 }
 
 /**
@@ -65,9 +62,7 @@ function generateVolumeSlider() {
   input.max = '100';
   input.step = '1';
   input.value = volumeLevel;
-  input.onchange = () => {
-    volumeChanged(input.value);
-  };
+  input.onchange = () => volumeChanged(input.value);
 
   slider.append(input);
   volumeSliderContainer.append(triangle, slider);

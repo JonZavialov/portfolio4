@@ -43,9 +43,8 @@ function initDraw() {
     if (e.target.closest('#icon')) return;
     removeAllBorders();
     const noSelect = ['.window'];
-    for (let i = 0; i < noSelect.length; i += 1) {
+    for (let i = 0; i < noSelect.length; i += 1)
       if (e.target.closest(noSelect[i])) return;
-    }
     closeButton();
     if (clickedOnVolumeSlider(e)) return;
     if (e.button !== 0) return;
@@ -64,9 +63,7 @@ function initDraw() {
 
     // check for drawn rectangles and remove them
     const rectangles = document.getElementsByClassName('rectangle');
-    for (i = 0; i < rectangles.length; i += 1) {
-      rectangles[i].remove();
-    }
+    for (i = 0; i < rectangles.length; i += 1) rectangles[i].remove();
   };
 }
 
@@ -80,16 +77,11 @@ async function checkCollide() {
       $('.rectangle'),
       $(`.${icons[i].className.split(' ')[0]}`)
     );
-    if (collide) {
-      for (let j = 0; j < iconClasses.length; j += 1) {
-        if (iconClasses[j].className === icons[i].className.split(' ')[0]) {
+    if (collide)
+      for (let j = 0; j < iconClasses.length; j += 1)
+        if (iconClasses[j].className === icons[i].className.split(' ')[0])
           iconClasses[j].selectWithBox();
-        }
-      }
-    }
   }
 
-  if (doElsCollide($('.rectangle'), $('#taskbar'))) {
-    $('.rectangle').remove();
-  }
+  if (doElsCollide($('.rectangle'), $('#taskbar'))) $('.rectangle').remove();
 }

@@ -98,11 +98,8 @@ class Window {
 
     const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
-    if (!this.closeFunction) {
-      closeButton.onclick = () => {
-        this.close();
-      };
-    } else closeButton.onclick = this.closeFunction;
+    if (!this.closeFunction) closeButton.onclick = () => this.close();
+    else closeButton.onclick = this.closeFunction;
 
     titleBarControls.append(minimizeButton, closeButton);
     titleBar.append(titleBarText, titleBarControls);

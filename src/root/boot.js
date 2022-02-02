@@ -57,9 +57,8 @@ async function boot() {
     setTimeout(async () => {
       bootScreen.innerHTML += bootList[i];
       i += 1;
-      if (i < bootList.length) {
-        myLoop();
-      }
+      if (i < bootList.length) myLoop();
+
       if (i === bootList.length) {
         await sleep(2000);
         window.location.replace('/?booted=true');
@@ -76,8 +75,6 @@ async function boot() {
  */
 async function sleep(ms) {
   return new Promise((resolve, reject) => {
-    setTimeout(async () => {
-      resolve();
-    }, ms);
+    setTimeout(async () => resolve(), ms);
   });
 }
