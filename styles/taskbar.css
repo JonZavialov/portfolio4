@@ -1,7 +1,7 @@
 #taskbar {
   margin: 0 0 0 0;
   height: 45px;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   z-index: 101;
 }
@@ -40,7 +40,7 @@
   margin-right: 2px;
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px #808080;
-  width: 220px;
+  width: 235px;
 }
 
 #desktopClock img {

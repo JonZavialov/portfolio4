@@ -2,14 +2,11 @@ class TextEditor extends Window {
   /**
    * The text editor app.
    * @param {string} [preLoadedText=''] - The text to pre-load into the text editor.
-   * @param {string} [altName='Text Editor'] - An alternate name for the text editor.
+   * @param {string} [altName=null] - An alternate name for the text editor.
    */
-  constructor(preLoadedText = '', altName = 'Text Editor') {
-    super(altName, 'textEditor', true, 'assets/images/icons/txt.png', () =>
-      this.onClose()
-    );
+  constructor(preLoadedText = '', altName = null) {
+    super('Text Editor', 'textEditor', true, 'assets/images/icons/txt.png', () => this.onClose(), altName);
 
-    // TODO: add ability to open the text editor with preloaded text
     this.preLoadedText = preLoadedText;
     this.getInnerHTML();
     this.generateElement(this.textWindow);
@@ -27,7 +24,7 @@ class TextEditor extends Window {
    * Called when the window is closed.
    */
   onClose() {
-    if (this.textWindow.value === this.preLoadedText) {
+    if (this.textWindow.value.replace(/\s+/g, '') === this.preLoadedText.replace(/\s+/g, '')) {
       this.close();
       return;
     }

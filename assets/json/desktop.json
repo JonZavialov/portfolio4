@@ -45,5 +45,11 @@
     "iconImage": "/assets/images/icons/txt.png",
     "clickFunction": "openCredits",
     "type": "document"
+  },
+  "resume": {
+    "displayName": "resume.pdf",
+    "iconImage": "/assets/images/icons/page.png",
+    "clickFunction": "openResume",
+    "type": "document"
   }
 }

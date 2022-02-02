@@ -3,9 +3,10 @@ class Window {
    * The window class.
    * @param  {string} displayName - The name that will be displayed for the window.
    * @param  {string} id - The id of the window which will be used to identify it.
-   * @param  {boolean} [taskbar=false] - Whether or not the window instance will be displayed in the taskbar.
+   * @param  {boolean} [taskbar=false] - Whether or not the window instance will  be displayed in the taskbar.
    * @param  {string} [iconPath=null] - The path to the icon that will be displayed for the window.
    * @param  {function} [closeFunction=null] - The function that will be called when the window is closed. If null, the default close function will be used.
+   * @param  {string} [windowName=null] - An alternate name for the window, provided if the title of the window is not the same as the taskbar title.
    * @constructor
    */
   constructor(
@@ -13,13 +14,15 @@ class Window {
     id,
     taskbar = false,
     iconPath = null,
-    closeFunction = null
+    closeFunction = null,
+    windowName = null
   ) {
     this.displayName = displayName;
     this.id = id;
     this.taskbar = taskbar;
     this.iconPath = iconPath;
     this.closeFunction = closeFunction;
+    this.windowName = windowName;
   }
 
   /**
@@ -85,8 +88,11 @@ class Window {
 
     const titleBarText = document.createElement('div');
     titleBarText.className = 'title-bar-text';
-    if (this.iconPath)
-      titleBarText.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> ${this.displayName}`;
+    if (this.iconPath){
+      console.log(this.windowName)
+      let titleText = this.windowName ? this.windowName : this.displayName
+      titleBarText.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> ${titleText}`;
+    }
     else titleBarText.innerHTML = this.displayName;
 
     const titleBarControls = document.createElement('div');
