@@ -53,9 +53,8 @@ class Calculator extends Window {
         this.state = 'secondInput';
       }
     } else if (this.state === 'firstInput') {
-      if (type === 'number') {
-        this.display.innerHTML += content;
-      } else if (type === 'operator') {
+      if (type === 'number') this.display.innerHTML += content;
+      else if (type === 'operator') {
         this.display.innerHTML += ` ${content} `;
         this.state = 'secondInput';
       }

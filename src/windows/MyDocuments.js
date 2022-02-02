@@ -63,9 +63,7 @@ class MyDocuments extends Folder {
           iconClass.generateElement();
           documentsList.push(iconClass);
         }
-        if (i === ids.length - 1) {
-          callback(documentsList);
-        }
+        if (i === ids.length - 1) callback(documentsList);
       }
     });
   }

@@ -59,9 +59,7 @@ class MyComputer extends Folder {
         iconClass.generateElement();
         drivesList.push(iconClass);
 
-        if (i === ids.length - 1) {
-          callback(drivesList);
-        }
+        if (i === ids.length - 1) callback(drivesList);
       }
     });
   }

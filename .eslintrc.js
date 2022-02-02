@@ -11,5 +11,6 @@ module.exports = {
     'no-unused-expressions': 'off',
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
+    'curly': ['error', 'multi'],
   },
 };
