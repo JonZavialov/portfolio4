@@ -28,7 +28,6 @@ class MyDocuments extends Folder {
 
   /**
    * Sets the list of Documents to be displayed in the folder. Necessary for getDocumentsList to run asynchronously.
-   * @private
    */
   setDocumentsList() {
     this.documentsList = this.getDocumentsList((list) => {
@@ -43,7 +42,6 @@ class MyDocuments extends Folder {
   /**
    * Retrieves the list of documents from the server.
    * @param  {function} callback
-   * @private
    */
   getDocumentsList(callback) {
     const documentsList = [];

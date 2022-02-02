@@ -99,7 +99,7 @@ function startMenuButton(button) {
       window.open('https://github.com/JonZavialov', '_blank').focus();
     },
     'credits': function () {
-      credits();
+      openCredits();
     },
     'console': function () {
       initMsdos();

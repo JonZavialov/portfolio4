@@ -1,0 +1,18 @@
+Welcome to my portfolio website!
+
+https://jonzav.me
+
+98.css by jdan
+    https://jdan.github.io/98.css/
+
+icons by Alex Meub
+    https://win98icons.alexmeub.com/
+
+font by int10h
+    https://int10h.org/oldschool-pc-fonts/
+
+pdf viewer by Project Jupyter
+    https://nbviewer.org
+
+holidays API by Nate Dimick
+    https://national-api-day.herokuapp.com/

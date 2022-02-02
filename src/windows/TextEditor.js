@@ -2,14 +2,11 @@ class TextEditor extends Window {
   /**
    * The text editor app.
    * @param {string} [preLoadedText=''] - The text to pre-load into the text editor.
+   * @param {string} [altName='Text Editor'] - An alternate name for the text editor.
    */
-  constructor(preLoadedText = '') {
-    super(
-      'Text Editor',
-      'textEditor',
-      true,
-      'assets/images/icons/txt.png',
-      () => this.onClose()
+  constructor(preLoadedText = '', altName = 'Text Editor') {
+    super(altName, 'textEditor', true, 'assets/images/icons/txt.png', () =>
+      this.onClose()
     );
 
     // TODO: add ability to open the text editor with preloaded text
