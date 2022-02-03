@@ -23,6 +23,8 @@ class Window {
     this.iconPath = iconPath;
     this.closeFunction = closeFunction;
     this.windowName = windowName;
+
+    this.MINIMIZE_DURATION = 500;
   }
 
   /**
@@ -58,6 +60,7 @@ class Window {
     this.elem.style.left = `${
       $('#desktop')[0].getBoundingClientRect().left + 50 * length
     }px`;
+    this.elem.style.zIndex = 50
   }
 
   /**
@@ -96,9 +99,12 @@ class Window {
     const titleBarControls = document.createElement('div');
     titleBarControls.className = 'title-bar-controls';
 
-    const minimizeButton = document.createElement('button');
-    minimizeButton.ariaLabel = 'Minimize';
-    // TODO: Add functionality to minimize the window.
+    let minimizeButton
+    if(this.taskbar){
+      minimizeButton = document.createElement('button');
+      minimizeButton.ariaLabel = 'Minimize';
+      minimizeButton.onclick = () => this.minimize()
+    }
 
     const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
@@ -106,7 +112,8 @@ class Window {
       ? () => this.close()
       : this.closeFunction;
 
-    titleBarControls.append(minimizeButton, closeButton);
+    minimizeButton ? titleBarControls.append(minimizeButton) : null
+    titleBarControls.append(closeButton);
     titleBar.append(titleBarText, titleBarControls);
 
     return titleBar;
@@ -119,5 +126,30 @@ class Window {
     this.elem.remove();
     if (this.taskbarElement) this.taskbarElement.checkForClose();
     if (this.closeCallback) this.closeCallback();
+  }
+
+  /**
+   * Minimizes the window.
+   */
+  minimize(){
+    const titleBar = $(this.elem).find('.title-bar')
+    const titleButtons = titleBar.find('button')
+    const titleImage = this.iconPath ? titleBar.find('img') : null
+    let taskbarWidth = $(this.taskbarElement.elem).width()
+    let proportion = taskbarWidth / titleBar.width()
+
+    titleBar.animate({height: (titleBar.height() * proportion), width: (titleBar.width() * proportion), fontSize: ".5em"}, this.MINIMIZE_DURATION, "linear");
+    titleButtons.each((index) => titleButtons[index].style.transform = 'scale(0.5)');
+    titleImage ? titleImage[0].style.transform = 'scale(0.5)' : null
+
+    let transformY = 0
+    let transformX = 0
+    let counter = 0
+    let transformConst = this.MINIMIZE_DURATION / 10 // The number of iterations it takes to get to the new size within the minimize duration
+    let sizeInterval = setInterval(() => {
+      counter += 1
+      titleBar[0].style.transform = `translateY(${transformY}px)`
+      if(transformConst < counter) clearInterval(sizeInterval)
+    }, 10);
   }
 }
