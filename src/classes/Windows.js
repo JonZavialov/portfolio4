@@ -60,7 +60,7 @@ class Window {
     this.elem.style.left = `${
       $('#desktop')[0].getBoundingClientRect().left + 50 * length
     }px`;
-    this.elem.style.zIndex = 50
+    this.elem.style.zIndex = 50;
   }
 
   /**
@@ -99,11 +99,11 @@ class Window {
     const titleBarControls = document.createElement('div');
     titleBarControls.className = 'title-bar-controls';
 
-    let minimizeButton
-    if(this.taskbar){
+    let minimizeButton;
+    if (this.taskbar) {
       minimizeButton = document.createElement('button');
       minimizeButton.ariaLabel = 'Minimize';
-      minimizeButton.onclick = () => this.minimize()
+      minimizeButton.onclick = () => this.minimize();
     }
 
     const closeButton = document.createElement('button');
@@ -112,7 +112,7 @@ class Window {
       ? () => this.close()
       : this.closeFunction;
 
-    minimizeButton ? titleBarControls.append(minimizeButton) : null
+    minimizeButton ? titleBarControls.append(minimizeButton) : null;
     titleBarControls.append(closeButton);
     titleBar.append(titleBarText, titleBarControls);
 
@@ -131,25 +131,30 @@ class Window {
   /**
    * Minimizes the window.
    */
-  minimize(){
-    const taskbarHTML = this.taskbarElement.elem
-    
-    const titleBar = $(this.elem).find('.title-bar')
-    const titleBarClone = titleBar.clone()
+  minimize() {
+    const taskbarHTML = this.taskbarElement.elem;
+
+    const titleBar = $(this.elem).find('.title-bar');
+    const titleBarClone = titleBar.clone();
     titleBarClone.css({
-      'position': "fixed",
-      "top": `${titleBar[0].getBoundingClientRect().top}px`,
-      "left": `${titleBar[0].getBoundingClientRect().left}px`,
-      "width": `${titleBar.width()}px`,
-    })
-    const cloneImage = titleBarClone.find('img')
-    cloneImage.css({"width": "12px"})
+      'position': 'fixed',
+      'top': `${titleBar[0].getBoundingClientRect().top}px`,
+      'left': `${titleBar[0].getBoundingClientRect().left}px`,
+      'width': `${titleBar.width()}px`,
+    });
+    const cloneImage = titleBarClone.find('img');
+    cloneImage.css({ 'width': '12px' });
 
-    $(this.elem).hide()
-    $("body").append(titleBarClone)
+    $(this.elem).hide();
+    $('body').append(titleBarClone);
 
-    titleBarClone.animate({
-          top: `${taskbarHTML.getBoundingClientRect().top - 25}px`,
-          left: `${taskbarHTML.getBoundingClientRect().left}px`}, this.MINIMIZE_DURATION, "linear")
+    titleBarClone.animate(
+      {
+        top: `${taskbarHTML.getBoundingClientRect().top - 25}px`,
+        left: `${taskbarHTML.getBoundingClientRect().left}px`,
+      },
+      this.MINIMIZE_DURATION,
+      'linear'
+    );
   }
 }
