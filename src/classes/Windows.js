@@ -150,6 +150,7 @@ class Window {
       counter += 1
       titleBar[0].style.transform = `translateY(${transformY}px)`
       if(transformConst < counter) clearInterval(sizeInterval)
+      // TODO: <=
     }, 10);
   }
 }
