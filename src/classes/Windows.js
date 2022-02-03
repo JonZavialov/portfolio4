@@ -24,7 +24,7 @@ class Window {
     this.closeFunction = closeFunction;
     this.windowName = windowName;
 
-    this.MINIMIZE_DURATION = 500;
+    this.MINIMIZE_DURATION = 250;
   }
 
   /**
@@ -132,25 +132,24 @@ class Window {
    * Minimizes the window.
    */
   minimize(){
+    const taskbarHTML = this.taskbarElement.elem
+    
     const titleBar = $(this.elem).find('.title-bar')
-    const titleButtons = titleBar.find('button')
-    const titleImage = this.iconPath ? titleBar.find('img') : null
-    let taskbarWidth = $(this.taskbarElement.elem).width()
-    let proportion = taskbarWidth / titleBar.width()
+    const titleBarClone = titleBar.clone()
+    titleBarClone.css({
+      'position': "fixed",
+      "top": `${titleBar[0].getBoundingClientRect().top}px`,
+      "left": `${titleBar[0].getBoundingClientRect().left}px`,
+      "width": `${titleBar.width()}px`,
+    })
+    const cloneImage = titleBarClone.find('img')
+    cloneImage.css({"width": "12px"})
 
-    titleBar.animate({height: (titleBar.height() * proportion), width: (titleBar.width() * proportion), fontSize: ".5em"}, this.MINIMIZE_DURATION, "linear");
-    titleButtons.each((index) => titleButtons[index].style.transform = 'scale(0.5)');
-    titleImage ? titleImage[0].style.transform = 'scale(0.5)' : null
+    $(this.elem).hide()
+    $("body").append(titleBarClone)
 
-    let transformY = 0
-    let transformX = 0
-    let counter = 0
-    let transformConst = this.MINIMIZE_DURATION / 10 // The number of iterations it takes to get to the new size within the minimize duration
-    let sizeInterval = setInterval(() => {
-      counter += 1
-      titleBar[0].style.transform = `translateY(${transformY}px)`
-      if(transformConst < counter) clearInterval(sizeInterval)
-      // TODO: <=
-    }, 10);
+    titleBarClone.animate({
+          top: `${taskbarHTML.getBoundingClientRect().top - 25}px`,
+          left: `${taskbarHTML.getBoundingClientRect().left}px`}, this.MINIMIZE_DURATION, "linear")
   }
 }
