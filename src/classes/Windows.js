@@ -88,12 +88,11 @@ class Window {
 
     const titleBarText = document.createElement('div');
     titleBarText.className = 'title-bar-text';
-    if (this.iconPath){
-      console.log(this.windowName)
-      let titleText = this.windowName ? this.windowName : this.displayName
+    if (this.iconPath) {
+      console.log(this.windowName);
+      const titleText = this.windowName ? this.windowName : this.displayName;
       titleBarText.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> ${titleText}`;
-    }
-    else titleBarText.innerHTML = this.displayName;
+    } else titleBarText.innerHTML = this.displayName;
 
     const titleBarControls = document.createElement('div');
     titleBarControls.className = 'title-bar-controls';

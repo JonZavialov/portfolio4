@@ -5,7 +5,14 @@ class TextEditor extends Window {
    * @param {string} [altName=null] - An alternate name for the text editor.
    */
   constructor(preLoadedText = '', altName = null) {
-    super('Text Editor', 'textEditor', true, 'assets/images/icons/txt.png', () => this.onClose(), altName);
+    super(
+      'Text Editor',
+      'textEditor',
+      true,
+      'assets/images/icons/txt.png',
+      () => this.onClose(),
+      altName
+    );
 
     this.preLoadedText = preLoadedText;
     this.getInnerHTML();
@@ -24,7 +31,10 @@ class TextEditor extends Window {
    * Called when the window is closed.
    */
   onClose() {
-    if (this.textWindow.value.replace(/\s+/g, '') === this.preLoadedText.replace(/\s+/g, '')) {
+    if (
+      this.textWindow.value.replace(/\s+/g, '') ===
+      this.preLoadedText.replace(/\s+/g, '')
+    ) {
       this.close();
       return;
     }
