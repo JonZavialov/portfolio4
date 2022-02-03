@@ -33,8 +33,8 @@ class Icon {
     this.iconElem = document.createElement('div');
     this.iconElem.className = `${this.className} ${this.parent}Icon`;
     this.iconElem.id = 'icon';
-    if (this.parent === 'desktop') this.iconElem.style.borderColor = '#008080';
-    else this.iconElem.style.borderColor = '#e7e7e7';
+    this.iconElem.style.borderColor =
+      this.parent === 'desktop' ? '#008080' : '#e7e7e7';
 
     const iconImage = document.createElement('img');
     iconImage.src = this.iconImagePath;
@@ -42,8 +42,7 @@ class Icon {
 
     const iconLabel = document.createElement('p');
     iconLabel.innerHTML = this.displayName;
-    if (this.parent === 'desktop') iconLabel.style.color = 'white';
-    else iconLabel.style.color = 'black';
+    iconLabel.style.color = this.parent === 'desktop' ? 'white' : 'black';
     this.iconElem.append(iconLabel);
 
     this.iconElem.onmousedown = (e) => {
@@ -73,9 +72,7 @@ class Icon {
       this.doubleClick();
     } else {
       // object was single clicked
-      let borderColor;
-      if (this.parent === 'desktop') borderColor = '#e7e7e7';
-      else borderColor = 'blue';
+      const borderColor = this.parent === 'desktop' ? '#e7e7e7' : 'blue';
       this.iconElem.style.borderColor = borderColor;
       this.selected = true;
     }
@@ -103,9 +100,7 @@ class Icon {
    * @param  {boolean} [unselect=true]
    */
   removeBorder(unselect = true) {
-    let borderColor;
-    if (this.parent === 'desktop') borderColor = '#008080';
-    else borderColor = '#e7e7e7';
+    const borderColor = this.parent === 'desktop' ? '#008080' : '#e7e7e7';
     this.iconElem.style.borderColor = borderColor;
     if (unselect) this.selected = false;
   }

@@ -1,6 +1,6 @@
 module.exports = {
   'extends': ['airbnb', 'prettier'],
-  'plugins': ['prettier'],
+  'plugins': ['prettier', 'unicorn'],
   'rules': {
     'no-undef': 'off',
     'no-unused-vars': 'off',
@@ -12,5 +12,6 @@ module.exports = {
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
     'curly': ['error', 'multi'],
+    'unicorn/prefer-ternary': 'error',
   },
 };

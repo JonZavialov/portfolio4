@@ -89,7 +89,6 @@ class Window {
     const titleBarText = document.createElement('div');
     titleBarText.className = 'title-bar-text';
     if (this.iconPath) {
-      console.log(this.windowName);
       const titleText = this.windowName ? this.windowName : this.displayName;
       titleBarText.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> ${titleText}`;
     } else titleBarText.innerHTML = this.displayName;
@@ -103,8 +102,9 @@ class Window {
 
     const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
-    if (!this.closeFunction) closeButton.onclick = () => this.close();
-    else closeButton.onclick = this.closeFunction;
+    closeButton.onclick = !this.closeFunction
+      ? () => this.close()
+      : this.closeFunction;
 
     titleBarControls.append(minimizeButton, closeButton);
     titleBar.append(titleBarText, titleBarControls);

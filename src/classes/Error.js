@@ -49,8 +49,9 @@ class Error extends Window {
 
     const cancelButton = document.createElement('button');
     cancelButton.innerHTML = 'Cancel';
-    if (this.cancelFunction) cancelButton.onclick = () => this.cancelFunction();
-    else cancelButton.onclick = () => this.close();
+    cancelButton.onclick = this.cancelFunction
+      ? () => this.cancelFunction()
+      : () => this.close();
 
     footer.append(cancelButton);
 
