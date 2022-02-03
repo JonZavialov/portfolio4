@@ -20,21 +20,32 @@ class TaskbarElement {
     this.elem.className = 'taskbar-element';
     this.elem.id = `${this.id}TaskbarElement`;
     this.elem.innerHTML = `<img src="${this.iconPath}" alt="${this.id}"> <p>${this.displayName}</p>`;
+    this.elem.onclick = () => this.unminimizeAll();
   }
 
   /**
    * Renders the taskbar element into the DOM.
    */
   render() {
-    if ($(`[id='${this.id}']`).length > 1) return;
+    if (windowsTaskbarMap.get(this.id).windows.length > 1) return;
     $('#taskbarIcons').append(this.elem);
+    this.topRect = this.elem.getBoundingClientRect().top;
+    this.leftRect = this.elem.getBoundingClientRect().left;
+    this.width = $(this.elem).width();
   }
 
   /**
    * Checks if the window that the taskbar element is associated with is closed.
    */
   checkForClose() {
-    if ($(`[id='${this.id}']`).length === 0)
-      $(`#${this.id}TaskbarElement`).remove();
+    if (windowsTaskbarMap.get(this.id).windows.length !== 0) return;
+    $(`#${this.id}TaskbarElement`).remove();
+    windowsTaskbarMap.delete(this.id);
+  }
+
+  unminimizeAll() {
+    windowsTaskbarMap
+      .get(this.id)
+      .windows.forEach((window) => window.unminimize());
   }
 }

@@ -4,6 +4,7 @@
 function populateDesktopIcons() {
   iconClasses = [];
   recycledIcons = [];
+  windowsTaskbarMap = new Map();
   $.getJSON('/assets/json/desktop.json', (data) => {
     const keys = Object.keys(data);
     let iconsColumn = makeIconsColumn();

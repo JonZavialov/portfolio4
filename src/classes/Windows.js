@@ -70,11 +70,25 @@ class Window {
     $('#desktop').append(this.elem);
 
     if (this.taskbar) {
-      this.taskbarElement = new TaskbarElement(
-        this.displayName,
-        this.id,
-        this.iconPath
-      );
+      if (windowsTaskbarMap.get(this.id)) {
+        windowsTaskbarMap.set(this.id, {
+          'taskbarClass': windowsTaskbarMap.get(this.id).taskbarClass,
+          'windows': windowsTaskbarMap.get(this.id).windows.concat(this),
+        });
+        this.taskbarElement = windowsTaskbarMap.get(this.id).taskbarClass;
+      } else {
+        this.taskbarElement = new TaskbarElement(
+          this.displayName,
+          this.id,
+          this.iconPath
+        );
+
+        windowsTaskbarMap.set(this.id, {
+          'taskbarClass': this.taskbarElement,
+          'windows': [this],
+        });
+      }
+
       this.taskbarElement.generateElement();
       this.taskbarElement.render();
     }
@@ -124,6 +138,14 @@ class Window {
    */
   close() {
     this.elem.remove();
+
+    const windowArray = windowsTaskbarMap.get(this.id).windows;
+    windowArray.splice(windowArray.indexOf(this), 1);
+    windowsTaskbarMap.set(this.id, {
+      'taskbarClass': windowsTaskbarMap.get(this.id).taskbarClass,
+      'windows': windowArray,
+    });
+
     if (this.taskbarElement) this.taskbarElement.checkForClose();
     if (this.closeCallback) this.closeCallback();
   }
@@ -132,8 +154,6 @@ class Window {
    * Minimizes the window.
    */
   minimize() {
-    const taskbarHTML = this.taskbarElement.elem;
-
     const titleBar = $(this.elem).find('.title-bar');
     const titleBarClone = titleBar.clone();
     titleBarClone.css({
@@ -150,11 +170,32 @@ class Window {
 
     titleBarClone.animate(
       {
-        top: `${taskbarHTML.getBoundingClientRect().top - 25}px`,
-        left: `${taskbarHTML.getBoundingClientRect().left}px`,
+        top: `${this.taskbarElement.topRect - 25}px`,
+        left: `${
+          this.taskbarElement.leftRect - this.taskbarElement.width / 2
+        }px`,
       },
       this.MINIMIZE_DURATION,
-      'linear'
+      'linear',
+      () => titleBarClone.remove()
     );
+
+    const iterations = Math.floor(this.MINIMIZE_DURATION / 10);
+    let i = 0;
+    const widthTaskbarElem = this.taskbarElement.width;
+    const finalSizeProportion = 1 - widthTaskbarElem / titleBarClone.width();
+    const shrinkagePerIteration = finalSizeProportion / iterations;
+    let shrinkage = 1;
+    const sizingInterval = setInterval(() => {
+      i += 1;
+      shrinkage -= shrinkagePerIteration;
+      titleBarClone.css('transform', `scale(${shrinkage})`);
+      if (i === iterations) clearInterval(sizingInterval);
+    }, 10);
+  }
+
+  unminimize() {
+    // TODO: add animation
+    $(this.elem).show();
   }
 }
