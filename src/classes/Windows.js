@@ -171,9 +171,7 @@ class Window {
     titleBarClone.animate(
       {
         top: `${this.taskbarElement.topRect - 25}px`,
-        left: `${
-          this.taskbarElement.leftRect - this.taskbarElement.width / 2
-        }px`,
+        left: `${this.taskbarElement.leftRect - titleBarClone.width() / 2}px`,
       },
       this.MINIMIZE_DURATION,
       'linear',
