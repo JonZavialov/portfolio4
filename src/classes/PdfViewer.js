@@ -130,6 +130,7 @@ class PdfViewer extends Window {
   }
 
   previousPage() {
+    // TODO: do something to the button when it reaches the max/min page (press it, gray it out)
     if (this.defaultState.pdf == null || this.defaultState.currentPage === 1)
       return;
     this.defaultState.currentPage -= 1;
