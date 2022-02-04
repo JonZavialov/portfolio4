@@ -6,7 +6,6 @@
   width: 100%;
   position: absolute;
   bottom: 0;
-  overflow-y: scroll;
 }
 
 .controlsContainer {
@@ -20,5 +19,15 @@
 
 .buttonControls {
   height: 24%;
+  width: 100%;
+}
+
+.PDFButton {
+  width: 50px;
+  min-width: 0px;
+  padding: 2px;
+}
+
+.PDFButton img {
   width: 100%;
 }
