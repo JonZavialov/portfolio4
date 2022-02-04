@@ -192,6 +192,9 @@ class Window {
     }, 10);
   }
 
+  /**
+   * Unminimizes the window.
+   */
   unminimize() {
     // TODO: add animation
     $(this.elem).show();

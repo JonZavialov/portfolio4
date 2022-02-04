@@ -53,6 +53,9 @@ class PdfViewer extends Window {
     return container;
   }
 
+  /**
+   * Generates the PDF.
+   */
   generatePDF() {
     const defaultState = {
       pdf: null,
