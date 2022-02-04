@@ -16,6 +16,7 @@ class PdfViewer extends Window {
     );
     this.path = path;
     this.generateElement(this.getInnerHTML());
+    this.generatePDF();
   }
 
   /**
@@ -23,8 +24,66 @@ class PdfViewer extends Window {
    * @returns {HTMLElement} - The DOM element of the window.
    */
   getInnerHTML() {
-    const viewer = document.createElement('div');
-    viewer.innerHTML = 'test';
-    return viewer;
+    const container = document.createElement('div');
+    container.className = 'pdfContainer';
+
+    this.viewerWidth =
+      Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+      ) * 0.3;
+    const viewer = document.createElement('canvas');
+    viewer.id = 'pdf_renderer';
+    viewer.style.width = `${this.viewerWidth}px`;
+
+    const controlsContainer = document.createElement('div');
+    controlsContainer.className = 'controlsContainer';
+    controlsContainer.style.width = `${this.viewerWidth / 4}px`;
+    this.controls = controlsContainer;
+
+    const buttonControls = document.createElement('div');
+    buttonControls.className = 'buttonControls';
+
+    const pageControls = document.createElement('div');
+    pageControls.className = 'pageControls';
+
+    controlsContainer.append(buttonControls, pageControls);
+
+    container.append(controlsContainer, viewer);
+    return container;
+  }
+
+  generatePDF() {
+    const defaultState = {
+      pdf: null,
+      currentPage: 1,
+      zoom: 1,
+    };
+
+    // get the pdf
+    pdfjsLib.getDocument(this.path).then((pdf) => {
+      defaultState.pdf = pdf;
+
+      // render the pdf into to the document
+      defaultState.pdf.getPage(defaultState.currentPage).then((page) => {
+        const canvas = $(this.elem).find('#pdf_renderer')[0];
+        const ctx = canvas.getContext('2d');
+
+        const viewport = page.getViewport(defaultState.zoom);
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        $(this.controls).css(
+          'height',
+          `${(this.viewerWidth / viewport.width) * viewport.height}px`
+        );
+
+        page.render({
+          canvasContext: ctx,
+          viewport,
+        });
+      });
+    });
   }
 }

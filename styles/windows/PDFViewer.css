@@ -1,0 +1,24 @@
+.pageControls {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  background-color: #e7e7e7;
+  height: 75%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  overflow-y: scroll;
+}
+
+.controlsContainer {
+  position: relative;
+  margin-right: 8px;
+}
+
+.pdfContainer {
+  display: flex;
+}
+
+.buttonControls {
+  height: 24%;
+  width: 100%;
+}
