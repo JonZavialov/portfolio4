@@ -13,7 +13,7 @@ class MyNFTs extends Window {
   generateHTML() {
     const wallet = document.createElement('div');
     wallet.id = 'wallet';
-    const walletHeader = document.createElement('div');
+    const walletHeader = document.createElement('p');
     walletHeader.innerHTML = 'Wallet:';
     const walletDomain = document.createElement('p');
     walletDomain.innerHTML = 'sonytv.eth';

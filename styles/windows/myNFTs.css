@@ -29,4 +29,10 @@
 #myNFTs .window-body {
   overflow-y: scroll;
   height: 600px;
+  margin: 1px;
+}
+
+#myNFTs p {
+  margin-left: 5px;
+  font-size: 13px;
 }
