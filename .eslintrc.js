@@ -12,6 +12,7 @@ module.exports = {
     'consistent-return': 'off',
     'class-methods-use-this': 'off',
     'curly': ['error', 'multi'],
+    'no-loop-func': 'off',
     'unicorn/prefer-ternary': 'error',
   },
 };

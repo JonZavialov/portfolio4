@@ -51,5 +51,11 @@
     "iconImage": "/assets/images/icons/page.png",
     "clickFunction": "openResume",
     "type": "document"
+  },
+  "myProjects": {
+    "displayName": "My Projects",
+    "iconImage": "/assets/images/icons/myProjects.png",
+    "clickFunction": "openMyProjects",
+    "type": "app"
   }
 }

@@ -1,0 +1,41 @@
+#projectsWindowContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#projectsWindowContainer p {
+  margin: 0;
+}
+
+#projectWindow2,
+#projectWindow4 {
+  right: 0;
+  position: absolute;
+}
+
+#projectWindow1,
+#projectWindow2,
+#projectWindow3,
+#projectWindow4 {
+  width: 230px;
+  border: 1px dotted black;
+  padding: 2px;
+  margin-right: 20px;
+}
+
+#projectsWindowContainer img {
+  width: 12px;
+}
+
+.projectTitle :hover {
+  background-color: #636363;
+  color: white;
+}
+
+.projectTitle {
+  padding-left: 10px;
+}
+
+#myProjects {
+  width: 516px;
+}

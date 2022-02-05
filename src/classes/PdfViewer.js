@@ -148,14 +148,19 @@ class PdfViewer extends Window {
       });
   }
 
+  /**
+   * Renders the previous page.
+   */
   previousPage() {
-    // TODO: do something to the button when it reaches the max/min page (press it, gray it out)
     if (this.defaultState.pdf == null || this.defaultState.currentPage === 1)
       return;
     this.defaultState.currentPage -= 1;
     this.renderPDF();
   }
 
+  /**
+   * Renders the next page.
+   */
   nextPage() {
     if (
       this.defaultState.pdf == null ||
@@ -167,6 +172,9 @@ class PdfViewer extends Window {
     this.renderPDF();
   }
 
+  /**
+   * Updates the page display.
+   */
   updatePageDisplay() {
     this.pageDisplay.innerHTML = '';
     // eslint-disable-next-line no-underscore-dangle
