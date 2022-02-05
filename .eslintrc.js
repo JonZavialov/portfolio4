@@ -13,6 +13,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'curly': ['error', 'multi'],
     'no-loop-func': 'off',
+    'no-alert': 'off',
     'unicorn/prefer-ternary': 'error',
   },
 };

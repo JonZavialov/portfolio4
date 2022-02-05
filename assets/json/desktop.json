@@ -57,5 +57,11 @@
     "iconImage": "/assets/images/icons/myProjects.png",
     "clickFunction": "openMyProjects",
     "type": "app"
+  },
+  "myNFTs": {
+    "displayName": "My NFTs",
+    "iconImage": "/assets/images/icons/nftview.png",
+    "clickFunction": "openMyNFTs",
+    "type": "app"
   }
 }

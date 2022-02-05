@@ -88,7 +88,7 @@ class Window {
           'windows': [this],
         });
       }
-
+      
       this.taskbarElement.generateElement();
       this.taskbarElement.render();
     }

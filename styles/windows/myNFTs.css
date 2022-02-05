@@ -1,0 +1,32 @@
+#wallet {
+  display: flex;
+}
+
+#ethAddress:hover,
+#ethDomain:hover {
+  color: lightblue;
+}
+
+#refreshButton {
+  position: absolute;
+  padding: 0;
+  display: flex;
+  transform: translate(232px);
+}
+
+#refreshButton img {
+  width: 20px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+#refreshButton p {
+  margin-top: 0;
+  margin-bottom: 0;
+  transform: translate(0px, 8px);
+}
+
+#myNFTs .window-body {
+  overflow-y: scroll;
+  height: 600px;
+}
