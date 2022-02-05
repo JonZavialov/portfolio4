@@ -50,7 +50,6 @@ class MyProjects extends Window {
    * @param  {Array} topProjects - The top projects to display.
    */
   async setProjectWindows(topProjects) {
-    console.log(topProjects);
     const projectWindows = [
       $(this.elem).find('#projectWindow1'),
       $(this.elem).find('#projectWindow2'),
