@@ -97,7 +97,7 @@ class TextEditor extends Window {
 }
 
 /**
- * Opens the calculator app.
+ * Opens the text editor app.
  */
 function openTextEditor() {
   const textEditor = new TextEditor();

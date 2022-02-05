@@ -2,7 +2,7 @@
   box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
     inset 2px 2px #0a0a0a;
   background-color: #e7e7e7;
-  height: 75%;
+  height: 80%;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -18,16 +18,31 @@
 }
 
 .buttonControls {
-  height: 24%;
   width: 100%;
 }
 
+.buttonControls button:not(:disabled):active {
+  padding: 2px;
+}
+
+.buttonControls p {
+  margin-bottom: 25px;
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 .PDFButton {
-  width: 50px;
+  width: 30px;
   min-width: 0px;
   padding: 2px;
 }
 
 .PDFButton img {
   width: 100%;
+}
+
+.pageNumber {
+  width: 90px;
+  margin: 5px 0 5px 5px;
 }
