@@ -5,6 +5,7 @@ class MyNFTs extends Window {
   constructor() {
     super('My NFTs', 'myNFTs', true, 'assets/images/icons/nftview.png');
     this.generateElement(this.generateHTML());
+    this.getNFTData();
   }
 
   /**
@@ -44,6 +45,30 @@ class MyNFTs extends Window {
 
   refresh() {
     console.log('refreshing');
+  }
+
+  getNFTData() {
+    $.ajax({
+      url: 'https://deep-index.moralis.io/api/v2/0x5df54525F8F34b49622A15a9D65e4e0C9ED6A5C9/nft?chain=eth&format=decimal',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => this.setNFTData(data),
+      error: () => {
+        alert('Error retrieving data');
+        this.close();
+      },
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader('accept', 'application/json');
+        xhr.setRequestHeader(
+          'X-API-Key',
+          'Rf87yJ5J4uFsXBYdMZv5zFnnRMpk8Jmyzpd1XTjvQO80YVjReAe2IZCD1xdMxeKk'
+        );
+      },
+    });
+  }
+
+  setNFTData(data) {
+    console.log(data);
   }
 }
 
