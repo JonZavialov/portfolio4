@@ -1,4 +1,7 @@
 class OutlookExpress extends Window {
+  /**
+   * The Outlook Express App.
+   */
   constructor() {
     super(
       'Outlook Express',
@@ -11,6 +14,10 @@ class OutlookExpress extends Window {
     this.getEmails(() => this.setEmail("DEFAULT"))
   }
 
+  /**
+   * Generates the DOM element for the window.
+   * @returns {HTMLElement} - The DOM element of the window.
+   */
   generateHTML() {
     const emailBody = document.createElement('div');
     emailBody.id = 'emailBody';
@@ -19,6 +26,10 @@ class OutlookExpress extends Window {
     return emailBody;
   }
 
+  /**
+   * Retrieves all email contents from the json.
+   * @param  {function} [callback=null] - The callback function to execute after the emails have been retrieved.
+   */
   getEmails(callback = null) {
     $.getJSON('/assets/json/emails.json', (data) => {
       this.emailsJSON = data;
@@ -26,11 +37,18 @@ class OutlookExpress extends Window {
     })
   }
 
+  /**
+   * Sets the selected email to the email display.
+   * @param  {string} identifier - The identifier of the email to display.
+   */
   setEmail(identifier) {
     const display = $(this.elem).find('#emailDisplay');
     display.html(this.emailsJSON[identifier])
   }
 
+  /**
+   * Executes when the inbox is clicked.
+   */
   clickedInbox() {
     const element = $(this.elem).find('#inboxTreeElem')[0];
 
@@ -54,6 +72,10 @@ class OutlookExpress extends Window {
     }
   }
 
+  /**
+   * Generates the DOM element for the header full of buttons.
+   * @returns {HTMLElement} - The DOM element for the header.
+   */
   generateButtonsHeader() {
     const buttonsHeader = document.createElement('div');
     buttonsHeader.id = 'buttonsHeader';
@@ -141,6 +163,10 @@ class OutlookExpress extends Window {
     return buttonsHeader;
   }
 
+  /**
+   * Generates the DOM element for the bottom portion of the window.
+   * @returns {HTMLElement} - The DOM element for the bottom portion of the window.
+   */
   generateInbox() {
     const inboxDiv = document.createElement('div');
     inboxDiv.style.display = 'flex';
@@ -221,6 +247,9 @@ class OutlookExpress extends Window {
   }
 }
 
+/**
+ * Opens the Outlook Express app.
+ */
 function openOutlookExpress() {
   const outlookExpress = new OutlookExpress();
   outlookExpress.render();
