@@ -1,0 +1,26 @@
+#borderCover {
+  position: absolute;
+  width: 72px;
+  height: 6px;
+  background-color: silver;
+  z-index: 101;
+  transform: translate(1px, -4px);
+}
+
+#borderCoverVertical {
+  position: absolute;
+  width: 1px;
+  height: 3px;
+  background-color: white;
+  z-index: 101;
+  transform: translate(0px, -2px);
+}
+
+#borderCoverVertical2 {
+  position: absolute;
+  width: 1px;
+  height: 6px;
+  background-color: #dfdfdf;
+  z-index: 101;
+  transform: translate(1px, -4px);
+}

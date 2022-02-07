@@ -63,5 +63,11 @@
     "iconImage": "/assets/images/icons/outlook.png",
     "clickFunction": "openOutlookExpress",
     "type": "app"
+  },
+  "calendar": {
+    "displayName": "Calendar",
+    "iconImage": "/assets/images/icons/calendar.png",
+    "clickFunction": "openCalendar",
+    "type": "app"
   }
 }

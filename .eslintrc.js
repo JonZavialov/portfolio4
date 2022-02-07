@@ -14,6 +14,7 @@ module.exports = {
     'curly': ['error', 'multi'],
     'no-loop-func': 'off',
     'no-alert': 'off',
+    'radix': 'off',
     'unicorn/prefer-ternary': 'error',
   },
 };
