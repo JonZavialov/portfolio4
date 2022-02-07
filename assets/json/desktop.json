@@ -58,10 +58,10 @@
     "clickFunction": "openMyProjects",
     "type": "app"
   },
-  "myNFTs": {
-    "displayName": "My NFTs",
-    "iconImage": "/assets/images/icons/nftview.png",
-    "clickFunction": "openMyNFTs",
+  "outlookExpress": {
+    "displayName": "Outlook Express",
+    "iconImage": "/assets/images/icons/outlook.png",
+    "clickFunction": "openOutlookExpress",
     "type": "app"
   }
 }

@@ -1,0 +1,87 @@
+#outlookHeaderButton,
+#outlookHeaderLogo {
+  width: fit-content;
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+}
+
+#outlookHeaderButton p {
+  margin: 0;
+  width: 50px;
+  text-align: center;
+}
+
+#outlookHeaderButton img {
+  width: 35px;
+}
+
+#outlookExpress hr {
+  height: 60px;
+  position: fixed;
+}
+
+#outlookHeaderLogo img {
+  width: 60px;
+}
+
+#outlookHeaderLogo {
+  background-color: black;
+}
+
+#buttonsHeader {
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf;
+}
+
+#outlookExpress .window-body {
+  margin: 2px;
+}
+
+#inboxTree {
+  background-color: #e7e7e7;
+  padding: 5px;
+  margin: 0;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  height: 250px;
+  width: 120px;
+  margin-top: 3px;
+  margin-bottom: 1px;
+  overflow-x: scroll;
+}
+
+#inboxTree img {
+  width: 14px;
+}
+
+#inboxTree ul > li:last-child:after {
+  background: #e7e7e7;
+}
+
+#emailDisplay {
+  background-color: #e7e7e7;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  width: 347px;
+  height: 250px;
+  margin-left: 3px;
+  margin-top: 3px;
+  font-family: Verdana, sans-serif;
+  padding-left: 10px;
+  padding-top: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#emailDisplay h4 {
+  margin: 0;
+}
+
+#inboxTreeElem {
+  border: 1px dotted #e7e7e7;
+}
+
+#inboxTree span {
+  transform: translate(5px, 1px);
+  position: absolute;
+}
