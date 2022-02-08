@@ -79,7 +79,7 @@ class Calendar extends Window {
             for (let i = 0; i < nationalDays.length; i += 1)
                 formattedNationalDays += `<li>${nationalDays[i]}</li>`
 
-
+            // TODO: make dayheader position fixed and parent relative
             const content = `
                 <div id="dayHeader">
                     <p>${formattedMonth} ${day}, ${year}</p>
