@@ -11,7 +11,7 @@ class OutlookExpress extends Window {
     );
 
     this.generateElement(this.generateHTML());
-    this.getEmails(() => this.setEmail("DEFAULT"))
+    this.getEmails(() => this.setEmail('DEFAULT'));
   }
 
   /**
@@ -34,7 +34,7 @@ class OutlookExpress extends Window {
     $.getJSON('/assets/json/emails.json', (data) => {
       this.emailsJSON = data;
       if (callback) callback();
-    })
+    });
   }
 
   /**
@@ -43,7 +43,7 @@ class OutlookExpress extends Window {
    */
   setEmail(identifier) {
     const display = $(this.elem).find('#emailDisplay');
-    display.html(this.emailsJSON[identifier])
+    display.html(this.emailsJSON[identifier]);
   }
 
   /**
@@ -52,23 +52,26 @@ class OutlookExpress extends Window {
   clickedInbox() {
     const element = $(this.elem).find('#inboxTreeElem')[0];
 
-    if (element.style.borderColor === "" || element.style.borderColor === "rgb(231, 231, 231)") {
+    if (
+      element.style.borderColor === '' ||
+      element.style.borderColor === 'rgb(231, 231, 231)'
+    ) {
       // inbox list is showing
-      element.style.borderColor = "rgb(0, 0, 0)"
+      element.style.borderColor = 'rgb(0, 0, 0)';
 
-      const inboxTree = document.createElement("ul")
-      inboxTree.innerHTML = `<li>intro@jonzav.me</li>`
-      element.append(inboxTree)
+      const inboxTree = document.createElement('ul');
+      inboxTree.innerHTML = `<li>intro@jonzav.me</li>`;
+      element.append(inboxTree);
 
-      this.setEmail("INTRO")
+      this.setEmail('INTRO');
     } else {
       // inbox list is not showing
-      element.style.borderColor = "rgb(231, 231, 231)"
+      element.style.borderColor = 'rgb(231, 231, 231)';
 
-      const inboxTree = $(element).find("ul")[0]
-      inboxTree.remove()
+      const inboxTree = $(element).find('ul')[0];
+      inboxTree.remove();
 
-      this.setEmail("DEFAULT")
+      this.setEmail('DEFAULT');
     }
   }
 
@@ -186,7 +189,7 @@ class OutlookExpress extends Window {
 
     const inboxTreeItem = document.createElement('li');
     inboxTreeItem.id = 'inboxTreeElem';
-    inboxTreeItem.style.width = "fit-content";
+    inboxTreeItem.style.width = 'fit-content';
     inboxTreeItem.onclick = () => this.clickedInbox();
     const inboxTreeItemImg = document.createElement('img');
     inboxTreeItemImg.src = 'assets/images/icons/inbox.png';
