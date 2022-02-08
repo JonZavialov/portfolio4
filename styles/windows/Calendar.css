@@ -1,1 +1,107 @@
+#calendarBody {
+  height: fit-content;
+  width: fit-content;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey,
+    inset 2px 2px #dfdfdf;
+  padding: 5px;
+}
 
+#calendarBody ul {
+  list-style-type: none;
+}
+
+#yearSelector {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  background-color: white;
+  text-align: left;
+  height: 24px;
+}
+
+#monthSelector {
+  margin-right: 10px;
+}
+
+#yearUpButton,
+#yearDownButton {
+  min-width: 0;
+  min-height: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#yearUpButton {
+  transform: translate(-19px, -5px);
+}
+
+#yearDownButton {
+  transform: translate(-35.5px, 7px);
+}
+
+#calendarDisplay {
+  margin-top: 10px;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  padding: 2px;
+}
+
+#dayDisplay {
+  margin-top: 10px;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  padding: 2px;
+  width: 130px;
+  height: 186px;
+  float: right;
+  margin-left: 10px;
+  overflow-y: scroll;
+}
+
+#dayDisplay li {
+  color: #2b2b2b;
+  margin-left: 4px;
+}
+
+#weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+#weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+}
+
+#days {
+  padding: 10px 0;
+  background: white;
+  margin: 0;
+}
+
+#days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 14.2%;
+  text-align: center;
+  padding-bottom: 8px;
+  padding-top: 7px;
+}
+
+#calendarMainDisplay {
+  display: flex;
+}
+
+#dayHeader {
+  background: white;
+  margin: 0;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: solid 1px gray;
+}
+
+#dayHeader p {
+  margin: 0;
+}
