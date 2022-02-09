@@ -1,5 +1,5 @@
 /**
- * Opens the Jonpng app.
+ * Opens the Credits app.
  */
 function openCredits() {
   $.ajax({

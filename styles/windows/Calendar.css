@@ -105,3 +105,12 @@
 #dayHeader p {
   margin: 0;
 }
+
+#dayHeader {
+  position: fixed;
+  width: 109px;
+}
+
+#dayBody {
+  margin-top: 20px;
+}
