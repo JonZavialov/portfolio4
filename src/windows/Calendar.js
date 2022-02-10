@@ -25,7 +25,7 @@ class Calendar extends Window {
       'September',
       'October',
       'November',
-      'December',
+      'December'
     ];
 
     this.setCalendar();
@@ -112,13 +112,13 @@ class Calendar extends Window {
     if (elem) this.highlightDay(elem);
     else
       $(this.elem)
-        .find('#days')
-        .find('li')
-        .each((i) => {
-          const indexElem = $(this.elem).find('#days').find('li')[i];
-          if (indexElem.innerHTML === day.toString())
-            this.highlightDay(indexElem);
-        });
+      .find('#days')
+      .find('li')
+      .each((i) => {
+        const indexElem = $(this.elem).find('#days').find('li')[i];
+        if (indexElem.innerHTML === day.toString())
+          this.highlightDay(indexElem);
+      });
 
     const formattedMonth = this.convert(month, 'month');
 
@@ -152,7 +152,10 @@ class Calendar extends Window {
   updateCalendar(year, month) {
     this.year = year;
     this.month = month;
-    const { firstDay, daysInMonth } = this.getMonthInfo(year, month);
+    const {
+      firstDay,
+      daysInMonth
+    } = this.getMonthInfo(year, month);
     let dates = ``;
     for (let i = 0; i < firstDay; i += 1) dates += `<li>&nbsp</li>`;
 
@@ -247,6 +250,30 @@ class Calendar extends Window {
 
     $(this.elem).find('#calendarBody').append(clockContainer);
     this.initClock();
+    this.setUpMinuteHands()
+    this.moveSecondHands()
+    this.addInternationalTimes()
+  }
+
+  addInternationalTimes() {
+    const times = {
+      'New York': 'US/Eastern',
+      'London': 'Europe/London',
+      'Tokyo': 'Asia/Tokyo',
+      'Moscow': 'Europe/Moscow'
+    }
+
+    const options = {
+      timeZone: 'Europe/Moscow',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    };
+    const formatter = new Intl.DateTimeFormat([], options);
+
+    setInterval(() => {
+      console.log(formatter.format(new Date()))
+    }, 1000)
   }
 
   /**
@@ -259,8 +286,7 @@ class Calendar extends Window {
     const hours = date.getHours();
 
     // Create an object with each hand and it's angle in degrees
-    this.hands = [
-      {
+    this.hands = [{
         hand: 'hours',
         angle: hours * 30 + minutes / 2,
       },
@@ -285,6 +311,42 @@ class Calendar extends Window {
           this.hands[j + 1].angle
         );
     }
+  }
+
+  setUpMinuteHands() {
+    // Find out how far into the minute we are
+    const container = $(this.elem).find('.minutes-container')[0];
+    const secondAngle = container.getAttribute("data-second-angle");
+    if (secondAngle > 0) {
+      // Set a timeout until the end of the current minute, to move the hand
+      const delay = (((360 - secondAngle) / 6) + 0.1) * 1000;
+      setTimeout(() => this.moveMinuteHands(container), delay);
+    }
+  }
+
+  moveMinuteHands(container) {
+    // do the first minute's rotation
+    container.style.webkitTransform = 'rotateZ(6deg)';
+    container.style.transform = 'rotateZ(6deg)';
+    // Then continue with a 60 second interval
+    setInterval(() => {
+      if (container.angle === undefined) container.angle = 12;
+      else container.angle += 6;
+
+      container.style.webkitTransform = `rotateZ(${  container.angle  }deg)`;
+      container.style.transform = `rotateZ(${  container.angle  }deg)`;
+    }, 60000);
+  }
+
+  moveSecondHands() {
+    const container = $(this.elem).find('.seconds-container')[0];
+    setInterval(() => {
+      if (container.angle === undefined) container.angle = 6;
+      else container.angle += 6;
+
+      container.style.webkitTransform = `rotateZ(${  container.angle  }deg)`;
+      container.style.transform = `rotateZ(${  container.angle  }deg)`;
+    }, 1000);
   }
 
   /**
@@ -322,6 +384,8 @@ class Calendar extends Window {
     $(this.elem).find('#dateButton')[0].style.boxShadow =
       'inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080';
     $(this.elem).find('#timeButton')[0].style.boxShadow = null;
+
+    $(this.elem).find('#calendarBody').empty();
 
     let months = '';
     for (let i = 0; i < 12; i += 1) {

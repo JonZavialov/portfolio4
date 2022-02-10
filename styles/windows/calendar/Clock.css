@@ -1,12 +1,11 @@
 .clock {
   background: url(/assets/images/clock.svg) no-repeat center;
   border-radius: 50%;
-  height: 8em;
-  padding-bottom: 31%;
+  height: 100px;
+  padding-bottom: 126px;
   position: relative;
-  width: 20em;
-  margin-left: 100px;
-  margin-top: 2px;
+  width: 205px;
+  margin-left: 6px;
   background-size: 241px;
 }
 
@@ -54,4 +53,15 @@
   transform-origin: 50% 80%;
   width: 1%;
   z-index: 8;
+}
+
+.hours-container {
+  animation: rotate 43200s infinite linear;
+}
+
+.minutes-container {
+  transition: transform 0.3s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
+.seconds-container {
+  transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
 }
