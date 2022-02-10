@@ -224,6 +224,67 @@ class Calendar extends Window {
     $(this.elem).find('#dateButton')[0].style.boxShadow = null;
 
     $(this.elem).find('#calendarBody').empty();
+
+    const hands = ['hours', 'minutes', 'seconds'];
+
+    const clockContainer = document.createElement('div');
+    clockContainer.id = 'clockContainer';
+
+    const clock = document.createElement('article');
+    clock.className = 'clock';
+    clockContainer.append(clock);
+
+    hands.forEach((hand) => {
+      const container = document.createElement('div');
+      container.className = `${hand}-container`;
+
+      const line = document.createElement('div');
+      line.className = `${hand}`;
+
+      container.append(line);
+      clock.append(container);
+    });
+
+    $(this.elem).find('#calendarBody').append(clockContainer);
+    this.initClock();
+  }
+
+  /**
+   * Sets the initial position of the clock hands.
+   */
+  initClock() {
+    const date = new Date();
+    const seconds = date.getSeconds();
+    const minutes = date.getMinutes();
+    const hours = date.getHours();
+
+    // Create an object with each hand and it's angle in degrees
+    this.hands = [
+      {
+        hand: 'hours',
+        angle: hours * 30 + minutes / 2,
+      },
+      {
+        hand: 'minutes',
+        angle: minutes * 6,
+      },
+      {
+        hand: 'seconds',
+        angle: seconds * 6,
+      },
+    ];
+    // Loop through each of these hands to set their angle
+    for (let j = 0; j < this.hands.length; j += 1) {
+      const element = $(this.elem).find(`.${this.hands[j].hand}`)[0];
+      element.style.webkitTransform = `rotateZ(${this.hands[j].angle}deg)`;
+      element.style.transform = `rotateZ(${this.hands[j].angle}deg)`;
+      // If this is a minute hand, note the seconds position (to calculate minute position later)
+      if (this.hands[j].hand === 'minutes')
+        element.parentNode.setAttribute(
+          'data-second-angle',
+          this.hands[j + 1].angle
+        );
+    }
   }
 
   /**
