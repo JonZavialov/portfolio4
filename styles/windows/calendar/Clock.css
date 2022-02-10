@@ -12,6 +12,7 @@
 #clockContainer {
   width: 420px;
   height: 230px;
+  display: flex;
 }
 
 .minutes-container,
@@ -64,4 +65,31 @@
 }
 .seconds-container {
   transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+}
+
+#internationalTimes {
+  width: 209px;
+}
+
+.internationalTimeDisplay {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+  background: #fff;
+  margin: 0;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.internationalTimeLabel {
+  margin-bottom: 3px;
+  margin-top: 15px;
+  width: fit-content;
+}
+
+#internationalTimes p {
+  margin-left: auto;
+  margin-right: auto;
 }

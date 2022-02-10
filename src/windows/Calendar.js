@@ -257,23 +257,55 @@ class Calendar extends Window {
 
   addInternationalTimes() {
     const times = {
-      'New York': 'US/Eastern',
-      'London': 'Europe/London',
-      'Tokyo': 'Asia/Tokyo',
-      'Moscow': 'Europe/Moscow'
+      'New York': {
+        name: 'US/Eastern',
+        formatter: null
+      },
+      'London': {
+        name: 'Europe/London',
+        formatter: null
+      },
+      'Tokyo': {
+        name: 'Asia/Tokyo',
+        formatter: null
+      },
+      'Moscow': {
+        name: 'Europe/Moscow',
+        formatter: null
+      }
     }
 
-    const options = {
-      timeZone: 'Europe/Moscow',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-    };
-    const formatter = new Intl.DateTimeFormat([], options);
+    const timeContainer = document.createElement('div');
+    timeContainer.id = 'internationalTimes';
+
+    Object.keys(times).forEach((key) => {
+      const obj = times[key];
+      obj.formatter = new Intl.DateTimeFormat([], {
+        timeZone: obj.name,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      })
+
+      const label = document.createElement('p');
+      label.className = "internationalTimeLabel"
+      label.innerHTML = key;
+      timeContainer.append(label);
+
+      const time = document.createElement('p');
+      time.className = 'internationalTimeDisplay';
+      time.id = key
+      time.innerHTML = obj.formatter.format(new Date());
+      timeContainer.append(time);
+    })
 
     setInterval(() => {
-      console.log(formatter.format(new Date()))
+      $(this.elem).find(".internationalTimeDisplay").each((i, elem) => {
+        elem.innerHTML = times[elem.id].formatter.format(new Date());
+      })
     }, 1000)
+
+    $(this.elem).find('#clockContainer').append(timeContainer);
   }
 
   /**
