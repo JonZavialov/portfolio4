@@ -255,6 +255,9 @@ class Calendar extends Window {
     this.addInternationalTimes()
   }
 
+  /**
+   * Adds the international time windows and populates them with data.
+   */
   addInternationalTimes() {
     const times = {
       'New York': {
@@ -345,6 +348,9 @@ class Calendar extends Window {
     }
   }
 
+  /**
+   * Sets the initial position of the minute hands.
+   */
   setUpMinuteHands() {
     // Find out how far into the minute we are
     const container = $(this.elem).find('.minutes-container')[0];
@@ -356,6 +362,10 @@ class Calendar extends Window {
     }
   }
 
+  /**
+   * Moves the minute hand.
+   * @param  {HTMLElement} container - The minute hand container.
+   */
   moveMinuteHands(container) {
     // do the first minute's rotation
     container.style.webkitTransform = 'rotateZ(6deg)';
@@ -370,6 +380,9 @@ class Calendar extends Window {
     }, 60000);
   }
 
+  /**
+   * Moves the second hand.
+   */
   moveSecondHands() {
     const container = $(this.elem).find('.seconds-container')[0];
     setInterval(() => {
