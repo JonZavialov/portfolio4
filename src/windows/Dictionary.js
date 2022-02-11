@@ -1,4 +1,7 @@
 class Dictionary extends Window {
+  /**
+   * The Dictionary app.
+   */
   constructor() {
     super(
       'Dictionary',
@@ -10,6 +13,11 @@ class Dictionary extends Window {
     this.getRandomWord((data) => this.setWord(data));
   }
 
+  /**
+   * Sets the data for the word to the window.
+   * @param  {string} word - The word to set.
+   * @param  {function} [errorCallback=null] - The callback to run if the word is not found.
+   */
   setWord(word, errorCallback = null) {
     this.getWordData(
       word,
@@ -36,6 +44,9 @@ class Dictionary extends Window {
     );
   }
 
+  /**
+   * Called when the search button is clicked.
+   */
   searchTerm() {
     const term = $(this.elem).find('#wordInput').val();
     if (term === '') return;
@@ -49,6 +60,12 @@ class Dictionary extends Window {
     });
   }
 
+  /**
+   * Gets the data for the word.
+   * @param  {string} word - The word to get data for.
+   * @param  {function} callback - The callback to run when the data is retrieved.
+   * @param  {function} [errorCallback=null] - The callback to run if the word is not found.
+   */
   getWordData(word, callback, errorCallback = null) {
     $.ajax({
       url: `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
@@ -63,6 +80,10 @@ class Dictionary extends Window {
     });
   }
 
+  /**
+   * Gets a random word, continues to run recursively until a valid word is found.
+   * @param  {function} callback - The callback to run when the word is found.
+   */
   getRandomWord(callback) {
     $.getJSON(
       'https://random-word-api.herokuapp.com/word?number=1&swear=0',
@@ -76,6 +97,10 @@ class Dictionary extends Window {
     );
   }
 
+  /**
+   * Generates the DOM element for the window.
+   * @returns {HTMLElement} - The DOM element for the window.
+   */
   getHTML() {
     const container = document.createElement('div');
 
@@ -123,12 +148,20 @@ class Dictionary extends Window {
     return container;
   }
 
+  /**
+   * Capitalizes the first letter of a string.
+   * @param  {string} string - The string to capitalize.
+   * @returns {string} - The capitalized string.
+   */
   capitalizeFirstLetter(string) {
     if (!string) return '';
     return string[0].toUpperCase() + string.substring(1);
   }
 }
 
+/**
+ * Opens the Dictionary app.
+ */
 function openDictionary() {
   const dictionary = new Dictionary();
   dictionary.render();
