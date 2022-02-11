@@ -8,15 +8,15 @@ def getDirsList(path):
                 dirs.append(subdirectory)
     return dirs
         
-def concatFiles(dirsList):
-    os.system('del styles.min.css')
+def concatFiles(dirsList, path):
+    os.system(f'del .\{path}\styles.min.css')
     for dir in dirsList:
         localPath = dir[1:].replace('/', '\\')
-        os.system(f'type {os.getcwd() + localPath}\*.css >> styles.min.css')
+        os.system(f'type {os.getcwd() + localPath}\*.css >> .\{path}\styles.min.css')
         os.system('cls')
 
-dirsList = getDirsList('./styles')
-concatFiles(dirsList)
+dirsList = getDirsList('./project/styles')
+concatFiles(dirsList, "/project")
 
 
 # url = 'https://www.toptal.com/developers/cssminifier/raw'
