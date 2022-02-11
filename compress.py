@@ -1,4 +1,5 @@
 import os
+import requests
 
 def getDirsList(path):
     dirs = []
@@ -9,18 +10,27 @@ def getDirsList(path):
     return dirs
         
 def concatFiles(dirsList, path):
-    os.system(f'del .\{path[1:]}\styles.min.css')
+    os.system('del .\\' + path[1:] + '\styles.min.css')
     for dir in dirsList:
         localPath = dir[1:].replace('/', '\\')
-        os.system(f'type {os.getcwd() + localPath}\*.css >> .\{path}\styles.min.css')
+        os.system(f'type {os.getcwd() + localPath}\*.css >> .\\'+ path + '\styles.min.css')
+        os.system('cls')
 
-dirsList = getDirsList('./project/styles')
-concatFiles(dirsList, "/project")
+def minifyCSS(path):
+    url = 'https://www.toptal.com/developers/cssminifier/raw'
+    data = {'input': open(f'.{path}/styles.min.css', 'rb').read()}
+    response = requests.post(url, data=data)
+    return response.text
 
+def writeToFile(path, string):
+    text_file = open(f".{path}/styles.min.css", "w")
+    n = text_file.write(string)
+    text_file.close()
 
-# url = 'https://www.toptal.com/developers/cssminifier/raw'
-# data = {'input': open('./styles/boot.css', 'rb').read()}
-# response = requests.post(url, data=data)
+def compress(path):
+    dirsList = getDirsList(f'.{path}/styles')
+    concatFiles(dirsList, path)
+    minified = minifyCSS(path)
+    writeToFile(path, minified)
 
-
-# print(response.text)
+compress('/project')
