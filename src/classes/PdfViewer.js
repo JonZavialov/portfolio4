@@ -27,13 +27,13 @@ class PdfViewer extends Window {
   getInnerHTML() {
     const controlButtons = [
       {
-        image: '/assets/images/icons/backArrow.png',
+        image: '/assets/images/backArrow.png',
         alt: 'Previous Page',
         margin: '0 0 0 10px',
         action: () => this.previousPage(),
       },
       {
-        image: '/assets/images/icons/forwardArrow.png',
+        image: '/assets/images/forwardArrow.png',
         alt: 'Next Page',
         margin: '0 0 0 20px',
         action: () => this.nextPage(),

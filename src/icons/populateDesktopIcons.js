@@ -26,6 +26,7 @@ function populateDesktopIcons() {
     }
   });
   // TODO: add about me folder
+  // TODO: order icons by type
   $('#desktop').mouseup(() =>
     iconClasses.forEach((icon) => icon.checkForReleasedOverRecycle())
   );

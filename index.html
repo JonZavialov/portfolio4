@@ -36,12 +36,18 @@
     <script src="./src/windows/MyProjects.js"></script>
     <script src="./src/windows/OutlookExpress.js"></script>
     <script src="./src/windows/Calendar.js"></script>
+    <script src="./src/windows/Dictionary.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles/homePage.css" />
     <link rel="stylesheet" type="text/css" href="./styles/icons.css" />
     <link rel="stylesheet" type="text/css" href="./styles/taskbar.css" />
     <link rel="stylesheet" type="text/css" href="./styles/startButton.css" />
     <link rel="stylesheet" type="text/css" href="./styles/windows/jonpng.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./styles/windows/Dictionary.css"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -113,7 +119,10 @@
         </div>
         <div id="taskbar" class="window">
           <button id="startButton">
-            <img src="/assets/images/windows_logo.png" alt="startButton" />
+            <img
+              src="/assets/images/icons/windows_logo.png"
+              alt="startButton"
+            />
             <p>Start</p>
           </button>
           <hr id="taskbarDivider" />
@@ -121,12 +130,12 @@
           <button id="desktopClock">
             <img
               id="desktopClockIcon"
-              src="/assets/images/clock.png"
+              src="/assets/images/icons/clock.png"
               alt="clock"
             />
             <img
               id="desktopSpeakerIcon"
-              src="/assets/images/speaker.png"
+              src="/assets/images/icons/speaker.png"
               alt="speaker"
               onclick="toggleSpeaker()"
             />

@@ -69,5 +69,11 @@
     "iconImage": "/assets/images/icons/calendar.png",
     "clickFunction": "openCalendar",
     "type": "app"
+  },
+  "dictionary": {
+    "displayName": "Dictionary",
+    "iconImage": "/assets/images/icons/dictionary.png",
+    "clickFunction": "openDictionary",
+    "type": "app"
   }
 }

@@ -261,12 +261,12 @@ class Calendar extends Window {
         name: 'US/Eastern',
         formatter: null,
       },
-      'London': {
-        name: 'Europe/London',
+      'Los Angeles': {
+        name: 'US/Pacific',
         formatter: null,
       },
-      'Tokyo': {
-        name: 'Asia/Tokyo',
+      'London': {
+        name: 'Europe/London',
         formatter: null,
       },
       'Moscow': {
@@ -314,10 +314,10 @@ class Calendar extends Window {
    * Sets the initial position of the clock hands.
    */
   initClock() {
-    const date = new Date();
-    const seconds = date.getSeconds();
-    const minutes = date.getMinutes();
-    const hours = date.getHours();
+    const d = new Date();
+    const seconds = d.getSeconds();
+    const minutes = d.getMinutes();
+    const hours = d.getHours();
 
     // Create an object with each hand and it's angle in degrees
     this.hands = [

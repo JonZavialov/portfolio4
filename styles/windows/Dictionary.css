@@ -1,0 +1,53 @@
+#dictionary {
+  width: 250px;
+  min-height: 200px;
+}
+
+#word {
+  margin: 0;
+  font-weight: bold;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+#pronounce {
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: gray;
+}
+
+#partOfSpeech {
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-style: italic;
+  font-size: 12px;
+}
+
+#definition {
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+#example {
+  font-size: 12px;
+}
+
+#randomWord {
+  margin: 0;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#wordInput {
+  margin-bottom: 10px;
+}
+
+#searchButton img {
+  width: 20px;
+}
+
+#searchButton {
+  min-width: 0;
+  min-height: 0;
+  position: absolute;
+}
