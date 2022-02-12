@@ -83,7 +83,6 @@ class OutlookExpress extends Window {
    * Centers the window.
    */
   center() {
-    console.log($('#desktop').width() / 2 - $(this.elem).width() / 2);
     $(this.elem).css({
       left:
         $('#desktop').width() / 2 -
