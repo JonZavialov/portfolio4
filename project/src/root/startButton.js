@@ -70,10 +70,10 @@ async function closeButton() {
  */
 function startMenuButton(button) {
   const methods = {
-    'email': function () {
+    'email': () => {
       window.location.assign('mailto: jonzavialov@gmail.com');
     },
-    'linkedin': function () {
+    'linkedin': () => {
       window
         .open(
           'https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/',
@@ -81,12 +81,12 @@ function startMenuButton(button) {
         )
         .focus();
     },
-    'insta': function () {
+    'insta': () => {
       window
         .open('https://www.instagram.com/thesuperiorphotographer', '_blank')
         .focus();
     },
-    'youtube': function () {
+    'youtube': () => {
       window
         .open(
           'https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g',
@@ -94,16 +94,16 @@ function startMenuButton(button) {
         )
         .focus();
     },
-    'github': function () {
+    'github': () => {
       window.open('https://github.com/JonZavialov', '_blank').focus();
     },
-    'credits': function () {
+    'credits': () => {
       openCredits();
     },
-    'fileExplorer': function () {
+    'fileExplorer': () => {
       openFileExplorer();
     },
-    'restart': function () {
+    'restart': () => {
       window.location.replace('/');
     },
   };

@@ -58,7 +58,7 @@ function initDraw() {
     if (!clickedOnVolumeSlider(e)) removeSpeaker();
   };
 
-  body.onmouseup = function () {
+  body.onmouseup = () => {
     if (element) element.remove();
 
     // check for drawn rectangles and remove them
