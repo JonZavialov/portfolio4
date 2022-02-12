@@ -69,7 +69,6 @@ async function closeButton() {
  * @param  {string} button - The button that was clicked.
  */
 function startMenuButton(button) {
-  console.log(button);
   const methods = {
     'email': function () {
       window.location.assign('mailto: jonzavialov@gmail.com');
