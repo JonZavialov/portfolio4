@@ -2,7 +2,8 @@
   "recycleBin": {
     "displayName": "Recycle Bin",
     "iconImage": "/assets/images/icons/recycle.png",
-    "clickFunction": "openRecycleBin"
+    "clickFunction": "openRecycleBin",
+    "type": "folder"
   },
   "myComputer": {
     "displayName": "My Computer",
@@ -34,24 +35,6 @@
     "clickFunction": "openTextEditor",
     "type": "app"
   },
-  "jonpng": {
-    "displayName": "jon.png",
-    "iconImage": "/assets/images/icons/image.png",
-    "clickFunction": "openJonpng",
-    "type": "document"
-  },
-  "credits": {
-    "displayName": "credits.txt",
-    "iconImage": "/assets/images/icons/txt.png",
-    "clickFunction": "openCredits",
-    "type": "document"
-  },
-  "resume": {
-    "displayName": "resume.pdf",
-    "iconImage": "/assets/images/icons/page.png",
-    "clickFunction": "openResume",
-    "type": "document"
-  },
   "myProjects": {
     "displayName": "My Projects",
     "iconImage": "/assets/images/icons/myProjects.png",
@@ -75,5 +58,23 @@
     "iconImage": "/assets/images/icons/dictionary.png",
     "clickFunction": "openDictionary",
     "type": "app"
+  },
+  "jonpng": {
+    "displayName": "jon.png",
+    "iconImage": "/assets/images/icons/image.png",
+    "clickFunction": "openJonpng",
+    "type": "document"
+  },
+  "credits": {
+    "displayName": "credits.txt",
+    "iconImage": "/assets/images/icons/txt.png",
+    "clickFunction": "openCredits",
+    "type": "document"
+  },
+  "resume": {
+    "displayName": "resume.pdf",
+    "iconImage": "/assets/images/icons/page.png",
+    "clickFunction": "openResume",
+    "type": "document"
   }
 }
