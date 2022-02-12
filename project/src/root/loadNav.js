@@ -7,6 +7,7 @@ function loadNav() {
         <ul>
             <li style="cursor: pointer;" onmouseup="openRecycleBin()">Recycle Bin</li>
             <li style="cursor: pointer;" onmouseup="openMyComputer()">My Computer</li>
+            <li style="cursor: pointer;" onmouseup="openFileExplorer()">File Explorer</li>
             <li style="cursor: pointer;" onmouseup="openMyDocuments()">My Documents</li>
             <ul>
                 <li style="cursor: pointer;" onmouseup="openJonpng()">jon.png</li>

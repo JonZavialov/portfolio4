@@ -23,6 +23,12 @@
     "clickFunction": "openMyDocuments",
     "type": "folder"
   },
+  "fileExplorer": {
+    "displayName": "File Explorer",
+    "iconImage": "/assets/images/icons/fileexplorer.png",
+    "clickFunction": "openFileExplorer",
+    "type": "folder"
+  },
   "calculator": {
     "displayName": "Calculator",
     "iconImage": "/assets/images/icons/calculator.png",
