@@ -14,37 +14,37 @@ function startButton() {
     </div>
     <div id="startMenuBody">
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('email')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/mail.png?raw=true">
+            <img src="/assets/images/icons/mail.png">
             <p id="startMenuPairText">Email Me</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('linkedin')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/linkedin.png?raw=true">
+            <img src="/assets/images/icons/linkedin.png">
             <p id="startMenuPairText">Linkedin</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('insta')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/instagram.png?raw=true">
+            <img src="/assets/images/icons/instagram.png">
             <p id="startMenuPairText">Instagram</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('youtube')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/youtube.png?raw=true">
+            <img src="/assets/images/icons/youtube.png">
             <p id="startMenuPairText">Youtube</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('github')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/documents.png?raw=true">
+            <img src="/assets/images/icons/documents.png">
             <p id="startMenuPairText">GitHub</p>
         </div>
         <hr>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('credits')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/credits.png?raw=true">
+            <img src="/assets/images/icons/txt.png">
             <p id="startMenuPairText">Credits</p>
         </div>
         <hr>
-        <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('console')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/console.png?raw=true">
-            <p id="startMenuPairText">MS-DOS Prompt</p>
+        <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('fileExplorer')">
+            <img src="/assets/images/icons/fileexplorer.png">
+            <p id="startMenuPairText">File Explorer</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('restart')">
-            <img src="https://github.com/JonZavialov/portfolio2/blob/main/assets/images/shutdown.png?raw=true">
+            <img src="/assets/images/icons/shutdown.png">
             <p id="startMenuPairText">Restart...</p>
         </div>
     </div>
@@ -101,8 +101,8 @@ function startMenuButton(button) {
     'credits': function () {
       openCredits();
     },
-    'console': function () {
-      initMsdos();
+    'fileExplorer': function () {
+      openFileExplorer();
     },
     'restart': function () {
       window.location.replace('/');
