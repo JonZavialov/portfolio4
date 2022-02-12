@@ -29,7 +29,7 @@
     <script src="./src/windows/Jonpng.js"></script>
     <script src="./src/windows/Credits.js"></script>
     <script src="./src/classes/CalculatorButton.js"></script>
-    <script src="./src/root/checkForBooted.js"></script>
+    <script src="./src/root/checkURL.js"></script>
     <script src="./src/classes/Error.js"></script>
     <script src="./src/windows/Resume.js"></script>
     <script src="./src/classes/PdfViewer.js"></script>
@@ -38,6 +38,7 @@
     <script src="./src/windows/Calendar.js"></script>
     <script src="./src/windows/Dictionary.js"></script>
     <script src="./src/windows/FileExplorer.js"></script>
+    <script src="./src/root/openURLApp.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -47,8 +48,7 @@
 
   <body>
     <script>
-      $(document).ready(function () {
-        checkForBooted();
+      $(document).ready(() => {
         loadNav();
         populateDesktopIcons();
         initDraw();
@@ -56,7 +56,7 @@
         $('#startButton').click(() => {
           startButton();
         });
-        openOutlookExpress('INTRO');
+        checkURL();
       });
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>

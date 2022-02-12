@@ -61,7 +61,10 @@ async function boot() {
 
       if (i === bootList.length) {
         await sleep(2000);
-        window.location.replace('/?booted=true');
+        const params = new URLSearchParams(window.location.search);
+        let app = '';
+        if (params.get('app')) app = `&app=${params.get('app')}`;
+        window.location.replace(`/?booted=true${app}`);
       }
     }, 125);
   }
