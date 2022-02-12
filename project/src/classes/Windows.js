@@ -25,8 +25,6 @@ class Window {
     this.windowName = windowName;
 
     this.MINIMIZE_DURATION = 250;
-
-    // TODO: change cursor to win98 style, also change it when dragging a window.
   }
 
   /**

@@ -8,6 +8,8 @@ body {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+
+  cursor: url('/assets/images/hand.cur'), auto;
 }
 
 #volumeContainer {
@@ -70,4 +72,12 @@ body {
 
 .title-bar-controls button[aria-label='Close'] {
   margin-left: 0 !important;
+}
+
+.title-bar {
+  cursor: url('/assets/images/closedHand.cur'), auto;
+}
+
+button {
+  cursor: url('/assets/images/hand.cur'), auto;
 }
