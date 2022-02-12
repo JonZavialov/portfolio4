@@ -1,8 +1,10 @@
 class OutlookExpress extends Window {
   /**
    * The Outlook Express App.
+   * @param {string} [email='DEFAULT'] - The email to display.
+   * @param {boolean} [center=false] - Whether or not the window should be centered.
    */
-  constructor() {
+  constructor(email = 'DEFAULT', center = false) {
     super(
       'Outlook Express',
       'outlookExpress',
@@ -10,8 +12,9 @@ class OutlookExpress extends Window {
       'assets/images/icons/outlook.png'
     );
 
+    this.isCentered = center;
     this.generateElement(this.generateHTML());
-    this.getEmails(() => this.setEmail('DEFAULT'));
+    this.getEmails(() => this.setEmail(email));
   }
 
   /**
@@ -44,6 +47,7 @@ class OutlookExpress extends Window {
   setEmail(identifier) {
     const display = $(this.elem).find('#emailDisplay');
     display.html(this.emailsJSON[identifier]);
+    if (this.isCentered) this.center();
   }
 
   /**
@@ -73,6 +77,20 @@ class OutlookExpress extends Window {
 
       this.setEmail('DEFAULT');
     }
+  }
+
+  /**
+   * Centers the window.
+   */
+  center() {
+    console.log($('#desktop').width() / 2 - $(this.elem).width() / 2);
+    $(this.elem).css({
+      left:
+        $('#desktop').width() / 2 -
+        $(this.elem).width() / 2 +
+        window.innerWidth * 0.15,
+      top: $('#desktop').height() / 2 - $(this.elem).height() / 2,
+    });
   }
 
   /**
@@ -252,8 +270,10 @@ class OutlookExpress extends Window {
 
 /**
  * Opens the Outlook Express app.
+ * @param {string} [email='DEFAULT'] - The email to display.
  */
-function openOutlookExpress() {
-  const outlookExpress = new OutlookExpress();
+function openOutlookExpress(email = 'DEFAULT') {
+  center = email === 'INTRO';
+  const outlookExpress = new OutlookExpress(email, center);
   outlookExpress.render();
 }
