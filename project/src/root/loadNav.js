@@ -22,6 +22,7 @@ function loadNav() {
                 <li style="cursor: pointer;" onmouseup="openOutlookExpress()">Outlook Express</li>
                 <li style="cursor: pointer;" onmouseup="openDictionary()">Dictionary</li>
                 <li style="cursor: pointer;" onmouseup="openMyProjects()">My Projects</li>
+                <li style="cursor: pointer;" onmouseup="openSnake()">Snake</li>
             </ul>
         </ul>
         <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
