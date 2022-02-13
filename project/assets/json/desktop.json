@@ -43,7 +43,7 @@
   },
   "myProjects": {
     "displayName": "My Projects",
-    "iconImage": "/assets/images/icons/myProjects.png",
+    "iconImage": "/assets/images/icons/myprojects.png",
     "clickFunction": "openMyProjects",
     "type": "app"
   },
