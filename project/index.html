@@ -39,6 +39,8 @@
     <script src="./src/windows/Dictionary.js"></script>
     <script src="./src/windows/FileExplorer.js"></script>
     <script src="./src/root/openURLApp.js"></script>
+    <script src="./src/windows/Snake.js"></script>
+    <script src="./src/root/sleep.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -53,10 +55,12 @@
         populateDesktopIcons();
         initDraw();
         initClock();
+        checkURL();
+
         $('#startButton').click(() => {
           startButton();
         });
-        checkURL();
+        window.addEventListener('message', (e) => lostSnakeGame(e), false);
       });
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>

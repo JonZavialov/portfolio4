@@ -65,6 +65,12 @@
     "clickFunction": "openDictionary",
     "type": "app"
   },
+  "snake": {
+    "displayName": "Snake",
+    "iconImage": "/assets/images/icons/joystick.png",
+    "clickFunction": "openSnake",
+    "type": "app"
+  },
   "jonpng": {
     "displayName": "jon.png",
     "iconImage": "/assets/images/icons/image.png",

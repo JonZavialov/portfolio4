@@ -1,3 +1,7 @@
+/**
+ * Opens an app.
+ * @param  {string} app - The app to open.
+ */
 function openURLApp(app) {
   $.getJSON('/assets/json/desktop.json', (data) => {
     if (app === 'none') return;

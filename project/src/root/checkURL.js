@@ -1,5 +1,6 @@
 /**
  * Checks if the page is booted. If not, the page will boot and redirect home with the booted parameter.
+ * Also checks for an app param in the URL.
  */
 function checkURL() {
   const params = new URLSearchParams(window.location.search);
