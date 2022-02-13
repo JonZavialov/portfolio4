@@ -38,10 +38,15 @@ function startButton() {
             <img src="/assets/images/icons/txt.png">
             <p id="startMenuPairText">Credits</p>
         </div>
-        <hr>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('fileExplorer')">
             <img src="/assets/images/icons/fileexplorer.png">
             <p id="startMenuPairText">File Explorer</p>
+        </div>
+        <hr>
+        <div class="hoverHighlight optionsStartMenu" id="startMenuPair">
+            <img src="/assets/images/icons/options.png">
+            <p id="startMenuPairText">Options</p>
+            <p style="transform: translateX(84px);">▶</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('restart')">
             <img src="/assets/images/icons/shutdown.png">
@@ -52,6 +57,52 @@ function startButton() {
   $('#middleSection').append(element);
   $('#startButton').unbind();
   $('#startButton').click(() => closeButton());
+  $('.optionsStartMenu').hover(
+    () => optionsIn(),
+    () => optionsOut()
+  );
+  hover = false;
+}
+
+/**
+ * Called when the options button is hovered over.
+ */
+function optionsIn() {
+  if ($('#optionsMenu').length !== 0) return;
+
+  const element = document.createElement('div');
+  element.id = 'optionsMenu';
+  element.className = 'window';
+  element.innerHTML = `
+  <div id="optionsMenuBody">
+    <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('arrangeIcons')" style="margin-top: 0">
+      <img src="/assets/images/icons/clean.png" style="width: 20px; height: 20px; transform: translate(2px, 4px);">
+      <p id="startMenuPairText">Arrange Icons</p>
+    </div>
+    <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('closeWindows')" style="margin-top: 0;">
+      <img src="/assets/images/icons/close.png" style="width: 20px; height: 20px; transform: translate(2px, 6px);">
+      <p id="startMenuPairText">Close All Windows</p>
+    </div>
+  </div>`;
+  $('#middleSection').append(element);
+  $(element).hover(
+    () => {
+      hover = true;
+    },
+    () => {
+      hover = false;
+      optionsOut();
+    }
+  );
+}
+
+/**
+ * Called when the options button or menu is hovered out.
+ */
+async function optionsOut() {
+  await sleep(50);
+  if ($('#optionsMenu').length === 0 || hover) return;
+  $('#optionsMenu').remove();
 }
 
 /**
@@ -105,6 +156,12 @@ function startMenuButton(button) {
     },
     'restart': () => {
       window.location.replace('/');
+    },
+    'arrangeIcons': () => {
+      arrangeIcons();
+    },
+    'closeWindows': () => {
+      closeAllWindows();
     },
   };
   const methodNames = Object.keys(methods);
