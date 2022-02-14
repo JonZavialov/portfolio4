@@ -71,6 +71,12 @@
     "clickFunction": "openSnake",
     "type": "app"
   },
+  "audioRecorder": {
+    "displayName": "Audio Recorder",
+    "iconImage": "/assets/images/icons/mic.png",
+    "clickFunction": "openAudioRecorder",
+    "type": "app"
+  },
   "jonpng": {
     "displayName": "jon.png",
     "iconImage": "/assets/images/icons/image.png",
