@@ -23,7 +23,9 @@ class Board {
   generate(snake, food) {
     this.renderSnake(snake);
     this.renderFood(food);
-    const { gameBoard } = this;
+    const {
+      gameBoard
+    } = this;
     const table = $('#gameBoard')[0];
     for (let i = 0; i < 17; i += 1) {
       const row = document.createElement('tr');
@@ -107,6 +109,8 @@ class Board {
    * @param  {Snake} snake - The snake object.
    */
   lose(snake) {
+    // TODO: Change lose screen to trigger something in the parent.
+
     clearInterval(this.interval);
     this.clear();
     const youWord = [
@@ -184,7 +188,7 @@ class Board {
 
     for (let i = 0; i < loseWord.length; i += 1)
       this.gameBoard[loseWord[i][1] + 1][loseWord[i][0] - 1].contents =
-        'endscreen';
+      'endscreen';
 
     this.render();
 
