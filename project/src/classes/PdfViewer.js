@@ -15,7 +15,7 @@ class PdfViewer extends Window {
       name
     );
     this.path = path;
-    this.viewerWidth = 400;
+    this.viewerWidth = 300;
     this.generateElement(this.getInnerHTML());
     this.generatePDF();
   }
@@ -29,13 +29,13 @@ class PdfViewer extends Window {
       {
         image: '/assets/images/backArrow.png',
         alt: 'Previous Page',
-        margin: '0 0 0 10px',
+        transform: 'translate(8px, -16px)',
         action: () => this.previousPage(),
       },
       {
         image: '/assets/images/forwardArrow.png',
         alt: 'Next Page',
-        margin: '0 0 0 20px',
+        transform: 'translate(19px, -16px)',
         action: () => this.nextPage(),
       },
     ];
@@ -60,7 +60,7 @@ class PdfViewer extends Window {
       const buttonDOM = document.createElement('button');
       buttonDOM.className = 'PDFButton';
       buttonDOM.onclick = button.action;
-      buttonDOM.style.margin = button.margin;
+      buttonDOM.style.transform = button.transform;
 
       const image = document.createElement('img');
       image.src = button.image;
