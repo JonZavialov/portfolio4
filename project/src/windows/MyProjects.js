@@ -7,7 +7,7 @@ class MyProjects extends Window {
       'My Projects',
       'myProjects',
       true,
-      'assets/images/icons/myProjects.png'
+      'assets/images/icons/myprojects.png'
     );
     this.generateElement(this.generateHTML());
     this.getTopProjects();
