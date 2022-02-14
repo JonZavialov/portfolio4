@@ -23,7 +23,7 @@ class Snake extends Window {
     frame.src = `/snake/index.html?id=${this.gameId}`;
     frame.className = 'snakeGame';
     container.append(frame);
-
+    // TODO: Add speed selector and other configs.
     const resetButton = document.createElement('button');
     resetButton.className = 'snakeButton';
     resetButton.innerText = 'Reset';
