@@ -10,6 +10,7 @@ class AudioRecorder extends Window {
       'assets/images/icons/mic.png'
     );
 
+    this.hasMicPerms = false
     this.generateElement(this.getHTML());
     this.getMicPermissions();
   }
@@ -35,9 +36,70 @@ class AudioRecorder extends Window {
    * Called when the user allows the website to use the microphone.
    */
   gotMicPerms() {
+    if (this.hasMicPerms) return
     clearInterval(this.permsInterval);
-    console.log('Got mic permissions');
+    this.hasMicPerms = true
+    this.setRecorder()
   }
+
+  /**
+   * Sets the window to record mode.
+   */
+  setRecorder() {
+    $(this.elem).find('.requestMicPermsPara').remove();
+
+    const mediaRecorder = new MediaRecorder(this.stream);
+    mediaRecorder.ondataavailable = (e) => {
+      console.log(e.data);
+    }
+
+    const recordButton = document.createElement('button');
+    recordButton.className = 'recordButton';
+    recordButton.innerHTML = 'Record';
+    recordButton.onclick = () => {
+      if (mediaRecorder.state === 'inactive') {
+        mediaRecorder.start();
+        this.initVolMeter()
+        recordButton.innerHTML = 'Stop';
+      } else {
+        mediaRecorder.stop();
+        clearInterval(this.volumeInterval)
+        recordButton.innerHTML = 'Record';
+      }
+    }
+    $(this.elem).append(recordButton);
+  }
+
+  /**
+   * Initializes the volume meter.
+   */
+  initVolMeter() {
+    const audioContext = new AudioContext();
+    const audioSource = audioContext.createMediaStreamSource(this.stream);
+    const analyser = audioContext.createAnalyser();
+    analyser.fftSize = 512;
+    analyser.minDecibels = -127;
+    analyser.maxDecibels = 0;
+    analyser.smoothingTimeConstant = 0.4;
+    audioSource.connect(analyser);
+
+    this.volumeInterval = setInterval(() => this.volumeCallback(analyser), 100);
+  }
+
+  /**
+   * The function that is called to analyze the volume.
+   * @param  {AnalyserNode} analyser - The analyser node.
+   */
+  volumeCallback(analyser) {
+    const volumes = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(volumes);
+    let volumeSum = 0;
+    for (const volume of volumes)
+      volumeSum += volume;
+    const averageVolume = volumeSum / volumes.length;
+    // Percentage
+    console.log(averageVolume * 100 / 127)
+  };
 
   /**
    * Sets a loop that checks for microphone permissions every second.
@@ -45,7 +107,9 @@ class AudioRecorder extends Window {
   getMicPermissions() {
     this.permsInterval = setInterval(async () => {
       // Promise is returned when the user grants permissions.
-      this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      this.stream = await navigator.mediaDevices.getUserMedia({
+        audio: true
+      });
       this.gotMicPerms();
     }, 1000);
   }
