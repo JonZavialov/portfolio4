@@ -187,7 +187,8 @@ class Board {
         'endscreen';
 
     this.render();
-
+    
+    // TODO: posting message on domain doesn't work
     const url = new URLSearchParams(window.location.search);
     window.parent.postMessage(`LOST_GAME ${url.get('id')} ${snake.length}`);
   }
