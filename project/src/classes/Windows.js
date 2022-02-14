@@ -139,14 +139,17 @@ class Window {
   close() {
     this.elem.remove();
 
-    const windowArray = windowsTaskbarMap.get(this.id).windows;
-    windowArray.splice(windowArray.indexOf(this), 1);
-    windowsTaskbarMap.set(this.id, {
-      'taskbarClass': windowsTaskbarMap.get(this.id).taskbarClass,
-      'windows': windowArray,
-    });
+    if (this.taskbarElement) {
+      const windowArray = windowsTaskbarMap.get(this.id).windows;
+      windowArray.splice(windowArray.indexOf(this), 1);
+      windowsTaskbarMap.set(this.id, {
+        'taskbarClass': windowsTaskbarMap.get(this.id).taskbarClass,
+        'windows': windowArray,
+      });
 
-    if (this.taskbarElement) this.taskbarElement.checkForClose();
+      this.taskbarElement.checkForClose();
+    }
+
     if (this.closeCallback) this.closeCallback();
   }
 
