@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">My Personal Portfolio<br>Style inspired by Microsoft Windows 98<br>Version 4</p>
-<a href="http://jonzav.me/">View Website</a>
+<a href="https://jonzav.me/">View Website</a>
 
 ## 👨‍💻 Development
 
