@@ -119,7 +119,7 @@ async function openSnake() {
 function lostSnakeGame(e) {
   if (
     typeof e.data !== 'string' ||
-    e.origin !== 'http://127.0.0.1:5500' ||
+    e.origin.indexOf(window.location.hostname) === -1 ||
     e.data.indexOf('LOST_GAME') === -1
   )
     return;
