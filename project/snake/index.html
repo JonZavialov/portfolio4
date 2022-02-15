@@ -18,7 +18,8 @@
   <body style="margin: 0">
     <script>
       window.onload = () => {
-        initSnakeGame();
+        const url = new URLSearchParams(window.location.search);
+        initSnakeGame(url.get('tickSpeed'));
       };
     </script>
 

@@ -1,9 +1,10 @@
 /**
  * Initializes the game.
+ * @param  {number} tickSpeed - The speed of the game.
  */
-function initSnakeGame() {
+function initSnakeGame(tickSpeed) {
   // make a 17x17 array
-  const board = new Board(125);
+  const board = new Board(tickSpeed);
   const snake = new Snake(3, 8);
   const food = new Food(13, 8);
 
