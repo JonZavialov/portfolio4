@@ -126,8 +126,6 @@ class Board {
           cell.style.backgroundColor = 'green';
         else if (this.gameBoard[i][j].contents === 'food')
           cell.style.backgroundColor = 'red';
-        else if (this.gameBoard[i][j].contents === 'endscreen')
-          cell.style.backgroundColor = 'yellow';
       }
   }
 }
