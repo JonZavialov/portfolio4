@@ -2,8 +2,8 @@
  * Renders the navigation bar into the DOM.
  */
 function loadNav() {
-    const currentYear = new Date().getFullYear();
-    const navBar = `
+  const currentYear = new Date().getFullYear();
+  const navBar = `
         <li><a href="/?booted=true">Home</a></li>
         <ul>
             <li style="cursor: pointer;" onmouseup="openRecycleBin()">Recycle Bin</li>
@@ -29,5 +29,5 @@ function loadNav() {
         <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
         <p id="copyrightStatement">© ${currentYear} Jonathan Zavialov</p>
     `;
-    $('#treeDisplay').html(navBar);
+  $('#treeDisplay').html(navBar);
 }

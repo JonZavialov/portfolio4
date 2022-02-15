@@ -86,8 +86,8 @@ function optionsIn() {
   </div>`;
   $('#desktop').append(element);
 
-  const yLevel = $('.optionsStartMenu')[0].getBoundingClientRect().y
-  element.style.top = `${yLevel - 40}px`
+  const yLevel = $('.optionsStartMenu')[0].getBoundingClientRect().y;
+  element.style.top = `${yLevel - 40}px`;
 
   $(element).hover(
     () => {
