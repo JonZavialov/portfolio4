@@ -16,9 +16,8 @@
   margin: 0 auto;
 }
 
-.snakeHighScore {
+.snakeScore {
   position: absolute;
-  transform: translate(421px, 60px);
   font-size: 20px;
   text-align: center;
   vertical-align: middle;
@@ -30,8 +29,14 @@
   background-color: white;
 }
 
-.snakeHighScoreLabel {
+.snakeScoreLabel {
   position: absolute;
-  transform: translate(402px, 46px);
   font-size: 14px;
+}
+
+.snakeLostText {
+  position: absolute;
+  transform: translate(406px, 207px);
+  color: red;
+  font-size: 15px;
 }

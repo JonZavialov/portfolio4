@@ -97,7 +97,6 @@ class AudioRecorder extends Window {
     // eslint-disable-next-line no-restricted-syntax
     for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
-    // Percentage
     console.log((averageVolume * 100) / 127);
   }
 

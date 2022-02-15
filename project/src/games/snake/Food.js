@@ -14,7 +14,9 @@ class Food {
    * @param  {Snake} snake - The snake object.
    */
   eat(snake) {
-    // TODO: add score counter
+    const url = new URLSearchParams(window.location.search);
+    window.parent.postMessage(`ATE_APPLE ${url.get('id')}`);
+
     this.x = Math.floor(Math.random() * 16);
     this.y = Math.floor(Math.random() * 16);
     for (let i = 0; i < snake.body.length; i += 1)

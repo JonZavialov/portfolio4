@@ -7,6 +7,7 @@ class Snake extends Window {
       this.closeSnake()
     );
     this.gameId = Math.random();
+    this.length = 3;
     this.highScore = 0;
     this.generateElement(this.getHTML());
   }
@@ -30,17 +31,49 @@ class Snake extends Window {
     resetButton.onclick = () => this.reset();
     container.append(resetButton);
 
+    const scoreLabel = document.createElement('p');
+    scoreLabel.className = 'snakeScoreLabel';
+    scoreLabel.innerText = 'Score:';
+    scoreLabel.style.transform = 'translate(417px, 32px)';
+    container.append(scoreLabel);
+
+    const score = document.createElement('p');
+    score.className = 'snakeScore';
+    score.id = 'snakeScore';
+    score.innerText = this.length - 3;
+    score.style.transform = 'translate(421px, 45px)';
+    container.append(score);
+
     const highScoreLabel = document.createElement('p');
-    highScoreLabel.className = 'snakeHighScoreLabel';
+    highScoreLabel.className = 'snakeScoreLabel';
     highScoreLabel.innerText = 'High Score:';
+    highScoreLabel.style.transform = 'translate(402px, 94px)';
     container.append(highScoreLabel);
 
     const highScore = document.createElement('p');
-    highScore.className = 'snakeHighScore';
+    highScore.className = 'snakeScore';
+    highScore.id = 'snakeHighScore';
     highScore.innerText = this.highScore;
+    highScore.style.transform = 'translate(421px,109px)';
     container.append(highScore);
 
+    const lostText = document.createElement('p');
+    lostText.className = 'snakeLostText';
+    container.append(lostText);
+
     return container;
+  }
+
+  /**
+   * Activated when the user eats an apple.
+   */
+  ateApple() {
+    this.length += 1;
+    $(this.elem).find('#snakeScore')[0].innerText = this.length - 3;
+    if (this.length - 3 > this.highScore) {
+      this.highScore = this.length - 3;
+      $(this.elem).find('#snakeHighScore').text(this.highScore);
+    }
   }
 
   /**
@@ -49,6 +82,7 @@ class Snake extends Window {
   reset() {
     $(this.elem).find('.snakeButton')[0].style.boxShadow =
       'rgb(255 255 255) -1px -1px inset, rgb(10 10 10) 1px 1px inset, rgb(223 223 223) -2px -2px inset, rgb(128 128 128) 2px 2px inset';
+    $(this.elem).find('.snakeLostText')[0].innerText = '';
 
     $(this.elem).find('iframe')[0].contentWindow.location.reload();
     this.focusGame();
@@ -77,14 +111,12 @@ class Snake extends Window {
 
   /**
    * Activated when the user loses the game.
-   * @param  {number} length - The length of the snake.
    */
-  lostGame(length) {
+  lostGame() {
+    this.length = 3;
     $(this.elem).find('.snakeButton')[0].style.boxShadow = null;
-
-    if (length <= this.highScore) return;
-    this.highScore = length - 3;
-    $(this.elem).find('.snakeHighScore').text(this.highScore);
+    $(this.elem).find('#snakeScore')[0].innerText = this.length - 3;
+    $(this.elem).find('.snakeLostText')[0].innerText = 'You lost!';
   }
 }
 
@@ -116,16 +148,16 @@ async function openSnake() {
  * Activated when the user loses a snake game.
  * @param  {Event} e - The event.
  */
-function lostSnakeGame(e) {
+function snakeEvent(e) {
   if (
     typeof e.data !== 'string' ||
-    e.origin.indexOf(window.location.hostname) === -1 ||
-    e.data.indexOf('LOST_GAME') === -1
+    e.origin.indexOf(window.location.hostname) === -1
   )
     return;
 
   snakeList.forEach((snakeWindow) => {
     if (snakeWindow.id.toString() === e.data.split(' ')[1])
-      snakeWindow.obj.lostGame(e.data.split(' ')[2]);
+      if (e.data.indexOf('LOST_GAME') !== -1) snakeWindow.obj.lostGame();
+      else if (e.data.indexOf('ATE_APPLE') !== -1) snakeWindow.obj.ateApple();
   });
 }
