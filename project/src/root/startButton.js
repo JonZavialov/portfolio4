@@ -84,7 +84,11 @@ function optionsIn() {
       <p id="startMenuPairText">Close All Windows</p>
     </div>
   </div>`;
-  $('#middleSection').append(element);
+  $('#desktop').append(element);
+
+  const yLevel = $('.optionsStartMenu')[0].getBoundingClientRect().y
+  element.style.top = `${yLevel - 40}px`
+
   $(element).hover(
     () => {
       hover = true;

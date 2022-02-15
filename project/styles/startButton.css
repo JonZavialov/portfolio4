@@ -48,5 +48,6 @@
 
 #optionsMenu {
   width: 114px;
-  transform: translate(206px, 257px);
+  position: absolute;
+  transform: translateX(206px)
 }
