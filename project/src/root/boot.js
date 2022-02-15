@@ -53,6 +53,7 @@ async function boot() {
   await sleep(2000);
   bootScreen.innerHTML = '';
   let i = 0;
+
   function myLoop() {
     setTimeout(async () => {
       bootScreen.innerHTML += bootList[i];
@@ -70,14 +71,4 @@ async function boot() {
   }
 
   myLoop();
-}
-
-/**
- * Sleeps for the given number of milliseconds.
- * @param  {number} ms - The number of milliseconds to sleep.
- */
-async function sleep(ms) {
-  return new Promise((resolve, reject) => {
-    setTimeout(async () => resolve(), ms);
-  });
 }
