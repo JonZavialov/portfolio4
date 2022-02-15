@@ -11,8 +11,14 @@ icons by Alex Meub
 font by int10h
     https://int10h.org/oldschool-pc-fonts/
 
-pdf viewer by Project Jupyter
-    https://nbviewer.org
-
 holidays API by Nate Dimick
     https://national-api-day.herokuapp.com/
+
+PDF.js by Mozilla
+    https://mozilla.github.io/pdf.js/
+
+Random Word API by RazorSh4rk
+    http://random-word-api.herokuapp.com/home
+
+Free Dictionary API by meetDeveloper
+    https://dictionaryapi.dev/
