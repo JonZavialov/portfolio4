@@ -7,7 +7,8 @@ class AudioRecorder extends Window {
       'Audio Recorder',
       'audioRecorder',
       true,
-      'assets/images/icons/mic.png'
+      'assets/images/icons/mic.png',
+      () => this.closeAudioRecorder()
     );
 
     this.hasMicPerms = false;
@@ -111,6 +112,14 @@ class AudioRecorder extends Window {
       });
       this.gotMicPerms();
     }, 1000);
+  }
+
+  /**
+   * Closes the window and stops all media tracks.
+   */
+  closeAudioRecorder() {
+    this.stream.getTracks().forEach(track => track.stop());
+    this.close()
   }
 }
 
