@@ -10,7 +10,7 @@ class AudioRecorder extends Window {
       'assets/images/icons/mic.png'
     );
 
-    this.hasMicPerms = false
+    this.hasMicPerms = false;
     this.generateElement(this.getHTML());
     this.getMicPermissions();
   }
@@ -36,10 +36,10 @@ class AudioRecorder extends Window {
    * Called when the user allows the website to use the microphone.
    */
   gotMicPerms() {
-    if (this.hasMicPerms) return
+    if (this.hasMicPerms) return;
     clearInterval(this.permsInterval);
-    this.hasMicPerms = true
-    this.setRecorder()
+    this.hasMicPerms = true;
+    this.setRecorder();
   }
 
   /**
@@ -51,7 +51,7 @@ class AudioRecorder extends Window {
     const mediaRecorder = new MediaRecorder(this.stream);
     mediaRecorder.ondataavailable = (e) => {
       console.log(e.data);
-    }
+    };
 
     const recordButton = document.createElement('button');
     recordButton.className = 'recordButton';
@@ -59,14 +59,14 @@ class AudioRecorder extends Window {
     recordButton.onclick = () => {
       if (mediaRecorder.state === 'inactive') {
         mediaRecorder.start();
-        this.initVolMeter()
+        this.initVolMeter();
         recordButton.innerHTML = 'Stop';
       } else {
         mediaRecorder.stop();
-        clearInterval(this.volumeInterval)
+        clearInterval(this.volumeInterval);
         recordButton.innerHTML = 'Record';
       }
-    }
+    };
     $(this.elem).append(recordButton);
   }
 
@@ -94,12 +94,12 @@ class AudioRecorder extends Window {
     const volumes = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(volumes);
     let volumeSum = 0;
-    for (const volume of volumes)
-      volumeSum += volume;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
     // Percentage
-    console.log(averageVolume * 100 / 127)
-  };
+    console.log((averageVolume * 100) / 127);
+  }
 
   /**
    * Sets a loop that checks for microphone permissions every second.
@@ -108,7 +108,7 @@ class AudioRecorder extends Window {
     this.permsInterval = setInterval(async () => {
       // Promise is returned when the user grants permissions.
       this.stream = await navigator.mediaDevices.getUserMedia({
-        audio: true
+        audio: true,
       });
       this.gotMicPerms();
     }, 1000);
