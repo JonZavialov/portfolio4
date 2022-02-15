@@ -81,3 +81,10 @@ body {
 button {
   cursor: url('/assets/images/hand.cur'), auto;
 }
+
+#copyrightStatement {
+  font-size: 11px;
+  position: absolute;
+  bottom: 15px;
+  color: gray;
+}
