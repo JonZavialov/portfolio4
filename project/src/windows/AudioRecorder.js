@@ -126,7 +126,13 @@ class AudioRecorder extends Window {
     analyser.smoothingTimeConstant = 0.4;
     audioSource.connect(analyser);
 
-    this.volumeInterval = setInterval(() => this.volumeCallback(analyser), 100);
+    this.volumeInterval = setInterval(() => this.volumeCallback(analyser), 10);
+
+    const meter = document.createElement('meter');
+    meter.id = "volumeMeter";
+    meter.max = 127
+    meter.value = 0
+    $(this.elem).find('.window-body').append(meter);
   }
 
   /**
@@ -140,7 +146,7 @@ class AudioRecorder extends Window {
     // eslint-disable-next-line no-restricted-syntax
     for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
-    console.log((averageVolume * 100) / 127);
+    $(this.elem).find("#volumeMeter").val((averageVolume * 100) / 127);
   }
 
   /**
