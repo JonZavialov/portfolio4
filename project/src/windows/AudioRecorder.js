@@ -47,11 +47,13 @@ class AudioRecorder extends Window {
    * Sets the window to record mode.
    */
   setRecorder() {
-    $(this.elem).find('.requestMicPermsPara').remove();
+    $(this.elem).find('.requestMicPermsPara').parent().remove();
 
     const mediaRecorder = new MediaRecorder(this.stream);
+    const chunks = []
     mediaRecorder.ondataavailable = (e) => {
-      console.log(e.data);
+      chunks.push(e.data)
+      this.saveData(chunks)
     };
 
     const recordButton = document.createElement('button');
@@ -68,7 +70,47 @@ class AudioRecorder extends Window {
         recordButton.innerHTML = 'Record';
       }
     };
-    $(this.elem).append(recordButton);
+    $(this.elem).find('.window-body').append(recordButton);
+  }
+
+  /**
+   * Takes the data from the MediaRecorded and converts it to a saveable format.
+   * @param  {Blob[]} chunks - The audio data.
+   */
+  saveData(chunks) {
+    const blob = new Blob(chunks, {
+      'type': 'audio/ogg; codecs=opus'
+    });
+    const audioURL = window.URL.createObjectURL(blob);
+
+    const audioElem = document.createElement('audio')
+    audioElem.src = audioURL
+    audioElem.controls = true
+    audioElem.preload = 'auto'
+    this.saveAudio(audioURL)
+  }
+
+  /**
+   * Downloads the audio from the provided url.
+   * @param  {string} url - The url of the audio file.
+   */
+  saveAudio(url) {
+    const pom = document.createElement('a');
+    pom.setAttribute(
+      'href',
+      url
+    );
+    pom.setAttribute(
+      'download',
+      'audio.ogg'
+    );
+
+    pom.style.display = 'none';
+    document.body.appendChild(pom);
+
+    pom.click();
+
+    document.body.removeChild(pom);
   }
 
   /**
