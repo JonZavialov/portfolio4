@@ -160,8 +160,8 @@ class AudioRecorder extends Window {
    * Closes the window and stops all media tracks.
    */
   closeAudioRecorder() {
-    this.stream.getTracks().forEach(track => track.stop());
-    this.close()
+    this.stream.getTracks().forEach((track) => track.stop());
+    this.close();
   }
 }
 
