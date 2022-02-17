@@ -3,6 +3,7 @@ class TextEditor extends Window {
    * The text editor app.
    * @param {string} [preLoadedText=''] - The text to pre-load into the text editor.
    * @param {string} [altName=null] - An alternate name for the text editor.
+   * @constructor
    */
   constructor(preLoadedText = '', altName = null) {
     super(

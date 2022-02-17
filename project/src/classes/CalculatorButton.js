@@ -4,6 +4,7 @@ class CalculatorButton {
    * @param  {string} content - The content of the button.
    * @param  {string} type - The type of the button.
    * @param  {Calculator} parentClass - The class of the calculator that the button belongs to.
+   * @constructor
    */
   constructor(content, type, parentClass) {
     this.content = content;

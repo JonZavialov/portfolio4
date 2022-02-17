@@ -1,6 +1,7 @@
 class MyProjects extends Window {
   /**
    * The My Projects app.
+   * @constructor
    */
   constructor() {
     super(

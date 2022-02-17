@@ -1,6 +1,7 @@
 class Calendar extends Window {
   /**
    * The Calendar app.
+   * @constructor
    */
   constructor() {
     super('Calendar', 'calendar', true, 'assets/images/icons/calendar.png');
@@ -65,8 +66,7 @@ class Calendar extends Window {
     $(this.elem)
       .find('#days')
       .find('li')
-      .each((i) => {
-        const indexElem = $(this.elem).find('#days').find('li')[i];
+      .each((_i, indexElem) => {
         if (indexElem !== elem) indexElem.style.backgroundColor = null;
       });
   }
@@ -114,8 +114,7 @@ class Calendar extends Window {
       $(this.elem)
       .find('#days')
       .find('li')
-      .each((i) => {
-        const indexElem = $(this.elem).find('#days').find('li')[i];
+      .each((_i, indexElem) => {
         if (indexElem.innerHTML === day.toString())
           this.highlightDay(indexElem);
       });
@@ -181,8 +180,7 @@ class Calendar extends Window {
     $(this.elem)
       .find('#days')
       .find('li')
-      .each((i) => {
-        const elem = $(this.elem).find('#days').find('li')[i];
+      .each((_i, elem) => {
         if (elem.innerHTML === '&nbsp;') return;
         elem.onclick = () => this.clickDay(elem.innerHTML, month, year, elem);
       });

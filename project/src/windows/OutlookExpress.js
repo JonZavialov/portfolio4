@@ -3,6 +3,7 @@ class OutlookExpress extends Window {
    * The Outlook Express App.
    * @param {string} [email='DEFAULT'] - The email to display.
    * @param {boolean} [center=false] - Whether or not the window should be centered.
+   * @constructor
    */
   constructor(email = 'DEFAULT', center = false) {
     super(
@@ -84,8 +85,7 @@ class OutlookExpress extends Window {
    */
   center() {
     $(this.elem).css({
-      left:
-        $('#desktop').width() / 2 -
+      left: $('#desktop').width() / 2 -
         $(this.elem).width() / 2 +
         window.innerWidth * 0.15,
       top: $('#desktop').height() / 2 - $(this.elem).height() / 2,

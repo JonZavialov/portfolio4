@@ -8,6 +8,7 @@ class Error extends Window {
    * @param  {string} [altOKText='OK'] - Alternate text that will be displayed on the OK button.
    * @param  {function} [cancelFunction=null] - The function that will be called when the Cancel button is clicked.
    * @param  {function} [closeFunction=null] - The function that will be called when the error is closed. If null, the default close function will be used.
+   * @constructor
    */
   constructor(
     displayName,
@@ -49,9 +50,9 @@ class Error extends Window {
 
     const cancelButton = document.createElement('button');
     cancelButton.innerHTML = 'Cancel';
-    cancelButton.onclick = this.cancelFunction
-      ? () => this.cancelFunction()
-      : () => this.close();
+    cancelButton.onclick = this.cancelFunction ?
+      () => this.cancelFunction() :
+      () => this.close();
 
     footer.append(cancelButton);
 

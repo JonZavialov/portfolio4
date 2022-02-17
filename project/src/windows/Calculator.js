@@ -1,6 +1,7 @@
 class Calculator extends Window {
   /**
    * The calculator app.
+   * @constructor
    */
   constructor() {
     super(
@@ -10,19 +11,42 @@ class Calculator extends Window {
       'assets/images/icons/calculator.png'
     );
 
-    this.MAINBUTTONS = [
-      { '7': 'number' },
-      { '8': 'number' },
-      { '9': 'number' },
-      { '/': 'operator' },
-      { '4': 'number' },
-      { '5': 'number' },
-      { '6': 'number' },
-      { '*': 'operator' },
-      { '1': 'number' },
-      { '2': 'number' },
-      { '3': 'number' },
-      { '–': 'operator' },
+    this.MAINBUTTONS = [{
+        '7': 'number'
+      },
+      {
+        '8': 'number'
+      },
+      {
+        '9': 'number'
+      },
+      {
+        '/': 'operator'
+      },
+      {
+        '4': 'number'
+      },
+      {
+        '5': 'number'
+      },
+      {
+        '6': 'number'
+      },
+      {
+        '*': 'operator'
+      },
+      {
+        '1': 'number'
+      },
+      {
+        '2': 'number'
+      },
+      {
+        '3': 'number'
+      },
+      {
+        '–': 'operator'
+      },
     ];
 
     this.createCalculator();

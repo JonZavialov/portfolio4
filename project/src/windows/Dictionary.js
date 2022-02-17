@@ -1,6 +1,7 @@
 class Dictionary extends Window {
   /**
    * The Dictionary app.
+   * @constructor
    */
   constructor() {
     super(

@@ -1,6 +1,7 @@
 class RecycleBin extends Folder {
   /**
    * The Recycle Bin folder.
+   * @constructor
    */
   constructor() {
     super('Recycle Bin', 'recycleBin', true, 'assets/images/icons/recycle.png');

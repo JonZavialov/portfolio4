@@ -1,4 +1,9 @@
 class FileExplorer extends Folder {
+  /**
+   * The File Explorer app.
+   * @param  {function} callback - The callback to run when the window is opened.
+   * @constructor
+   */
   constructor(callback) {
     super(
       'File Explorer',
@@ -64,6 +69,9 @@ class FileExplorer extends Folder {
   }
 }
 
+/**
+ * Opens the file explorer window.
+ */
 function openFileExplorer() {
   const fileExplorer = new FileExplorer(() => fileExplorer.render());
 }

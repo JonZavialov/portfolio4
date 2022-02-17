@@ -25,8 +25,7 @@ class PdfViewer extends Window {
    * @returns {HTMLElement} - The DOM element of the window.
    */
   getInnerHTML() {
-    const controlButtons = [
-      {
+    const controlButtons = [{
         image: '/assets/images/backArrow.png',
         alt: 'Previous Page',
         transform: 'translate(8px, -16px)',
@@ -142,9 +141,9 @@ class PdfViewer extends Window {
       // eslint-disable-next-line no-underscore-dangle
       this.defaultState.currentPage !== this.defaultState.pdf._pdfInfo.numPages
     )
-      buttons.each((index) => {
-        buttons[index].removeAttribute('disabled');
-        buttons[index].style.boxShadow = null;
+      buttons.each((_i, button) => {
+        button.removeAttribute('disabled');
+        button.style.boxShadow = null;
       });
   }
 

@@ -1,6 +1,7 @@
 class Snake extends Window {
   /**
    * The Snake Game app.
+   * @constructor
    */
   constructor() {
     super('Snake', 'snake', true, 'assets/images/icons/joystick.png', () =>

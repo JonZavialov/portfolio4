@@ -1,6 +1,7 @@
 class AudioRecorder extends Window {
   /**
    * The Audio Recorder window.
+   * @constructor
    */
   constructor() {
     super(
@@ -118,7 +119,6 @@ class AudioRecorder extends Window {
     clearInterval(this.volumeInterval);
     $(this.elem).find('#recordLabel').html('');
 
-    // TODO: Refactor every .each loop
     $(this.elem)
       .find('meter').each((_i, elem) => $(elem).val(0))
   }

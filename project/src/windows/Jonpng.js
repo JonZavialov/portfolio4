@@ -1,6 +1,7 @@
 class Jonpng extends Window {
   /**
    * The Jonpng app.
+   * @constructor
    */
   constructor() {
     super('jon.png', 'Jonpng', true, 'assets/images/icons/image.png');
