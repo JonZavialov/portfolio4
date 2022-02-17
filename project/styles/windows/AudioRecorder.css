@@ -20,3 +20,29 @@
 #micTimer {
   font-size: 20px;
 }
+
+#audioList {
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+  width: 200px;
+  height: 117px;
+  background: white;
+  transform: translate(15px, 10px);
+  overflow-y: scroll;
+  text-align: left;
+}
+
+.audioListItem:hover {
+  background-color: lightgray;
+}
+
+.audioListItem {
+  margin: 4px;
+  padding: 2px;
+}
+
+#recordLabel {
+  margin: 0;
+  position: absolute;
+  transform: translate(23px, -50px);
+}

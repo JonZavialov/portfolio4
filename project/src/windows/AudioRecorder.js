@@ -13,6 +13,7 @@ class AudioRecorder extends Window {
 
     this.hasMicPerms = false;
     this.timer = 0;
+    this.recordedAudios = 0
     this.generateElement(this.getHTML());
     this.getMicPermissions();
   }
@@ -62,19 +63,26 @@ class AudioRecorder extends Window {
     timer.innerHTML = '0:00';
     $(this.elem).find('.window-body').append(timer);
 
+    const recordLabel = document.createElement('p');
+    recordLabel.id = 'recordLabel';
+    $(this.elem).find('.window-body').append(recordLabel);
+
     const recordButton = document.createElement('button');
     recordButton.className = 'recordButton';
     recordButton.innerHTML = 'Record';
     recordButton.onclick = () => {
       if (mediaRecorder.state === 'inactive') {
+        // TODO: make this a function
         mediaRecorder.start();
         this.initVolMeter();
         this.initTimer();
+        $(this.elem).find('#recordLabel').html('🔴REC');
         recordButton.innerHTML = 'Stop';
       } else {
         mediaRecorder.stop();
         this.stopTimer();
         clearInterval(this.volumeInterval);
+        $(this.elem).find('#recordLabel').html('');
         recordButton.innerHTML = 'Record';
       }
     };
@@ -87,7 +95,13 @@ class AudioRecorder extends Window {
     meter.low = 30;
     meter.high = 60;
     meter.optimum = 80;
-    $(this.elem).find('.window-body').append(meter);
+    const secondMeter = meter.cloneNode()
+    secondMeter.style.transform = 'translate(-250px, 45px) rotate(-90deg)';
+    $(this.elem).find('.window-body').append(meter, secondMeter);
+
+    const audioList = document.createElement('div');
+    audioList.id = 'audioList';
+    $(this.elem).find('.window-body').append(audioList);
   }
 
   /**
@@ -99,10 +113,25 @@ class AudioRecorder extends Window {
       'type': 'audio/ogg; codecs=opus',
     });
     const audioURL = window.URL.createObjectURL(blob);
+    this.addAudioToList(audioURL);
+  }
 
-    const audioElem = document.createElement('audio');
-    audioElem.src = audioURL;
-    // this.saveAudio(audioURL);
+  /**
+   * Takes the converted audio and adds it to the audio list.
+   * @param  {string} url - The url of the audio file.
+   */
+  addAudioToList(url) {
+    this.recordedAudios += 1
+
+    const name = `Audio ${this.recordedAudios}`
+
+    const listItem = document.createElement('p');
+    listItem.className = 'audioListItem';
+    listItem.innerHTML = name
+    listItem.onclick = () => this.saveAudio(url, name);
+    $('#audioList').append(listItem);
+
+    $(this.elem).find("#audioList").append(listItem);
   }
 
   initTimer() {
@@ -126,10 +155,10 @@ class AudioRecorder extends Window {
    * Downloads the audio from the provided url.
    * @param  {string} url - The url of the audio file.
    */
-  saveAudio(url) {
+  saveAudio(url, name) {
     const pom = document.createElement('a');
     pom.setAttribute('href', url);
-    pom.setAttribute('download', 'audio.ogg');
+    pom.setAttribute('download', `${name}.ogg`);
 
     pom.style.display = 'none';
     document.body.appendChild(pom);
@@ -167,8 +196,7 @@ class AudioRecorder extends Window {
     for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
     $(this.elem)
-      .find('#volumeMeter')
-      .val((averageVolume * 100) / 127);
+      .find('meter').each((_i, elem) => $(elem).val((averageVolume * 100) / 127))
   }
 
   /**

@@ -112,13 +112,13 @@ class Calendar extends Window {
     if (elem) this.highlightDay(elem);
     else
       $(this.elem)
-        .find('#days')
-        .find('li')
-        .each((i) => {
-          const indexElem = $(this.elem).find('#days').find('li')[i];
-          if (indexElem.innerHTML === day.toString())
-            this.highlightDay(indexElem);
-        });
+      .find('#days')
+      .find('li')
+      .each((i) => {
+        const indexElem = $(this.elem).find('#days').find('li')[i];
+        if (indexElem.innerHTML === day.toString())
+          this.highlightDay(indexElem);
+      });
 
     const formattedMonth = this.convert(month, 'month');
 
@@ -152,7 +152,10 @@ class Calendar extends Window {
   updateCalendar(year, month) {
     this.year = year;
     this.month = month;
-    const { firstDay, daysInMonth } = this.getMonthInfo(year, month);
+    const {
+      firstDay,
+      daysInMonth
+    } = this.getMonthInfo(year, month);
     let dates = ``;
     for (let i = 0; i < firstDay; i += 1) dates += `<li>&nbsp</li>`;
 
@@ -302,7 +305,7 @@ class Calendar extends Window {
     setInterval(() => {
       $(this.elem)
         .find('.internationalTimeDisplay')
-        .each((i, elem) => {
+        .each((_i, elem) => {
           elem.innerHTML = times[elem.id].formatter.format(new Date());
         });
     }, 1000);
@@ -320,8 +323,7 @@ class Calendar extends Window {
     const hours = d.getHours();
 
     // Create an object with each hand and it's angle in degrees
-    this.hands = [
-      {
+    this.hands = [{
         hand: 'hours',
         angle: hours * 30 + minutes / 2,
       },
