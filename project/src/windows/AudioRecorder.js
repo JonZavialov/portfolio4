@@ -50,10 +50,10 @@ class AudioRecorder extends Window {
     $(this.elem).find('.requestMicPermsPara').parent().remove();
 
     const mediaRecorder = new MediaRecorder(this.stream);
-    const chunks = []
+    const chunks = [];
     mediaRecorder.ondataavailable = (e) => {
-      chunks.push(e.data)
-      this.saveData(chunks)
+      chunks.push(e.data);
+      this.saveData(chunks);
     };
 
     const recordButton = document.createElement('button');
@@ -79,15 +79,15 @@ class AudioRecorder extends Window {
    */
   saveData(chunks) {
     const blob = new Blob(chunks, {
-      'type': 'audio/ogg; codecs=opus'
+      'type': 'audio/ogg; codecs=opus',
     });
     const audioURL = window.URL.createObjectURL(blob);
 
-    const audioElem = document.createElement('audio')
-    audioElem.src = audioURL
-    audioElem.controls = true
-    audioElem.preload = 'auto'
-    this.saveAudio(audioURL)
+    const audioElem = document.createElement('audio');
+    audioElem.src = audioURL;
+    audioElem.controls = true;
+    audioElem.preload = 'auto';
+    this.saveAudio(audioURL);
   }
 
   /**
@@ -96,14 +96,8 @@ class AudioRecorder extends Window {
    */
   saveAudio(url) {
     const pom = document.createElement('a');
-    pom.setAttribute(
-      'href',
-      url
-    );
-    pom.setAttribute(
-      'download',
-      'audio.ogg'
-    );
+    pom.setAttribute('href', url);
+    pom.setAttribute('download', 'audio.ogg');
 
     pom.style.display = 'none';
     document.body.appendChild(pom);
@@ -129,9 +123,9 @@ class AudioRecorder extends Window {
     this.volumeInterval = setInterval(() => this.volumeCallback(analyser), 10);
 
     const meter = document.createElement('meter');
-    meter.id = "volumeMeter";
-    meter.max = 127
-    meter.value = 0
+    meter.id = 'volumeMeter';
+    meter.max = 127;
+    meter.value = 0;
     $(this.elem).find('.window-body').append(meter);
   }
 
@@ -146,7 +140,9 @@ class AudioRecorder extends Window {
     // eslint-disable-next-line no-restricted-syntax
     for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
-    $(this.elem).find("#volumeMeter").val((averageVolume * 100) / 127);
+    $(this.elem)
+      .find('#volumeMeter')
+      .val((averageVolume * 100) / 127);
   }
 
   /**
