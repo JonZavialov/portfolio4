@@ -142,15 +142,24 @@ class AudioRecorder extends Window {
   addAudioToList(url) {
     this.recordedAudios += 1
 
+    const minutes = Math.floor(this.timer / 60);
+    const seconds = this.timer % 60;
     const name = `Audio ${this.recordedAudios}`
 
-    const listItem = document.createElement('p');
+    const listItem = document.createElement('div');
     listItem.className = 'audioListItem';
     listItem.innerHTML = name
     listItem.onclick = () => this.saveAudio(url, name);
-    $('#audioList').append(listItem);
+
+    const time = document.createElement('p');
+    time.className = 'audioListTime';
+    time.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    listItem.append(time);
+
+    $(this.elem).find('#audioList').append(listItem);
 
     $(this.elem).find("#audioList").append(listItem);
+    this.timer = 0;
   }
 
   /**
@@ -167,15 +176,14 @@ class AudioRecorder extends Window {
     this.timer += 1;
     const minutes = Math.floor(this.timer / 60);
     const seconds = this.timer % 60;
-    $('#micTimer').html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+    $(this.elem).find('#micTimer').html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
   }
 
   /**
    * Stops the recording timer.
    */
   stopTimer() {
-    this.timer = 0;
-    $('#micTimer').html('0:00');
+    $(this.elem).find('#micTimer').html('0:00');
     clearInterval(this.timerInterval);
   }
 

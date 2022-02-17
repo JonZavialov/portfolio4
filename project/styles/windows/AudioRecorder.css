@@ -39,6 +39,13 @@
 .audioListItem {
   margin: 4px;
   padding: 2px;
+  display: flex;
+}
+
+.audioListTime {
+  margin: 0;
+  position: absolute;
+  right: 5px;
 }
 
 #recordLabel {
