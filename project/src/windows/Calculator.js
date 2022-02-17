@@ -11,41 +11,42 @@ class Calculator extends Window {
       'assets/images/icons/calculator.png'
     );
 
-    this.MAINBUTTONS = [{
-        '7': 'number'
+    this.MAINBUTTONS = [
+      {
+        '7': 'number',
       },
       {
-        '8': 'number'
+        '8': 'number',
       },
       {
-        '9': 'number'
+        '9': 'number',
       },
       {
-        '/': 'operator'
+        '/': 'operator',
       },
       {
-        '4': 'number'
+        '4': 'number',
       },
       {
-        '5': 'number'
+        '5': 'number',
       },
       {
-        '6': 'number'
+        '6': 'number',
       },
       {
-        '*': 'operator'
+        '*': 'operator',
       },
       {
-        '1': 'number'
+        '1': 'number',
       },
       {
-        '2': 'number'
+        '2': 'number',
       },
       {
-        '3': 'number'
+        '3': 'number',
       },
       {
-        '–': 'operator'
+        '–': 'operator',
       },
     ];
 

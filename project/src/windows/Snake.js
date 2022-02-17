@@ -31,10 +31,11 @@ class Snake extends Window {
     speedSelector.innerHTML = `
     <label for="range23">Slow</label> 
     <input id="range23" type="range" min="0" max="249" value="125" />
-    <label for="range24">Fast</label>`
+    <label for="range24">Fast</label>`;
     speedSelector.id = 'snakeSpeedSelector';
-    speedSelector.className = 'field-row'
-    speedSelector.onchange = () => this.changeSpeed(speedSelector.children[1].value);
+    speedSelector.className = 'field-row';
+    speedSelector.onchange = () =>
+      this.changeSpeed(speedSelector.children[1].value);
     container.append(speedSelector);
 
     const resetButton = document.createElement('button');
@@ -81,8 +82,13 @@ class Snake extends Window {
    * @param  {string} speed - The amount of ms a tick takes.
    */
   changeSpeed(speed) {
-    this.tickSpeed = 250 - parseInt(speed)
-    $(this.elem).find('iframe').attr('src', `/snake/index.html?id=${this.gameId}&tickSpeed=${this.tickSpeed}`)
+    this.tickSpeed = 250 - parseInt(speed);
+    $(this.elem)
+      .find('iframe')
+      .attr(
+        'src',
+        `/snake/index.html?id=${this.gameId}&tickSpeed=${this.tickSpeed}`
+      );
     this.focusGame();
   }
 

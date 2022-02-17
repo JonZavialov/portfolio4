@@ -14,7 +14,7 @@ class AudioRecorder extends Window {
 
     this.hasMicPerms = false;
     this.timer = 0;
-    this.recordedAudios = 0
+    this.recordedAudios = 0;
     this.generateElement(this.getHTML());
     this.getMicPermissions();
   }
@@ -89,7 +89,7 @@ class AudioRecorder extends Window {
     meter.low = 30;
     meter.high = 60;
     meter.optimum = 80;
-    const secondMeter = meter.cloneNode()
+    const secondMeter = meter.cloneNode();
     secondMeter.style.transform = 'translate(-250px, 45px) rotate(-90deg)';
     $(this.elem).find('.window-body').append(meter, secondMeter);
 
@@ -120,7 +120,8 @@ class AudioRecorder extends Window {
     $(this.elem).find('#recordLabel').html('');
 
     $(this.elem)
-      .find('meter').each((_i, elem) => $(elem).val(0))
+      .find('meter')
+      .each((_i, elem) => $(elem).val(0));
   }
 
   /**
@@ -140,15 +141,15 @@ class AudioRecorder extends Window {
    * @param  {string} url - The url of the audio file.
    */
   addAudioToList(url) {
-    this.recordedAudios += 1
+    this.recordedAudios += 1;
 
     const minutes = Math.floor(this.timer / 60);
     const seconds = this.timer % 60;
-    const name = `Audio ${this.recordedAudios}`
+    const name = `Audio ${this.recordedAudios}`;
 
     const listItem = document.createElement('div');
     listItem.className = 'audioListItem';
-    listItem.innerHTML = name
+    listItem.innerHTML = name;
     listItem.onclick = () => this.saveAudio(url, name);
 
     const time = document.createElement('p');
@@ -158,7 +159,7 @@ class AudioRecorder extends Window {
 
     $(this.elem).find('#audioList').append(listItem);
 
-    $(this.elem).find("#audioList").append(listItem);
+    $(this.elem).find('#audioList').append(listItem);
     this.timer = 0;
   }
 
@@ -176,7 +177,9 @@ class AudioRecorder extends Window {
     this.timer += 1;
     const minutes = Math.floor(this.timer / 60);
     const seconds = this.timer % 60;
-    $(this.elem).find('#micTimer').html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+    $(this.elem)
+      .find('#micTimer')
+      .html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
   }
 
   /**
@@ -232,7 +235,8 @@ class AudioRecorder extends Window {
     for (const volume of volumes) volumeSum += volume;
     const averageVolume = volumeSum / volumes.length;
     $(this.elem)
-      .find('meter').each((_i, elem) => $(elem).val((averageVolume * 100) / 127))
+      .find('meter')
+      .each((_i, elem) => $(elem).val((averageVolume * 100) / 127));
   }
 
   /**

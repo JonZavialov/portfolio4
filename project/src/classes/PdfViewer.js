@@ -25,7 +25,8 @@ class PdfViewer extends Window {
    * @returns {HTMLElement} - The DOM element of the window.
    */
   getInnerHTML() {
-    const controlButtons = [{
+    const controlButtons = [
+      {
         image: '/assets/images/backArrow.png',
         alt: 'Previous Page',
         transform: 'translate(8px, -16px)',

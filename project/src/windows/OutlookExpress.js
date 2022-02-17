@@ -85,7 +85,8 @@ class OutlookExpress extends Window {
    */
   center() {
     $(this.elem).css({
-      left: $('#desktop').width() / 2 -
+      left:
+        $('#desktop').width() / 2 -
         $(this.elem).width() / 2 +
         window.innerWidth * 0.15,
       top: $('#desktop').height() / 2 - $(this.elem).height() / 2,
