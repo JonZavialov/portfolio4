@@ -12,6 +12,7 @@ class AudioRecorder extends Window {
     );
 
     this.hasMicPerms = false;
+    this.timer = 0;
     this.generateElement(this.getHTML());
     this.getMicPermissions();
   }
@@ -56,6 +57,11 @@ class AudioRecorder extends Window {
       this.convertData(chunks);
     };
 
+    const timer = document.createElement('p');
+    timer.id = 'micTimer';
+    timer.innerHTML = '0:00';
+    $(this.elem).find('.window-body').append(timer);
+
     const recordButton = document.createElement('button');
     recordButton.className = 'recordButton';
     recordButton.innerHTML = 'Record';
@@ -63,14 +69,25 @@ class AudioRecorder extends Window {
       if (mediaRecorder.state === 'inactive') {
         mediaRecorder.start();
         this.initVolMeter();
+        this.initTimer();
         recordButton.innerHTML = 'Stop';
       } else {
         mediaRecorder.stop();
+        this.stopTimer();
         clearInterval(this.volumeInterval);
         recordButton.innerHTML = 'Record';
       }
     };
     $(this.elem).find('.window-body').append(recordButton);
+
+    const meter = document.createElement('meter');
+    meter.id = 'volumeMeter';
+    meter.max = 100;
+    meter.value = 0;
+    meter.low = 30;
+    meter.high = 60;
+    meter.optimum = 80;
+    $(this.elem).find('.window-body').append(meter);
   }
 
   /**
@@ -86,6 +103,23 @@ class AudioRecorder extends Window {
     const audioElem = document.createElement('audio');
     audioElem.src = audioURL;
     // this.saveAudio(audioURL);
+  }
+
+  initTimer() {
+    this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+  }
+
+  updateTimer() {
+    this.timer += 1;
+    const minutes = Math.floor(this.timer / 60);
+    const seconds = this.timer % 60;
+    $('#micTimer').html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+  }
+
+  stopTimer() {
+    this.timer = 0;
+    $('#micTimer').html('0:00');
+    clearInterval(this.timerInterval);
   }
 
   /**
@@ -119,12 +153,6 @@ class AudioRecorder extends Window {
     audioSource.connect(analyser);
 
     this.volumeInterval = setInterval(() => this.volumeCallback(analyser), 10);
-
-    const meter = document.createElement('meter');
-    meter.id = 'volumeMeter';
-    meter.max = 127;
-    meter.value = 0;
-    $(this.elem).find('.window-body').append(meter);
   }
 
   /**

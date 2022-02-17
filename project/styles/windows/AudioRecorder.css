@@ -2,6 +2,21 @@
   font-size: 12px;
 }
 
+#audioRecorder {
+  width: 250px;
+  height: 250px;
+}
+
 #volumeMeter {
-  transform: rotate(-90deg);
+  width: 200px;
+  position: absolute;
+  transform: translate(-25px, 45px) rotate(-90deg);
+}
+
+#audioRecorder .window-body {
+  text-align: center;
+}
+
+#micTimer {
+  font-size: 20px;
 }
