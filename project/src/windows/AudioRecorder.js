@@ -72,17 +72,10 @@ class AudioRecorder extends Window {
     recordButton.innerHTML = 'Record';
     recordButton.onclick = () => {
       if (mediaRecorder.state === 'inactive') {
-        // TODO: make this a function
-        mediaRecorder.start();
-        this.initVolMeter();
-        this.initTimer();
-        $(this.elem).find('#recordLabel').html('🔴REC');
+        this.initRecording(mediaRecorder);
         recordButton.innerHTML = 'Stop';
       } else {
-        mediaRecorder.stop();
-        this.stopTimer();
-        clearInterval(this.volumeInterval);
-        $(this.elem).find('#recordLabel').html('');
+        this.stopRecording(mediaRecorder);
         recordButton.innerHTML = 'Record';
       }
     };
@@ -102,6 +95,32 @@ class AudioRecorder extends Window {
     const audioList = document.createElement('div');
     audioList.id = 'audioList';
     $(this.elem).find('.window-body').append(audioList);
+  }
+
+  /**
+   * Called when the record button is pressed.
+   * @param  {MediaRecorder} mediaRecorder - The MediaRecorder object.
+   */
+  initRecording(mediaRecorder) {
+    mediaRecorder.start();
+    this.initVolMeter();
+    this.initTimer();
+    $(this.elem).find('#recordLabel').html('🔴REC');
+  }
+
+  /**
+   *  Called when the stop button is pressed.
+   * @param  {MediaRecorder} mediaRecorder - The MediaRecorder object.
+   */
+  stopRecording(mediaRecorder) {
+    mediaRecorder.stop();
+    this.stopTimer();
+    clearInterval(this.volumeInterval);
+    $(this.elem).find('#recordLabel').html('');
+
+    // TODO: Refactor every .each loop
+    $(this.elem)
+      .find('meter').each((_i, elem) => $(elem).val(0))
   }
 
   /**
@@ -134,10 +153,16 @@ class AudioRecorder extends Window {
     $(this.elem).find("#audioList").append(listItem);
   }
 
+  /**
+   * Initializes the recording timer.
+   */
   initTimer() {
     this.timerInterval = setInterval(() => this.updateTimer(), 1000);
   }
 
+  /**
+   * Called every second to update the timer.
+   */
   updateTimer() {
     this.timer += 1;
     const minutes = Math.floor(this.timer / 60);
@@ -145,6 +170,9 @@ class AudioRecorder extends Window {
     $('#micTimer').html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
   }
 
+  /**
+   * Stops the recording timer.
+   */
   stopTimer() {
     this.timer = 0;
     $('#micTimer').html('0:00');
