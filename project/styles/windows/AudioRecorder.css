@@ -1,3 +1,7 @@
 .requestMicPermsPara {
   font-size: 12px;
 }
+
+#volumeMeter {
+  transform: rotate(-90deg);
+}

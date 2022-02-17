@@ -53,7 +53,7 @@ class AudioRecorder extends Window {
     const chunks = [];
     mediaRecorder.ondataavailable = (e) => {
       chunks.push(e.data);
-      this.saveData(chunks);
+      this.convertData(chunks);
     };
 
     const recordButton = document.createElement('button');
@@ -74,10 +74,10 @@ class AudioRecorder extends Window {
   }
 
   /**
-   * Takes the data from the MediaRecorded and converts it to a saveable format.
+   * Takes the data from the MediaRecorder and converts it to a saveable format.
    * @param  {Blob[]} chunks - The audio data.
    */
-  saveData(chunks) {
+  convertData(chunks) {
     const blob = new Blob(chunks, {
       'type': 'audio/ogg; codecs=opus',
     });
@@ -85,9 +85,7 @@ class AudioRecorder extends Window {
 
     const audioElem = document.createElement('audio');
     audioElem.src = audioURL;
-    audioElem.controls = true;
-    audioElem.preload = 'auto';
-    this.saveAudio(audioURL);
+    // this.saveAudio(audioURL);
   }
 
   /**
