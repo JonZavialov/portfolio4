@@ -30,6 +30,8 @@ class TaskbarElement {
     const desktopClockX = $('#desktopClock')[0].getBoundingClientRect().x;
     const lastIconX = $(this.elem)[0].getBoundingClientRect().right;
 
+    console.log(taskbarShrinkNum, windowsTaskbarMap.size);
+
     if (
       desktopClockX - 100 < lastIconX ||
       taskbarShrinkNum <= windowsTaskbarMap.size
