@@ -2,6 +2,7 @@
  * Renders the navigation bar into the DOM.
  */
 function loadNav() {
+  // TODO: Make navbar generate dynamically
   const currentYear = new Date().getFullYear();
   const navBar = `
         <li><a href="/?booted=true">Home</a></li>
@@ -24,6 +25,7 @@ function loadNav() {
                 <li style="cursor: pointer;" onmouseup="openDictionary()">Dictionary</li>
                 <li style="cursor: pointer;" onmouseup="openMyProjects()">My Projects</li>
                 <li style="cursor: pointer;" onmouseup="openSnake()">Snake</li>
+                <li style="cursor: pointer;" onmouseup="openAudioRecorder()">Audio Recorder</li>
             </ul>
         </ul>
         <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
