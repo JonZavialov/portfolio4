@@ -24,6 +24,18 @@ class TaskbarElement {
   }
 
   /**
+   * Checks if the taskbar is about to overflow so it can shrink the icons.
+   */
+  checkForOverflow() {
+    const desktopClockX = $('#desktopClock')[0].getBoundingClientRect().x;
+    const lastIconX = $(this.elem)[0].getBoundingClientRect().right;
+
+    if (desktopClockX - 100 < lastIconX) shrinkTaskbarElems();
+    else if (desktopClockX - 100 > lastIconX && iconsShrunk)
+      expandTaskbarElems();
+  }
+
+  /**
    * Renders the taskbar element into the DOM.
    */
   render() {
@@ -32,6 +44,7 @@ class TaskbarElement {
     this.topRect = this.elem.getBoundingClientRect().top;
     this.leftRect = this.elem.getBoundingClientRect().left;
     this.width = $(this.elem).width();
+    this.checkForOverflow();
   }
 
   /**
