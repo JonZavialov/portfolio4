@@ -4,7 +4,7 @@
 function populateDesktopIcons() {
   iconClasses = [];
   recycledIcons = [];
-  iconsShrunk = false;
+  taskbarShrinkNum = 100;
   windowsTaskbarMap = new Map();
   $.getJSON('/assets/json/desktop.json', (data) => {
     const keys = Object.keys(data);

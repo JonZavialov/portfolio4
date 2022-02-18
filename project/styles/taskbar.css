@@ -82,6 +82,7 @@
   margin-top: 2px;
   margin-right: 5px;
   height: 34px;
+  min-width: 35px;
 }
 
 .taskbar-element img {

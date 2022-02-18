@@ -30,9 +30,12 @@ class TaskbarElement {
     const desktopClockX = $('#desktopClock')[0].getBoundingClientRect().x;
     const lastIconX = $(this.elem)[0].getBoundingClientRect().right;
 
-    if (desktopClockX - 100 < lastIconX) shrinkTaskbarElems();
-    else if (desktopClockX - 100 > lastIconX && iconsShrunk)
-      expandTaskbarElems();
+    if (
+      desktopClockX - 100 < lastIconX ||
+      taskbarShrinkNum <= windowsTaskbarMap.size
+    )
+      shrinkTaskbarElems();
+    else if (taskbarShrinkNum > windowsTaskbarMap.size) expandTaskbarElems();
   }
 
   /**
@@ -54,6 +57,7 @@ class TaskbarElement {
     if (windowsTaskbarMap.get(this.id).windows.length !== 0) return;
     $(`#${this.id}TaskbarElement`).remove();
     windowsTaskbarMap.delete(this.id);
+    this.checkForOverflow();
   }
 
   unminimizeAll() {
