@@ -48,22 +48,25 @@ class Msdos extends Window {
         this.tickOff = false;
       } else {
         this.tickOff = true;
-
-        // TODO: error happens here
-        if (input.innerHTML.indexOf(' ') !== -1) console.log('yes');
-
         input.innerHTML = input.innerHTML.slice(0, -1);
         this.setCursorPosition(input);
+
+        if (input.innerHTML.charAt(input.innerHTML.length - 1) === ' ') {
+          input.innerHTML = input.innerHTML.slice(0, -1);
+          input.innerHTML += '&nbsp;';
+          this.setCursorPosition(input);
+        }
       }
     }, 300);
   }
 
   setCursorPosition(input, pos = 0) {
+    if (input.innerHTML.length === 0) return;
     const range = document.createRange();
     const sel = window.getSelection();
     range.setStart(
       input.childNodes[0],
-      input.innerHTML.replace('&nbsp;', ' ').length + pos
+      input.innerHTML.replaceAll('&nbsp;', ' ').length + pos
     );
     range.collapse(true);
     sel.removeAllRanges();
