@@ -77,6 +77,12 @@
     "clickFunction": "openAudioRecorder",
     "type": "app"
   },
+  "msdos": {
+    "displayName": "MS-DOS Prompt",
+    "iconImage": "/assets/images/icons/msdos.png",
+    "clickFunction": "openMSDOS",
+    "type": "app"
+  },
   "jonpng": {
     "displayName": "jon.png",
     "iconImage": "/assets/images/icons/image.png",

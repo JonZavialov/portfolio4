@@ -1,0 +1,30 @@
+.msdosDisplay {
+  background-color: black;
+  color: #a9a9a9;
+  font-family: 'IBM VGA 8x16';
+  width: 500px;
+  height: 300px;
+  padding-left: 4px;
+  font-size: 15px;
+  overflow-y: scroll;
+}
+
+.msdosDisplay p {
+  margin: 0;
+}
+
+#msdos .window-body {
+  margin: 0;
+}
+
+.msdosDisplay div[contenteditable] {
+  outline: 0 solid transparent;
+  background-color: #fff;
+  height: min-content;
+  width: 450px;
+}
+
+.msdosDisplay .workArea {
+  display: flex;
+  margin-top: 20px;
+}

@@ -26,6 +26,7 @@ function loadNav() {
                 <li style="cursor: pointer;" onmouseup="openMyProjects()">My Projects</li>
                 <li style="cursor: pointer;" onmouseup="openSnake()">Snake</li>
                 <li style="cursor: pointer;" onmouseup="openAudioRecorder()">Audio Recorder</li>
+                <li style="cursor: pointer;" onmouseup="openMSDOS()">MS-DOS Prompt</li>
             </ul>
         </ul>
         <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
