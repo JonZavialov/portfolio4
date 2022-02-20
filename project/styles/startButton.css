@@ -9,7 +9,7 @@
 }
 
 #startMenu {
-  height: 390px;
+  height: 428px;
   width: 200px;
   z-index: 100;
   position: absolute;
@@ -17,8 +17,8 @@
 }
 
 #startMenu .title-bar {
-  transform: rotate(-90deg) translate(-186px, -186px);
-  width: 385px;
+  transform: rotate(-90deg) translate(-205px, -206px);
+  width: 424px;
 }
 
 #startMenu hr {
@@ -49,5 +49,5 @@
 #optionsMenu {
   width: 114px;
   position: absolute;
-  transform: translateX(206px)
+  transform: translateX(206px);
 }

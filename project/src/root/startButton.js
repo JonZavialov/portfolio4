@@ -43,6 +43,10 @@ function startButton() {
             <p id="startMenuPairText">File Explorer</p>
         </div>
         <hr>
+        <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('clippy')">
+            <img src="/assets/images/icons/clippy.png">
+            <p id="startMenuPairText">Clippy</p>
+        </div>
         <div class="hoverHighlight optionsStartMenu" id="startMenuPair">
             <img src="/assets/images/icons/options.png">
             <p id="startMenuPairText">Options</p>
@@ -166,6 +170,9 @@ function startMenuButton(button) {
     },
     'closeWindows': () => {
       closeAllWindows();
+    },
+    'clippy': () => {
+      initClippy();
     },
   };
   const methodNames = Object.keys(methods);

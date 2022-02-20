@@ -22,3 +22,6 @@ Random Word API by RazorSh4rk
 
 Free Dictionary API by meetDeveloper
     https://dictionaryapi.dev/
+
+Clippy.JS by Smore
+    https://www.smore.com/clippy-js
