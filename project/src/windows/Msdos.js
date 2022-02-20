@@ -46,6 +46,7 @@ class Msdos extends Window {
     newInput.className = 'msdosInput';
     workArea.append(newInput);
     workArea.oninput = () => {
+      // TODO: Make pressing up arrow input last command.
       if (workArea.innerHTML.indexOf('<div>') !== -1) {
         let command = newInput.innerHTML;
         command = command.substring(command.indexOf('<div>'), -1);
