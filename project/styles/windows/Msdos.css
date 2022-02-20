@@ -19,12 +19,16 @@
 
 .msdosDisplay div[contenteditable] {
   outline: 0 solid transparent;
-  background-color: #fff;
   height: min-content;
   width: 450px;
+  overflow-wrap: anywhere;
 }
 
 .msdosDisplay .workArea {
   display: flex;
   margin-top: 20px;
+}
+
+.msdosOutput {
+  overflow-wrap: anywhere;
 }

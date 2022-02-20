@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://127.0.0.1:5500/?booted=true&app=msdos -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="icon" href="http://127.0.0.1:5500/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./Jonathan Zavialov_files/jquery.min.js.download"></script>
+    <script src="./Jonathan Zavialov_files/jquery-ui.js.download"></script>
+    <script src="./Jonathan Zavialov_files/pdf.min.js.download"></script>
+
+    <script src="./Jonathan Zavialov_files/Windows.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Folder.js.download"></script>
+    <script src="./Jonathan Zavialov_files/loadNav.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Icon.js.download"></script>
+    <script src="./Jonathan Zavialov_files/populateDesktopIcons.js.download"></script>
+    <script src="./Jonathan Zavialov_files/drawBox.js.download"></script>
+    <script src="./Jonathan Zavialov_files/removeAllBorders.js.download"></script>
+    <script src="./Jonathan Zavialov_files/MyComputer.js.download"></script>
+    <script src="./Jonathan Zavialov_files/MyDocuments.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Calculator.js.download"></script>
+    <script src="./Jonathan Zavialov_files/MyApps.js.download"></script>
+    <script src="./Jonathan Zavialov_files/TextEditor.js.download"></script>
+    <script src="./Jonathan Zavialov_files/startButton.js.download"></script>
+    <script src="./Jonathan Zavialov_files/initClock.js.download"></script>
+    <script src="./Jonathan Zavialov_files/speaker.js.download"></script>
+    <script src="./Jonathan Zavialov_files/RecycleBin.js.download"></script>
+    <script src="./Jonathan Zavialov_files/TaskbarElement.js.download"></script>
+    <script src="./Jonathan Zavialov_files/doElsCollide.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Jonpng.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Credits.js.download"></script>
+    <script src="./Jonathan Zavialov_files/CalculatorButton.js.download"></script>
+    <script src="./Jonathan Zavialov_files/checkURL.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Error.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Resume.js.download"></script>
+    <script src="./Jonathan Zavialov_files/PdfViewer.js.download"></script>
+    <script src="./Jonathan Zavialov_files/MyProjects.js.download"></script>
+    <script src="./Jonathan Zavialov_files/OutlookExpress.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Calendar.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Dictionary.js.download"></script>
+    <script src="./Jonathan Zavialov_files/FileExplorer.js.download"></script>
+    <script src="./Jonathan Zavialov_files/openURLApp.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Snake.js.download"></script>
+    <script src="./Jonathan Zavialov_files/sleep.js.download"></script>
+    <script src="./Jonathan Zavialov_files/detectMob.js.download"></script>
+    <script src="./Jonathan Zavialov_files/transformToMobile.js.download"></script>
+    <script src="./Jonathan Zavialov_files/arrangeIcons.js.download"></script>
+    <script src="./Jonathan Zavialov_files/closeAllWindows.js.download"></script>
+    <script src="./Jonathan Zavialov_files/AudioRecorder.js.download"></script>
+    <script src="./Jonathan Zavialov_files/expandTaskbarElems.js.download"></script>
+    <script src="./Jonathan Zavialov_files/shrinkTaskbarElems.js.download"></script>
+    <script src="./Jonathan Zavialov_files/Msdos.js.download"></script>
+    <script src="./Jonathan Zavialov_files/exit.js.download"></script>
+    <script src="./Jonathan Zavialov_files/help.js.download"></script>
+
+    <link rel="stylesheet" type="text/css" href="./Jonathan Zavialov_files/styles.min.css">
+    <link rel="stylesheet" href="./Jonathan Zavialov_files/98.css">
+
+    <title>Jonathan Zavialov</title>
+  </head>
+
+  <body data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1050.0">
+    <script>
+      $(document).ready(() => {
+        loadNav();
+        populateDesktopIcons();
+        initDraw();
+        initClock();
+        checkURL();
+
+        $('#startButton').click(() => {
+          startButton();
+        });
+        window.addEventListener('message', (e) => snakeEvent(e), false);
+      });
+    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="volumeContainer"></div>
+    <div id="root">
+      <ul id="treeDisplay" class="tree-view">
+        <li><a href="http://127.0.0.1:5500/?booted=true">Home</a></li>
+        <ul>
+            <li style="cursor: pointer;" onmouseup="openRecycleBin()">Recycle Bin</li>
+            <li style="cursor: pointer;" onmouseup="openMyComputer()">My Computer</li>
+            <li style="cursor: pointer;" onmouseup="openFileExplorer()">File Explorer</li>
+            <li style="cursor: pointer;" onmouseup="openMyDocuments()">My Documents</li>
+            <ul>
+                <li style="cursor: pointer;" onmouseup="openJonpng()">jon.png</li>
+                <li style="cursor: pointer;" onmouseup="openCredits()">credits.txt</li>
+                <li style="cursor: pointer;" onmouseup="openResume()">resume.pdf</li>
+            </ul>
+            <li style="cursor: pointer;" onmouseup="openMyApps()">My Apps</li>
+            <ul>
+                <li style="cursor: pointer;" onmouseup="openCalculator()">Calculator</li>
+                <li style="cursor: pointer;" onmouseup="openTextEditor()">Text Editor</li>
+                <li style="cursor: pointer;" onmouseup="openCalendar()">Calendar</li>
+                <li style="cursor: pointer;" onmouseup="openOutlookExpress()">Outlook Express</li>
+                <li style="cursor: pointer;" onmouseup="openDictionary()">Dictionary</li>
+                <li style="cursor: pointer;" onmouseup="openMyProjects()">My Projects</li>
+                <li style="cursor: pointer;" onmouseup="openSnake()">Snake</li>
+                <li style="cursor: pointer;" onmouseup="openAudioRecorder()">Audio Recorder</li>
+                <li style="cursor: pointer;" onmouseup="openMSDOS()">MS-DOS Prompt</li>
+            </ul>
+        </ul>
+        <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
+        <p id="copyrightStatement">© 2022 Jonathan Zavialov</p>
+    </ul>
+      <div id="desktop">
+        <h1>Jonathan Zavialov</h1>
+        <div id="middleSection">
+          <hr id="headerHr">
+          <div id="iconsContainer"><div id="iconsColumn"><div class="recycleBinIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative;"><img src="./Jonathan Zavialov_files/recycle.png"><p style="color: white;">Recycle Bin</p></div><div class="myComputerIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/computer.png"><p style="color: white;">My Computer</p></div><div class="myAppsIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/appsdir.png"><p style="color: white;">My Apps</p></div><div class="myDocumentsIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/documents.png"><p style="color: white;">My Documents</p></div></div><div id="iconsColumn"><div class="fileExplorerIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/fileexplorer.png"><p style="color: white;">File Explorer</p></div><div class="calculatorIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/calculator.png"><p style="color: white;">Calculator</p></div><div class="textEditorIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/txt.png"><p style="color: white;">Text Editor</p></div><div class="myProjectsIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/myprojects.png"><p style="color: white;">My Projects</p></div></div><div id="iconsColumn"><div class="outlookExpressIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/outlook.png"><p style="color: white;">Outlook Express</p></div><div class="calendarIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/calendar.png"><p style="color: white;">Calendar</p></div><div class="dictionaryIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/dictionary.png"><p style="color: white;">Dictionary</p></div><div class="snakeIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/joystick.png"><p style="color: white;">Snake</p></div></div><div id="iconsColumn"><div class="audioRecorderIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/mic.png"><p style="color: white;">Audio Recorder</p></div><div class="msdosIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/msdos.png"><p style="color: white;">MS-DOS Prompt</p></div><div class="jonpngIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/image.png"><p style="color: white;">jon.png</p></div><div class="creditsIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/txt.png"><p style="color: white;">credits.txt</p></div></div><div id="iconsColumn"><div class="resumeIcon desktopIcon ui-draggable ui-draggable-handle" id="icon" style="border-color: rgb(0, 128, 128); position: relative; opacity: 1;"><img src="./Jonathan Zavialov_files/page.png"><p style="color: white;">resume.pdf</p></div></div></div>
+        </div>
+        <div id="taskbar" class="window">
+          <button id="startButton">
+            <img src="./Jonathan Zavialov_files/windows_logo.png" alt="startButton">
+            <p>Start</p>
+          </button>
+          <hr id="taskbarDivider">
+          <div id="taskbarIcons"><button class="taskbar-element" id="msdosTaskbarElement"><img src="./Jonathan Zavialov_files/msdos.png" alt="msdos"> <p>MS-DOS Prompt</p></button></div>
+          <button id="desktopClock">
+            <img id="desktopClockIcon" src="./Jonathan Zavialov_files/clock.png" alt="clock" onclick="openCalendar()">
+            <img id="desktopSpeakerIcon" src="./Jonathan Zavialov_files/speaker.png" alt="speaker" onclick="toggleSpeaker()">
+            <p id="desktopClockTimeDisplay">7:29:59 PM</p>
+          </button>
+        </div>
+      <div class="window windowClass ui-draggable" id="msdos" style="position: absolute; top: 98px; left: 201.594px; z-index: 50;"><div class="title-bar ui-draggable-handle" id="msdosHeader"><div class="title-bar-text"><img src="./Jonathan Zavialov_files/msdos.png" alt="msdos"> MS-DOS Prompt</div><div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Close"></button></div></div><div class="window-body"><div class="msdosDisplay">
+    <p style="padding-top: 30px">
+        Microsoft(R) Windows 98 <br>
+        &nbsp;&nbsp;&nbsp;(C)Copyright Microsoft Corp 1981-1999.
+    </p><div class="workArea"><p class="msdosDir">C:\&gt;</p><div contenteditable="true" class="msdosInput"></div></div></div></div></div></div>
+    </div>
+  <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

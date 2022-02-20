@@ -4,9 +4,7 @@ class Msdos extends Window {
    * @constructor
    */
   constructor() {
-    super('MS-DOS Prompt', 'msdos', true, 'assets/images/icons/msdos.png', () =>
-      this.closeShell()
-    );
+    super('MS-DOS Prompt', 'msdos', true, 'assets/images/icons/msdos.png');
     this.generateElement(this.generateHTML());
     this.addNewInput();
   }
@@ -50,7 +48,6 @@ class Msdos extends Window {
         let command = newInput.innerHTML;
         command = command.substring(command.indexOf('<div>'), -1);
         newInput.innerHTML = command;
-        if (command === '') return;
 
         this.handleCommand(command);
         clearInterval(this.tickerInterval);
@@ -75,50 +72,23 @@ class Msdos extends Window {
     const commandArgs = commandArray.slice(1);
 
     $.getJSON('/assets/json/msdos.json', (data) => {
-      if (data[commandName]) {
-        const args = Object.keys(data[commandName].args);
-        let requiredArgs = 0;
-        for (let i = 0; i < args.length; i += 1)
-          if (data[commandName].args[args[i]].optional === false)
-            requiredArgs += 1;
-
-        if (requiredArgs > commandArgs.length) {
-          this.throwArgsError(requiredArgs, commandArgs.length);
-          return;
-        }
-
+      if (data[commandName])
         window[data[commandName].function](this, commandArgs);
-      } else this.throwCmdError(commandName);
+      else this.throwError(commandName);
     });
-  }
-
-  /**
-   * Called when the user enters not enough arguments.
-   * @param  {number} required - The number of required arguments.
-   * @param  {number} given - The number of given arguments.
-   */
-  throwArgsError(required, given) {
-    this.output(
-      `Illegal number of arguments: ${required} required, ${given} given.`
-    );
   }
 
   /**
    * Called when the command is invalid.
    * @param  {string} name - The command name.
    */
-  throwCmdError(name) {
+  throwError(name) {
     this.output(`Illegal command: ${name}.`);
   }
 
-  /**
-   * Outputs text to the window.
-   * @param  {string} text - The text to output.
-   */
   output(text) {
     const outputText = document.createElement('p');
     outputText.innerHTML = text;
-    outputText.className = 'msdosOutput';
     $(this.elem).find('.msdosDisplay').append(outputText);
     this.addNewInput();
   }
@@ -154,9 +124,7 @@ class Msdos extends Window {
    * @param  {number} [pos=0] - The position to set the caret to.
    */
   setCursorPosition(input, pos = 0) {
-    if (document.activeElement !== input || input.innerHTML.length === 0)
-      return;
-
+    if (input.innerHTML.length === 0) return;
     const range = document.createRange();
     const sel = window.getSelection();
     range.setStart(
@@ -166,14 +134,6 @@ class Msdos extends Window {
     range.collapse(true);
     sel.removeAllRanges();
     sel.addRange(range);
-  }
-
-  /**
-   * Called to close the window and clear the ticker interval.
-   */
-  closeShell() {
-    this.close();
-    clearInterval(this.tickerInterval);
   }
 }
 

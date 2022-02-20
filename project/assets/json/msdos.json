@@ -1,0 +1,42 @@
+{
+  "help": {
+    "desc": "Displays this help menu",
+    "args": {
+      "command": {
+        "desc": "The command to display extra help for",
+        "optional": true
+      }
+    },
+    "function": "help"
+  },
+  "exit": {
+    "desc": "Exits the shell",
+    "function": "exit"
+  },
+  "date": {
+    "desc": "Displays the current date and time",
+    "function": "date"
+  },
+  "cls": {
+    "desc": "Clears the shell",
+    "function": "cls"
+  },
+  "reboot": {
+    "desc": "Reboots the system",
+    "function": "reboot"
+  },
+  "ver": {
+    "desc": "Displays the current version of the shell",
+    "function": "ver"
+  },
+  "echo": {
+    "desc": "Displays the given text",
+    "args": {
+      "text": {
+        "desc": "The text to display",
+        "optional": false
+      }
+    },
+    "function": "echo"
+  }
+}
