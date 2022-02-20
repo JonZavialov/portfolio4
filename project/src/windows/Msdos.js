@@ -76,15 +76,17 @@ class Msdos extends Window {
 
     $.getJSON('/assets/json/msdos.json', (data) => {
       if (data[commandName]) {
-        const args = Object.keys(data[commandName].args);
-        let requiredArgs = 0;
-        for (let i = 0; i < args.length; i += 1)
-          if (data[commandName].args[args[i]].optional === false)
-            requiredArgs += 1;
+        if (data[commandName].args) {
+          const args = Object.keys(data[commandName].args);
+          let requiredArgs = 0;
+          for (let i = 0; i < args.length; i += 1)
+            if (data[commandName].args[args[i]].optional === false)
+              requiredArgs += 1;
 
-        if (requiredArgs > commandArgs.length) {
-          this.throwArgsError(requiredArgs, commandArgs.length);
-          return;
+          if (requiredArgs > commandArgs.length) {
+            this.throwArgsError(requiredArgs, commandArgs.length);
+            return;
+          }
         }
 
         window[data[commandName].function](this, commandArgs);
