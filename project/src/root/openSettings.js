@@ -37,11 +37,18 @@ function openSettings() {
   $('#volumeContainer').append(settings);
 }
 
+/**
+ * Closes the settings menu.
+ */
 function closeSettings() {
   if (!$('#settingsWindow')[0]) return;
   $('#settingsWindow').remove();
 }
 
+/**
+ * Changes the desktop color.
+ * @param  {string} value - The new color.
+ */
 function changeDesktopColor(value) {
   setColor = value;
   $('#pickedColor').html(value);
