@@ -29,6 +29,13 @@ class Calendar extends Window {
       'December',
     ];
 
+    this.IMPORTANTDAYS = [
+      { '1 4': "Zae's birthday" },
+      { '3 21': "Jon's Birthday" },
+      { '3 8': "Preslee's Birthday" },
+      { '11 3': "Meatball's Birthday" },
+    ];
+
     this.setCalendar();
     this.setToStoredDate();
   }
@@ -126,6 +133,17 @@ class Calendar extends Window {
       (data) => {
         nationalDays = data.holidays;
         let formattedNationalDays = '';
+
+        for (let i = 0; i < this.IMPORTANTDAYS.length; i += 1) {
+          const dateObj = this.IMPORTANTDAYS[i];
+          const date = Object.keys(dateObj)[0];
+          const importantMonth = parseFloat(date.split(' ')[0]);
+          const importantDay = date.split(' ')[1];
+
+          if (day === importantDay && month === importantMonth)
+            formattedNationalDays += `<li>${dateObj[date]}</li>`;
+        }
+
         for (let i = 0; i < nationalDays.length; i += 1)
           formattedNationalDays += `<li>${nationalDays[i]}</li>`;
 
