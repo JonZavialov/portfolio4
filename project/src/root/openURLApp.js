@@ -5,6 +5,10 @@
 function openURLApp(app) {
   $.getJSON('/assets/json/desktop.json', (data) => {
     if (app === 'none') return;
+    if (app === 'clippy') {
+      initClippy();
+      return;
+    }
     if (!data[app]) {
       openOutlookExpress('INTRO');
       return;
