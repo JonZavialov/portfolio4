@@ -100,3 +100,11 @@
 button:not(:disabled):active.taskbar-element {
   padding: 0;
 }
+
+#settingsButton {
+  padding: 0;
+  min-width: 40px;
+  margin-right: 5px;
+  height: 34.23px;
+  margin-top: 2px;
+}

@@ -46,7 +46,7 @@ function initDraw() {
     for (let i = 0; i < noSelect.length; i += 1)
       if (e.target.closest(noSelect[i])) return;
     closeButton();
-    if (clickedOnVolumeSlider(e)) return;
+    closeSettings();
     if (e.button !== 0) return;
     mouse.startX = mouse.x;
     mouse.startY = mouse.y;
@@ -55,7 +55,7 @@ function initDraw() {
     element.style.left = `${mouse.x}px`;
     element.style.top = `${mouse.y}px`;
     canvas.append(element);
-    if (!clickedOnVolumeSlider(e)) removeSpeaker();
+    if (!clickedOnVolumeSlider()) removeSpeaker();
   };
 
   body.onmouseup = () => {

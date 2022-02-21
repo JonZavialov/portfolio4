@@ -1,0 +1,23 @@
+#settingsWindow {
+  height: 55px;
+  width: 150px;
+  position: absolute;
+}
+
+#desktopColorLabel {
+  font-weight: bold;
+  margin: 5px 0 0 5px;
+}
+
+#colorPicker {
+  margin: 5px;
+  border: none;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+  background: silver;
+}
+
+#pickedColor {
+  transform: translate(77px, -38px);
+  font-size: 12px;
+}

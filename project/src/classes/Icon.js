@@ -34,7 +34,7 @@ class Icon {
     this.iconElem.className = `${this.className} ${this.parent}Icon`;
     this.iconElem.id = 'icon';
     this.iconElem.style.borderColor =
-      this.parent === 'desktop' ? '#008080' : '#e7e7e7';
+      this.parent === 'desktop' ? 'transparent' : '#e7e7e7';
 
     const iconImage = document.createElement('img');
     iconImage.src = this.iconImagePath;
@@ -100,7 +100,7 @@ class Icon {
    * @param  {boolean} [unselect=true]
    */
   removeBorder(unselect = true) {
-    const borderColor = this.parent === 'desktop' ? '#008080' : '#e7e7e7';
+    const borderColor = this.parent === 'desktop' ? 'transparent' : '#e7e7e7';
     this.iconElem.style.borderColor = borderColor;
     if (unselect) this.selected = false;
   }

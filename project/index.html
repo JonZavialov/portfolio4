@@ -65,6 +65,7 @@
     <script src="./src/clippy/clippyShowResume.js"></script>
     <script src="./src/clippy/clippyShowConclusion.js"></script>
     <script src="./src/clippy/clippyLeave.js"></script>
+    <script src="./src/root/openSettings.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -107,6 +108,13 @@
           </button>
           <hr id="taskbarDivider" />
           <div id="taskbarIcons"></div>
+          <button id="settingsButton">
+            <img
+              src="/assets/images/icons/gears.png"
+              alt="settings"
+              onclick="openSettings()"
+            />
+          </button>
           <button id="desktopClock">
             <img
               id="desktopClockIcon"

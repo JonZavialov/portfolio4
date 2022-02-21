@@ -1,3 +1,6 @@
+/**
+ * Clippy leaves the screen.
+ */
 function clippyLeave() {
   $('.clippy-balloon').hide();
   clippyAgent.play('SendMail');

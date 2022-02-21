@@ -1,3 +1,6 @@
+/**
+ * Clippy shows the conclusion bubble.
+ */
 function clippyShowConclusion() {
   $('.clippy-balloon').hide();
   clippyAgent.moveTo(window.innerWidth - 200, window.innerHeight - 200);

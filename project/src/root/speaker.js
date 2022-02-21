@@ -5,6 +5,7 @@ function toggleSpeaker() {
   if ($('#desktopSpeakerIcon').length === 0) return;
   if ($('#desktopSpeakerIcon')[0].className.indexOf('toggled') === -1) {
     // speaker is not toggled
+    closeSettings();
     $('#desktopSpeakerIcon').addClass('toggled');
     $('#volumeContainer').append(generateVolumeSlider());
   } else removeSpeaker();
