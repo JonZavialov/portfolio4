@@ -11,10 +11,10 @@
     "clickFunction": "openMyComputer",
     "type": "folder"
   },
-  "myApps": {
-    "displayName": "My Apps",
-    "iconImage": "/assets/images/icons/appsdir.png",
-    "clickFunction": "openMyApps",
+  "fileExplorer": {
+    "displayName": "File Explorer",
+    "iconImage": "/assets/images/icons/fileexplorer.png",
+    "clickFunction": "openFileExplorer",
     "type": "folder"
   },
   "myDocuments": {
@@ -23,10 +23,10 @@
     "clickFunction": "openMyDocuments",
     "type": "folder"
   },
-  "fileExplorer": {
-    "displayName": "File Explorer",
-    "iconImage": "/assets/images/icons/fileexplorer.png",
-    "clickFunction": "openFileExplorer",
+  "myApps": {
+    "displayName": "My Apps",
+    "iconImage": "/assets/images/icons/appsdir.png",
+    "clickFunction": "openMyApps",
     "type": "folder"
   },
   "calculator": {

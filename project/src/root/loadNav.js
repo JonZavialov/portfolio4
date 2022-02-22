@@ -2,35 +2,55 @@
  * Renders the navigation bar into the DOM.
  */
 function loadNav() {
-  // TODO: Make navbar generate dynamically
-  const currentYear = new Date().getFullYear();
-  const navBar = `
-        <li><a href="/?booted=true">Home</a></li>
-        <ul>
-            <li style="cursor: pointer;" onmouseup="openRecycleBin()">Recycle Bin</li>
-            <li style="cursor: pointer;" onmouseup="openMyComputer()">My Computer</li>
-            <li style="cursor: pointer;" onmouseup="openFileExplorer()">File Explorer</li>
-            <li style="cursor: pointer;" onmouseup="openMyDocuments()">My Documents</li>
-            <ul>
-                <li style="cursor: pointer;" onmouseup="openJonpng()">jon.png</li>
-                <li style="cursor: pointer;" onmouseup="openCredits()">credits.txt</li>
-                <li style="cursor: pointer;" onmouseup="openResume()">resume.pdf</li>
-            </ul>
-            <li style="cursor: pointer;" onmouseup="openMyApps()">My Apps</li>
-            <ul>
-                <li style="cursor: pointer;" onmouseup="openCalculator()">Calculator</li>
-                <li style="cursor: pointer;" onmouseup="openTextEditor()">Text Editor</li>
-                <li style="cursor: pointer;" onmouseup="openCalendar()">Calendar</li>
-                <li style="cursor: pointer;" onmouseup="openOutlookExpress()">Outlook Express</li>
-                <li style="cursor: pointer;" onmouseup="openDictionary()">Dictionary</li>
-                <li style="cursor: pointer;" onmouseup="openMyProjects()">My Projects</li>
-                <li style="cursor: pointer;" onmouseup="openSnake()">Snake</li>
-                <li style="cursor: pointer;" onmouseup="openAudioRecorder()">Audio Recorder</li>
-                <li style="cursor: pointer;" onmouseup="openMSDOS()">MS-DOS Prompt</li>
-            </ul>
-        </ul>
-        <li><a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a></li>
-        <p id="copyrightStatement">© ${currentYear} Jonathan Zavialov</p>
-    `;
-  $('#treeDisplay').html(navBar);
+    const POINTERS = {
+        "myDocuments": "document",
+        "myApps": "app"
+    }
+
+    const currentYear = new Date().getFullYear();
+
+    const homeLabel = document.createElement('li')
+    homeLabel.innerHTML = '<a href="/?booted=true">Home</a>'
+    const appsList = document.createElement('ul')
+    const repoLabel = document.createElement('li')
+    repoLabel.innerHTML = '<a href="https://github.com/JonZavialov/portfolio4" target="_blank">Repository</a>'
+
+    const copyright = document.createElement('p')
+    copyright.id = "copyrightStatement"
+    copyright.innerText = `© ${currentYear} Jonathan Zavialov`
+
+    $.getJSON('/assets/json/desktop.json', (data) => {
+        const appIDs = Object.keys(data);
+        for (let i = 0; i < appIDs.length; i += 1) {
+            const appObj = data[appIDs[i]];
+            const children = Object.values(POINTERS)
+            const containers = Object.keys(POINTERS);
+
+            // eslint-disable-next-line no-continue
+            if (children.includes(appObj.type)) continue
+
+            const listElem = document.createElement('li');
+            listElem.style.cursor = 'pointer';
+            listElem.onmouseup = window[appObj.clickFunction];
+            listElem.innerHTML = appObj.displayName
+            appsList.append(listElem)
+
+            if (containers.includes(appIDs[i])) {
+                const fullList = document.createElement('ul');
+                for (let j = 0; j < appIDs.length; j += 1) {
+                    const appObjNested = data[appIDs[j]];
+                    if (appObjNested.type === POINTERS[appIDs[i]]) {
+                        const listElemNested = document.createElement('li')
+                        listElemNested.style.cursor = 'pointer';
+                        listElemNested.onmouseup = window[appObjNested.clickFunction];
+                        listElemNested.innerHTML = appObjNested.displayName
+                        fullList.append(listElemNested)
+                    }
+                }
+                appsList.append(fullList)
+            }
+        }
+
+        $('#treeDisplay').append(homeLabel, appsList, repoLabel, copyright);
+    })
 }
