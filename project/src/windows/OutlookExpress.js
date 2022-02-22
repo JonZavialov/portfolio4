@@ -110,6 +110,14 @@ class OutlookExpress extends Window {
     composeP.innerHTML = 'Compose Message';
     composeButton.append(composeImg, composeP);
     buttonsHeader.append(composeButton);
+    composeButton.onclick = () => {
+      window.location.assign('mailto: jonzavialov@gmail.com');
+      composeButton.style.boxShadow = null;
+    };
+    composeButton.onmousedown = () => {
+      composeButton.style.boxShadow =
+        'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey';
+    };
 
     const hr1 = document.createElement('hr');
     hr1.style.transform = 'translate(64px, -72px)';
