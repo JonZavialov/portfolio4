@@ -2,8 +2,6 @@
  * Opens the settings menu.
  */
 function openSettings() {
-  // TODO: Add Clippy speech for the settings button.
-
   if ($('#settingsWindow')[0]) {
     closeSettings();
     return;
