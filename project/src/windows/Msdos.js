@@ -7,6 +7,8 @@ class Msdos extends Window {
     super('MS-DOS Prompt', 'msdos', true, 'assets/images/icons/msdos.png', () =>
       this.closeShell()
     );
+    this.inputtedCommands = []
+    this.prevCommandIndex = 0
     this.generateElement(this.generateHTML());
     this.addNewInput();
   }
@@ -46,7 +48,6 @@ class Msdos extends Window {
     newInput.className = 'msdosInput';
     workArea.append(newInput);
     workArea.oninput = () => {
-      // TODO: Make pressing up arrow input last command.
       if (workArea.innerHTML.indexOf('<div>') !== -1) {
         let command = newInput.innerHTML;
         command = command.substring(command.indexOf('<div>'), -1);
@@ -57,6 +58,9 @@ class Msdos extends Window {
         clearInterval(this.tickerInterval);
       }
     };
+    $(newInput).on('keydown', (e) => {
+      if (e.key === "ArrowUp") this.lastCommand()
+    })
 
     $(this.elem).find('.msdosDisplay').append(workArea);
     setTimeout(() => {
@@ -67,10 +71,24 @@ class Msdos extends Window {
   }
 
   /**
+   * Inputs the previous command into the shell.
+   */
+  lastCommand() {
+    if (this.prevCommandIndex === 0) return
+
+    this.prevCommandIndex -= 1
+    this.currentInput.innerHTML = (this.inputtedCommands[this.prevCommandIndex])
+    if (!this.tickOff) this.currentInput.innerHTML += '_'
+  }
+
+  /**
    * Called when the user enters a command.
    * @param  {string} command - The command entered by the user.
    */
   handleCommand(command) {
+    this.inputtedCommands.push(command)
+    this.prevCommandIndex = this.inputtedCommands.length
+
     const commandArray = command.split(' ');
     const commandName = commandArray[0];
     const commandArgs = commandArray.slice(1);
@@ -148,7 +166,7 @@ class Msdos extends Window {
           this.setCursorPosition(input);
         }
       }
-    }, 300);
+    }, 150);
   }
 
   /**
