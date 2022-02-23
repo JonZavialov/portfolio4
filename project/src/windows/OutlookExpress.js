@@ -48,7 +48,10 @@ class OutlookExpress extends Window {
   setEmail(identifier) {
     const display = $(this.elem).find('#emailDisplay');
     display.html(this.emailsJSON[identifier]);
-    if (this.isCentered) this.center();
+    if (this.isCentered) {
+      this.center();
+      this.isCentered = false;
+    }
   }
 
   /**
