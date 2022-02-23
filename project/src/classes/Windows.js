@@ -50,6 +50,7 @@ class Window {
       stack: '.windowClass',
     });
 
+    // TODO: Make windows open in new diagonal if they overlap.
     const { length } = $('.window')
       .map((element) => element)
       .get();
