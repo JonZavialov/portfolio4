@@ -86,9 +86,9 @@ class Msdos extends Window {
    * Inputs the next command into the shell.
    */
   nextCommand() {
-    // TODO: going back skips one when you previously went forwards
     if (this.commandIndex === this.inputtedCommands.length - 1 || this.commandIndex === this.inputtedCommands.length) {
       this.currentInput.innerHTML = ""
+      this.commandIndex = this.inputtedCommands.length
       return
     }
 
