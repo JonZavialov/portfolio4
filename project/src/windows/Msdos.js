@@ -8,7 +8,7 @@ class Msdos extends Window {
       this.closeShell()
     );
     this.inputtedCommands = []
-    this.prevCommandIndex = 0
+    this.commandIndex = 0
     this.generateElement(this.generateHTML());
     this.addNewInput();
   }
@@ -60,6 +60,7 @@ class Msdos extends Window {
     };
     $(newInput).on('keydown', (e) => {
       if (e.key === "ArrowUp") this.lastCommand()
+      else if (e.key === "ArrowDown") this.nextCommand()
     })
 
     $(this.elem).find('.msdosDisplay').append(workArea);
@@ -74,10 +75,25 @@ class Msdos extends Window {
    * Inputs the previous command into the shell.
    */
   lastCommand() {
-    if (this.prevCommandIndex === 0) return
+    if (this.commandIndex === 0) return
 
-    this.prevCommandIndex -= 1
-    this.currentInput.innerHTML = (this.inputtedCommands[this.prevCommandIndex])
+    this.commandIndex -= 1
+    this.currentInput.innerHTML = (this.inputtedCommands[this.commandIndex])
+    if (!this.tickOff) this.currentInput.innerHTML += '_'
+  }
+
+  /**
+   * Inputs the next command into the shell.
+   */
+  nextCommand() {
+    // TODO: going back skips one when you previously went forwards
+    if (this.commandIndex === this.inputtedCommands.length - 1 || this.commandIndex === this.inputtedCommands.length) {
+      this.currentInput.innerHTML = ""
+      return
+    }
+
+    this.commandIndex += 1
+    this.currentInput.innerHTML = (this.inputtedCommands[this.commandIndex])
     if (!this.tickOff) this.currentInput.innerHTML += '_'
   }
 
@@ -87,7 +103,7 @@ class Msdos extends Window {
    */
   handleCommand(command) {
     this.inputtedCommands.push(command)
-    this.prevCommandIndex = this.inputtedCommands.length
+    this.commandIndex = this.inputtedCommands.length
 
     const commandArray = command.split(' ');
     const commandName = commandArray[0];
