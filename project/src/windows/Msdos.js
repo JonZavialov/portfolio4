@@ -7,8 +7,8 @@ class Msdos extends Window {
     super('MS-DOS Prompt', 'msdos', true, 'assets/images/icons/msdos.png', () =>
       this.closeShell()
     );
-    this.inputtedCommands = []
-    this.commandIndex = 0
+    this.inputtedCommands = [];
+    this.commandIndex = 0;
     this.generateElement(this.generateHTML());
     this.addNewInput();
   }
@@ -59,9 +59,9 @@ class Msdos extends Window {
       }
     };
     $(newInput).on('keydown', (e) => {
-      if (e.key === "ArrowUp") this.lastCommand()
-      else if (e.key === "ArrowDown") this.nextCommand()
-    })
+      if (e.key === 'ArrowUp') this.lastCommand();
+      else if (e.key === 'ArrowDown') this.nextCommand();
+    });
 
     $(this.elem).find('.msdosDisplay').append(workArea);
     setTimeout(() => {
@@ -75,26 +75,29 @@ class Msdos extends Window {
    * Inputs the previous command into the shell.
    */
   lastCommand() {
-    if (this.commandIndex === 0) return
+    if (this.commandIndex === 0) return;
 
-    this.commandIndex -= 1
-    this.currentInput.innerHTML = (this.inputtedCommands[this.commandIndex])
-    if (!this.tickOff) this.currentInput.innerHTML += '_'
+    this.commandIndex -= 1;
+    this.currentInput.innerHTML = this.inputtedCommands[this.commandIndex];
+    if (!this.tickOff) this.currentInput.innerHTML += '_';
   }
 
   /**
    * Inputs the next command into the shell.
    */
   nextCommand() {
-    if (this.commandIndex === this.inputtedCommands.length - 1 || this.commandIndex === this.inputtedCommands.length) {
-      this.currentInput.innerHTML = ""
-      this.commandIndex = this.inputtedCommands.length
-      return
+    if (
+      this.commandIndex === this.inputtedCommands.length - 1 ||
+      this.commandIndex === this.inputtedCommands.length
+    ) {
+      this.currentInput.innerHTML = '';
+      this.commandIndex = this.inputtedCommands.length;
+      return;
     }
 
-    this.commandIndex += 1
-    this.currentInput.innerHTML = (this.inputtedCommands[this.commandIndex])
-    if (!this.tickOff) this.currentInput.innerHTML += '_'
+    this.commandIndex += 1;
+    this.currentInput.innerHTML = this.inputtedCommands[this.commandIndex];
+    if (!this.tickOff) this.currentInput.innerHTML += '_';
   }
 
   /**
@@ -102,8 +105,8 @@ class Msdos extends Window {
    * @param  {string} command - The command entered by the user.
    */
   handleCommand(command) {
-    this.inputtedCommands.push(command)
-    this.commandIndex = this.inputtedCommands.length
+    this.inputtedCommands.push(command);
+    this.commandIndex = this.inputtedCommands.length;
 
     const commandArray = command.split(' ');
     const commandName = commandArray[0];
