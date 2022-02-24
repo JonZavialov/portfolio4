@@ -12,3 +12,7 @@
 ## 👨‍💻 Development
 
 This project is a currently in progress by Jonathan.
+
+<br><br><br><br>
+
+[![badge](https://github.com/syxanash/awesome-web-desktops/blob/master/88x31.gif?raw=true)](https://github.com/syxanash/awesome-web-desktops)
