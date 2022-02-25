@@ -8,6 +8,7 @@
 
 <p align="center">My Personal Portfolio<br>Style inspired by Microsoft Windows 98<br>Version 4</p>
 <a href="https://jonzav.me/">View Website</a>
+<img src="https://github.com/JonZavialov/portfolio4/blob/main/project/assets/images/site-shot.png?raw=true"  width="50%" alt="Website Screenshot">
 
 ## 👨‍💻 Development
 
