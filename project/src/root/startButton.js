@@ -18,7 +18,7 @@ function startButton() {
             <p id="startMenuPairText">Email Me</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('linkedin')">
-            <img src="/assets/images/icons/linkedin.png">
+            <img src="/assets/images/icons/people.png">
             <p id="startMenuPairText">Linkedin</p>
         </div>
         <div class="hoverHighlight" id="startMenuPair" onclick="startMenuButton('insta')">
