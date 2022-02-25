@@ -8,7 +8,8 @@
 
 <p align="center">My Personal Portfolio<br>Style inspired by Microsoft Windows 98<br>Version 4</p>
 <a href="https://jonzav.me/">View Website</a>
-<img src="https://github.com/JonZavialov/portfolio4/blob/main/project/assets/images/site-shot.png?raw=true"  width="50%" alt="Website Screenshot">
+<br>
+<a href="https://jonzav.me/"><img src="https://github.com/JonZavialov/portfolio4/blob/main/project/assets/images/site-shot.png?raw=true"  width="50%" alt="Website Screenshot"></a>
 
 ## 👨‍💻 Development
 
@@ -35,7 +36,7 @@ python compress.py
 
 #### Host server
 
-Host the server with the `projects` folder as  the root. For development, I use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension. I use nginx for production. For other solutions, use [XAAMP](https://www.apachefriends.org/download.html).
+Host the server with the `projects` folder as  the root. For development, I use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension. I use [nginx](https://www.nginx.org/) for production. For other solutions, use [XAAMP](https://www.apachefriends.org/download.html).
 
 ## 🧠 Backend
 
