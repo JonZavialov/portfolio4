@@ -19,13 +19,52 @@ class ChatRoom extends Window {
    * @returns {HTMLElement} - The DOM element for the window.
    */
   getHTML() {
-    const button = document.createElement('button');
-    button.innerText = 'Send';
-    button.onclick = () => {
-      window.location.replace(this.getOAuthURL());
-    };
+    const container = document.createElement('div');
 
-    return button;
+    const chatWindow = document.createElement('div');
+    chatWindow.className = 'chatWindow';
+    container.append(chatWindow);
+
+    const chatArea = document.createElement('div');
+    chatArea.className = 'chatArea';
+
+    const githubLogo = document.createElement('img');
+    githubLogo.src = 'assets/images/github.png';
+
+    const buttonText = document.createElement('p');
+    buttonText.innerText = 'Login with GitHub';
+
+    const buttonsArea = document.createElement('div');
+    buttonsArea.className = 'buttonsArea';
+
+    const loginButton = document.createElement('button');
+    loginButton.className = 'loginButton';
+    loginButton.onclick = () => window.location.replace(this.getOAuthURL());
+    loginButton.append(githubLogo, buttonText);
+    buttonsArea.append(loginButton);
+
+    const sendChatButton = document.createElement('button');
+    sendChatButton.className = 'sendChatButton';
+    sendChatButton.innerText = 'Send';
+    sendChatButton.disabled = true;
+    buttonsArea.append(sendChatButton);
+    chatArea.append(buttonsArea);
+
+    const inputChat = document.createElement('div');
+    inputChat.contentEditable = true;
+    inputChat.innerText = 'Type here...';
+    inputChat.className = 'inputChat';
+    $(inputChat).on('focus', () => {
+      if (inputChat.innerHTML === 'Type here...') inputChat.innerHTML = '';
+    });
+    $(inputChat).on('focusout', () => {
+      if (inputChat.innerHTML === '') inputChat.innerHTML = 'Type here...';
+    });
+    chatArea.append(inputChat);
+
+    container.append(chatArea);
+
+    return container;
   }
 
   /**

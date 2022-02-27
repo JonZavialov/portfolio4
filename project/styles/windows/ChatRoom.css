@@ -1,0 +1,52 @@
+.chatWindow {
+  width: 350px;
+  height: 175px;
+  background: #fff;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+.inputChat {
+  width: 218px;
+  margin-left: 8px;
+  background-color: white;
+  overflow-y: scroll;
+  padding: 5px;
+  outline: none;
+  height: 60px;
+  box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px grey;
+}
+
+.loginButton {
+  display: flex;
+  padding: 0;
+  height: min-content;
+}
+
+.loginButton:not(:disabled):active {
+  padding: 0;
+}
+
+.loginButton img {
+  width: 20px;
+  margin: 4px;
+}
+
+.loginButton p {
+  margin: 8px 3px;
+}
+
+.chatArea {
+  display: flex;
+  margin-top: 8px;
+}
+
+.buttonsArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.sendChatButton {
+  margin: auto;
+}
