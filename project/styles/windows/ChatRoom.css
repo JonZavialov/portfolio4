@@ -4,6 +4,7 @@
   background: #fff;
   box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px grey;
+  overflow-y: scroll;
 }
 
 .inputChat {
@@ -49,4 +50,42 @@
 
 .sendChatButton {
   margin: auto;
+}
+
+.loggedInLabel {
+  margin: 0;
+  width: 114px;
+  overflow-wrap: anywhere;
+  text-align: center;
+  font-size: 12px;
+}
+
+.comment img {
+  width: 40px;
+  height: min-content;
+  background-color: silver;
+  margin: 12px auto;
+  padding: 3px;
+}
+
+.comment {
+  display: flex;
+  margin: 2px 0 2px 2px;
+}
+
+.commentAuthor {
+  font-weight: bold;
+}
+
+.commentAuthor:hover {
+  color: blue;
+}
+
+.commentContentArea {
+  width: 265px;
+}
+
+.commentTimestamp {
+  color: darkgray;
+  font-size: 10px;
 }
