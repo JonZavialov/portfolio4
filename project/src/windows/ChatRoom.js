@@ -60,6 +60,8 @@ class ChatRoom extends Window {
       const comment = this.createComment(this.comments[i]);
       $(this.elem).find('.chatWindow').append(comment);
     }
+    const chatWindow = $(this.elem).find('.chatWindow')[0];
+    chatWindow.scrollTop = chatWindow.scrollHeight - chatWindow.clientHeight;
   }
 
   /**
@@ -128,8 +130,11 @@ class ChatRoom extends Window {
    */
   sendComment() {
     // TODO: Add error check.
-    const comment = $(this.elem).find('.inputChat')[0].innerHTML;
-    // TODO: Parse chat to remove whitespace etc, send to backend :)
+    let comment = $(this.elem).find('.inputChat')[0].innerHTML;
+    comment = comment.replace(/<br>/g, '');
+    comment = comment.replace(/<div>/g, '');
+    comment = comment.replace(/&nbsp;/g, '');
+    comment = comment.replace(/<\/div>/g, '');
   }
 
   /**
@@ -187,7 +192,6 @@ class ChatRoom extends Window {
     chatArea.append(inputChat);
 
     container.append(chatArea);
-
     return container;
   }
 
