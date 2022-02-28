@@ -78,10 +78,9 @@ class ChatRoom extends Window {
     return url.toString();
   }
 
-  userLoggedIn(username, avatar) {
+  userLoggedIn(username) {
     $(this.elem).find('.sendChatButton').removeAttr('disabled');
     $(this.elem).find('.loggedInLabel').text(`Logged in as ${username}`);
-    this.userData = { username, avatar };
   }
 
   /**
@@ -98,7 +97,9 @@ class ChatRoom extends Window {
     $.ajax({
       type: 'POST',
       url: this.URL.TOKEN,
-      data: { code },
+      data: {
+        code
+      },
       success: (data) => this.getUserData(data.access_token),
     });
   }
@@ -112,7 +113,9 @@ class ChatRoom extends Window {
     $.ajax({
       type: 'POST',
       url: this.URL.GET_USER_DATA,
-      data: { token },
+      data: {
+        token
+      },
       success: (data) => this.userLoggedIn(data.login, data.avatar_url),
     });
   }
