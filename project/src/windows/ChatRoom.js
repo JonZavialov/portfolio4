@@ -9,9 +9,9 @@ class ChatRoom extends Window {
 
     this.URL = {
       AUTH: 'https://github.com/login/oauth/authorize',
-      TOKEN: 'http://jonzav.me/api/v1/oauth',
-      GET_USER_DATA: 'http://jonzav.me/api/v1/github/getUserData',
-      COMMENTS: 'http://jonzav.me/api/v1/comments',
+      TOKEN: 'https://api.jonzav.me/v1/oauth',
+      GET_USER_DATA: 'https://api.jonzav.me/v1/github/getUserData',
+      COMMENTS: 'https://api.jonzav.me/v1/comments',
       GITHUB_PROFILE_BASE: 'https://github.com',
     };
 
