@@ -93,12 +93,11 @@ class ChatRoom extends Window {
     $(this.elem).find('.loginButton').remove();
     $(this.elem).find('.loggedInLabel').text(`Loading...`);
     $(this.elem).find('.loggedInLabel').show();
-
     $.ajax({
       type: 'POST',
       url: this.URL.TOKEN,
       data: {
-        code
+        code,
       },
       success: (data) => this.getUserData(data.access_token),
     });
@@ -110,11 +109,12 @@ class ChatRoom extends Window {
    */
   getUserData(token) {
     //  TODO: make error check
+    this.token = token;
     $.ajax({
       type: 'POST',
       url: this.URL.GET_USER_DATA,
       data: {
-        token
+        token,
       },
       success: (data) => this.userLoggedIn(data.login, data.avatar_url),
     });
@@ -132,12 +132,24 @@ class ChatRoom extends Window {
    * Sends a comment to the backend.
    */
   sendComment() {
-    // TODO: Add error check.
-    let comment = $(this.elem).find('.inputChat')[0].innerHTML;
-    comment = comment.replace(/<br>/g, '');
-    comment = comment.replace(/<div>/g, '');
-    comment = comment.replace(/&nbsp;/g, '');
-    comment = comment.replace(/<\/div>/g, '');
+    let content = $(this.elem).find('.inputChat')[0].innerHTML;
+    if (content === 'Type here...') return;
+    content = content.replace(/<br>/g, '');
+    content = content.replace(/<div>/g, '');
+    content = content.replace(/&nbsp;/g, '');
+    content = content.replace(/<\/div>/g, '');
+
+    $.ajax({
+      type: 'POST',
+      url: this.URL.COMMENTS,
+      data: {
+        token: this.token,
+        content,
+      },
+      success: (data) => {
+        // error check
+      },
+    });
   }
 
   /**
