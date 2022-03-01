@@ -88,8 +88,6 @@ class ChatRoom extends Window {
    * @param  {string} code - The code from the OAuth login.
    */
   getClientToken(code) {
-    // TODO: make an error check if token is invalid.
-
     $(this.elem).find('.loginButton').remove();
     $(this.elem).find('.loggedInLabel').text(`Loading...`);
     $(this.elem).find('.loggedInLabel').show();
@@ -108,7 +106,12 @@ class ChatRoom extends Window {
    * @param  {string} token - The token from the OAuth login.
    */
   getUserData(token) {
-    //  TODO: make error check
+    if (!token) {
+      this.throwError(
+        'Error getting user data:<br>Invalid code from OAuth<br>Please log in again'
+      );
+      return;
+    }
     this.token = token;
     $.ajax({
       type: 'POST',
@@ -118,6 +121,29 @@ class ChatRoom extends Window {
       },
       success: (data) => this.userLoggedIn(data.login, data.avatar_url),
     });
+  }
+
+  /**
+   * Called when a ajax request fails.
+   * @param  {string} error - The error message.
+   * @param  {boolean} isCooldownError - If the error is a cooldown error.
+   */
+  throwError(error, isCooldownError) {
+    let altOkText = 'Log In';
+    let okFunction = () => window.location.replace(this.getOAuthURL());
+    if (isCooldownError) {
+      altOkText = 'Ok';
+      okFunction = this.close;
+    }
+
+    this.noSaveError = new Error(
+      this.displayName,
+      this.id,
+      error,
+      okFunction,
+      altOkText
+    );
+    this.noSaveError.render();
   }
 
   /**
@@ -132,7 +158,6 @@ class ChatRoom extends Window {
    * Sends a comment to the backend.
    */
   sendComment() {
-    // TODO: make an error check for if the ajax request fails.
     let content = $(this.elem).find('.inputChat')[0].innerHTML;
     if (content === 'Type here...') return;
     content = content.replace(/<br>/g, '');
@@ -147,8 +172,17 @@ class ChatRoom extends Window {
         token: this.token,
         content,
       },
-      success: (data) => {
-        // error check
+      error: (err) => {
+        if (err.responseJSON.message === 'user is on cooldown') {
+          this.throwError(
+            'Cannot send message: <br>You are on cooldown!<br>Please wait 10 seconds to send another message.',
+            true
+          );
+          return;
+        }
+        this.throwError(
+          'Cannot send message: <br>Invalid token<br>Please log in again'
+        );
       },
     });
   }
