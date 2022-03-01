@@ -126,12 +126,12 @@ class ChatRoom extends Window {
   /**
    * Called when a ajax request fails.
    * @param  {string} error - The error message.
-   * @param  {boolean} isCooldownError - If the error is a cooldown error.
+   * @param  {boolean} [showLogInText=true] - If the error should show the log in button.
    */
-  throwError(error, isCooldownError) {
+  throwError(error, showLogInText = true) {
     let altOkText = 'Log In';
     let okFunction = () => window.location.replace(this.getOAuthURL());
-    if (isCooldownError) {
+    if (!showLogInText) {
       altOkText = 'Ok';
       okFunction = this.close;
     }
@@ -165,6 +165,11 @@ class ChatRoom extends Window {
     content = content.replace(/&nbsp;/g, '');
     content = content.replace(/<\/div>/g, '');
 
+    if (content.length > 300) {
+      this.throwError('Comment too long', false);
+      return;
+    }
+
     $.ajax({
       type: 'POST',
       url: this.URL.COMMENTS,
@@ -176,7 +181,7 @@ class ChatRoom extends Window {
         if (err.responseJSON.message === 'user is on cooldown') {
           this.throwError(
             'Cannot send message: <br>You are on cooldown!<br>Please wait 10 seconds to send another message.',
-            true
+            false
           );
           return;
         }
