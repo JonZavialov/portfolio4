@@ -132,6 +132,7 @@ class ChatRoom extends Window {
    * Sends a comment to the backend.
    */
   sendComment() {
+    // TODO: make an error check for if the ajax request fails.
     let content = $(this.elem).find('.inputChat')[0].innerHTML;
     if (content === 'Type here...') return;
     content = content.replace(/<br>/g, '');
