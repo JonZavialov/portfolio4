@@ -29,11 +29,18 @@ class Calendar extends Window {
       'December',
     ];
 
-    this.IMPORTANTDAYS = [
-      { '1 4': "Zae's birthday" },
-      { '3 21': "Jon's Birthday" },
-      { '3 8': "Preslee's Birthday" },
-      { '11 3': "Meatball's Birthday" },
+    this.IMPORTANTDAYS = [{
+        '1 4': "Zae's birthday"
+      },
+      {
+        '3 21': "Jon's Birthday"
+      },
+      {
+        '3 8': "Preslee's Birthday"
+      },
+      {
+        '11 3': "Meatball's Birthday"
+      },
     ];
 
     this.setCalendar();
@@ -119,17 +126,17 @@ class Calendar extends Window {
     if (elem) this.highlightDay(elem);
     else
       $(this.elem)
-        .find('#days')
-        .find('li')
-        .each((_i, indexElem) => {
-          if (indexElem.innerHTML === day.toString())
-            this.highlightDay(indexElem);
-        });
+      .find('#days')
+      .find('li')
+      .each((_i, indexElem) => {
+        if (indexElem.innerHTML === day.toString())
+          this.highlightDay(indexElem);
+      });
 
     const formattedMonth = this.convert(month, 'month');
 
     let nationalDays = $.getJSON(
-      `https://national-api-day.herokuapp.com/api/date/${month + 1}/${day}`,
+      `https:/api.jonzav.me/v1/national-days?month=${month + 1}&day=${day}`,
       (data) => {
         nationalDays = data.holidays;
         let formattedNationalDays = '';
@@ -169,7 +176,10 @@ class Calendar extends Window {
   updateCalendar(year, month) {
     this.year = year;
     this.month = month;
-    const { firstDay, daysInMonth } = this.getMonthInfo(year, month);
+    const {
+      firstDay,
+      daysInMonth
+    } = this.getMonthInfo(year, month);
     let dates = ``;
     for (let i = 0; i < firstDay; i += 1) dates += `<li>&nbsp</li>`;
 
@@ -336,8 +346,7 @@ class Calendar extends Window {
     const hours = d.getHours();
 
     // Create an object with each hand and it's angle in degrees
-    this.hands = [
-      {
+    this.hands = [{
         hand: 'hours',
         angle: hours * 30 + minutes / 2,
       },
