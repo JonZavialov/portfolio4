@@ -114,11 +114,8 @@ class ChatRoom extends Window {
     }
     this.token = token;
     $.ajax({
-      type: 'POST',
-      url: this.URL.GET_USER_DATA,
-      data: {
-        token,
-      },
+      type: 'GET',
+      url: `${this.URL.GET_USER_DATA}?token=${token}`,
       success: (data) => this.userLoggedIn(data.login, data.avatar_url),
     });
   }
