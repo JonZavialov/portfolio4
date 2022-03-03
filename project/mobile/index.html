@@ -5,46 +5,28 @@
     <link rel="icon" href="../favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
 
-    <script src="../src/mobile/setMainWindowHeight.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles/taskbar.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/mobile.css" />
   </head>
 
   <body id="mobile-body">
-    <script>
-      $(document).ready(function () {
-        setMainWindowHeight();
-      });
-    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="window" id="mainWindow">
-      <div class="title-bar">
-        <div class="title-bar-text">Jonathan Zavialov</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div class="window" id="aboutMe">
-          <div class="title-bar">
-            <div class="title-bar-text">About Me</div>
-            <div class="title-bar-controls">
-              <button aria-label="Minimize"></button>
-              <button aria-label="Maximize"></button>
-              <button aria-label="Close"></button>
-            </div>
-          </div>
-          <div class="window-body">
-            I am experienced in Python, Javascript, Java, Solidity, and many
-            Javascript frameworks. Currently my interests include cryptography,
-            cryptocurrencies, trading stocks, and NFTs. I also enjoy playing
-            Valorant and Rust with my friends in my free time.
-          </div>
-        </div>
-      </div>
+    <div id="taskbar" class="window">
+      <button id="startButton">
+        <img src="/assets/images/icons/windows_logo.png" alt="startButton" />
+        <p>Start</p>
+      </button>
+      <button id="desktopClock">
+        <img
+          id="desktopClockIcon"
+          src="/assets/images/icons/clock.png"
+          alt="clock"
+          onclick="openCalendar()"
+        />
+        <p id="desktopClockTimeDisplay"></p>
+      </button>
     </div>
   </body>
 </html>

@@ -1,0 +1,45 @@
+#taskbar {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#startButton img {
+  float: left;
+  width: 50px;
+  margin: auto 5px;
+}
+
+#startButton p {
+  font-weight: bold;
+  font-size: 25px;
+  margin: auto 8px;
+}
+
+#startButton {
+  padding: 0;
+  margin: 2px;
+  display: flex;
+}
+
+#desktopClock {
+  padding: 0;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  position: absolute;
+  right: 0;
+  width: 100px;
+  margin: 2px 5px;
+  height: calc(100% - 10px);
+}
+
+#desktopClock img {
+  width: 40px;
+  float: left;
+  margin-left: 5px;
+}
+
+#desktopClockTimeDisplay {
+  font-weight: bold;
+}
