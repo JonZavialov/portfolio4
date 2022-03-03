@@ -7,11 +7,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
 
+    <script src="../src/root/initClock.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./styles/taskbar.css" />
     <link rel="stylesheet" type="text/css" href="./styles/mobile.css" />
   </head>
 
   <body id="mobile-body">
+    <script>
+      window.onload = () => {
+        initClock();
+      };
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="taskbar" class="window">
       <button id="startButton">
