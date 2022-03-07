@@ -40,23 +40,30 @@ body {
   width: calc(85vw - 36px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-#desktop h1 {
+#desktopHeader {
+  display: flex;
+  align-items: center;
+}
+
+#desktopHeader h1 {
   font-size: 60px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  margin-left: 35px;
+  margin: 14px 20px 0;
+}
+
+#desktopHeader img {
+  width: 86px;
+  margin: 10px 0 0 32px;
 }
 
 #headerHr {
-  width: 600px;
-  margin-left: 0;
+  width: 630px;
   background-color: #a4a4a4;
   border-width: 0;
   height: 2px;
   margin-left: 35px;
+  margin-top: 17px;
 }
 
 #middleSection {
@@ -87,4 +94,8 @@ button {
   position: absolute;
   bottom: 19px;
   color: gray;
+}
+
+#navbarLogo {
+  width: 50%;
 }
