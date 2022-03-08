@@ -136,7 +136,7 @@ class Calendar extends Window {
     const formattedMonth = this.convert(month, 'month');
 
     let nationalDays = $.getJSON(
-      `https:/api.jonzav.me/v1/national-days?month=${month + 1}&day=${day}`,
+      `https://api.jonzav.me/v1/national-days?month=${month + 1}&day=${day}`,
       (data) => {
         nationalDays = data.holidays;
         let formattedNationalDays = '';
