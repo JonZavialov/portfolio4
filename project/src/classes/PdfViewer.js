@@ -15,6 +15,7 @@ class PdfViewer extends Window {
       name
     );
     this.path = path;
+    this.name = name;
     this.viewerWidth = 300;
     this.generateElement(this.getInnerHTML());
     this.generatePDF();
@@ -29,13 +30,13 @@ class PdfViewer extends Window {
       {
         image: '/assets/images/backArrow.png',
         alt: 'Previous Page',
-        transform: 'translate(8px, -16px)',
+        transform: 'translate(10px, -16px)',
         action: () => this.previousPage(),
       },
       {
         image: '/assets/images/forwardArrow.png',
         alt: 'Next Page',
-        transform: 'translate(19px, -16px)',
+        transform: 'translate(21px, -16px)',
         action: () => this.nextPage(),
       },
     ];
@@ -70,10 +71,14 @@ class PdfViewer extends Window {
       buttonControls.append(buttonDOM);
     });
 
+    const downloadButton = document.createElement('button');
+    downloadButton.innerText = 'Download';
+    downloadButton.onclick = () => this.download();
+
     this.pageDisplay = document.createElement('div');
     this.pageDisplay.className = 'pageControls';
 
-    controlsContainer.append(buttonControls, this.pageDisplay);
+    controlsContainer.append(buttonControls, downloadButton, this.pageDisplay);
 
     container.append(controlsContainer, viewer);
     return container;
@@ -146,6 +151,16 @@ class PdfViewer extends Window {
         button.removeAttribute('disabled');
         button.style.boxShadow = null;
       });
+  }
+
+  /**
+   * Downloads the PDF.
+   */
+  download() {
+    const link = document.createElement('a');
+    link.href = this.path;
+    link.download = this.name;
+    link.click();
   }
 
   /**
