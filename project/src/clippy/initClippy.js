@@ -8,4 +8,6 @@ function initClippy() {
     agent.show();
     displayIntroMessage();
   });
+
+  // TODO: add clippy scene for chat room.
 }
