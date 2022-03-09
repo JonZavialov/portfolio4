@@ -9,5 +9,5 @@ function clippyShowResume() {
   clippyAgent.speak(
     'If you came here to learn more about Jon, his resume is a good place to start.'
   );
-  setTimeout(() => addSpeechButton(clippyShowSettings), 5000);
+  setTimeout(() => addSpeechButton(clippyShowChat), 5000);
 }
