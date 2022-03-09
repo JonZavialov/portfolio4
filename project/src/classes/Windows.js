@@ -25,6 +25,8 @@ class Window {
     this.windowName = windowName;
 
     this.MINIMIZE_DURATION = 250;
+
+    // TODO: add URL shortener
   }
 
   /**
@@ -124,7 +126,7 @@ class Window {
     const closeButton = document.createElement('button');
     closeButton.ariaLabel = 'Close';
     closeButton.onclick = !this.closeFunction
-      ? () => this.close() // TODO: wtf is this 
+      ? () => this.close() // TODO: wtf is this
       : this.closeFunction;
 
     minimizeButton ? titleBarControls.append(minimizeButton) : null;
