@@ -88,9 +88,7 @@
         checkURL();
         initCookies();
 
-        $('#startButton').click(() => {
-          startButton();
-        });
+        $('#startButton').click(() => startButton());
         window.addEventListener('message', (e) => snakeEvent(e), false);
       });
     </script>
