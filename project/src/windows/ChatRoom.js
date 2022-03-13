@@ -1,6 +1,7 @@
 class ChatRoom extends Window {
   /**
    * The Chat Room window.
+   * @constructor
    */
   constructor() {
     super('Chat Room', 'chatRoom', true, 'assets/images/icons/people.png', () =>

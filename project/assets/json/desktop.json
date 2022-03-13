@@ -71,6 +71,12 @@
     "clickFunction": "openSnake",
     "type": "app"
   },
+  "pong": {
+    "displayName": "Pong",
+    "iconImage": "/assets/images/icons/joystick.png",
+    "clickFunction": "openPong",
+    "type": "app"
+  },
   "audioRecorder": {
     "displayName": "Audio Recorder",
     "iconImage": "/assets/images/icons/mic.png",
