@@ -64,6 +64,7 @@ class Ball {
         reloadURL.searchParams.set('aiScore', this.boardScore[1]);
       }
       window.location.href = reloadURL.href;
+      // TODO: Make a reset function instead of reloading the page to increase speed
     }
 
     this.x += this.xVelocity;
