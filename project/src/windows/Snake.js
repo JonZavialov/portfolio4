@@ -4,7 +4,7 @@ class Snake extends Window {
    * @constructor
    */
   constructor() {
-    super('Snake', 'snake', true, 'assets/images/icons/joystick.png', () =>
+    super('Snake', 'snake', true, 'assets/images/icons/snake.png', () =>
       this.closeSnake()
     );
     this.gameId = Math.random();

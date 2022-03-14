@@ -3,9 +3,10 @@
 }
 
 #pongBody {
-  margin: 0;
+  margin: 10px;
   font-family: blippo;
   color: white;
+  background-color: black;
 }
 
 @font-face {
@@ -22,4 +23,9 @@
 #aiScore {
   transform: translate(209px, -284px);
   position: absolute;
+}
+
+.pongGame {
+  width: 420px;
+  height: 280px;
 }

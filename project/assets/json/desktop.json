@@ -17,6 +17,12 @@
     "clickFunction": "openFileExplorer",
     "type": "folder"
   },
+  "games": {
+    "displayName": "Games",
+    "iconImage": "/assets/images/icons/joystick.png",
+    "clickFunction": "openGames",
+    "type": "folder"
+  },
   "myDocuments": {
     "displayName": "My Documents",
     "iconImage": "/assets/images/icons/documents.png",
@@ -67,15 +73,17 @@
   },
   "snake": {
     "displayName": "Snake",
-    "iconImage": "/assets/images/icons/joystick.png",
+    "iconImage": "/assets/images/icons/snake.png",
     "clickFunction": "openSnake",
-    "type": "app"
+    "type": "app",
+    "game": true
   },
   "pong": {
     "displayName": "Pong",
-    "iconImage": "/assets/images/icons/joystick.png",
+    "iconImage": "/assets/images/icons/pong.png",
     "clickFunction": "openPong",
-    "type": "app"
+    "type": "app",
+    "game": true
   },
   "audioRecorder": {
     "displayName": "Audio Recorder",
