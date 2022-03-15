@@ -36,12 +36,12 @@ python compress.py
 
 #### Host server
 
-Host the server with the `projects` folder as  the root. For development, I use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension. I use [nginx](https://www.nginx.org/) for production. For other solutions, use [XAAMP](https://www.apachefriends.org/download.html).
+Host the server with the `projects` folder as the root. For development, I use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension. I use [nginx](https://www.nginx.org/) for production. For other solutions, use [XAAMP](https://www.apachefriends.org/download.html).
 
 ## 🧠 Backend
 
 The website uses many REST APIs to operate, as well as run the Chat Room. All of this is routed through the [backend](https://github.com/JonZavialov/backend).
 
-<br><br><br><br>
+<br><br><br>
 
 [![badge](https://github.com/syxanash/awesome-web-desktops/blob/master/88x31.gif?raw=true)](https://github.com/syxanash/awesome-web-desktops)
