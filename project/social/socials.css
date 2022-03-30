@@ -41,6 +41,7 @@ button {
   border-radius: 5px;
   font-family: 'M PLUS 1', sans-serif;
   font-size: 20px;
+  color: black;
 }
 
 button:active {
