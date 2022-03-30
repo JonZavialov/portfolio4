@@ -5,12 +5,13 @@
  */
 function checkURL() {
   const params = new URLSearchParams(window.location.search);
-  if (params.get('booted') === 'true') {
-    if (detectMob()) {
-      transformToMobile();
-      return;
-    }
 
+  if (detectMob()) {
+    transformToMobile();
+    return;
+  }
+
+  if (params.get('booted') === 'true') {
     if (params.get('app')) openURLApp(params.get('app'));
     else openOutlookExpress('INTRO');
     return;
