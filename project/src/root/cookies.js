@@ -1,5 +1,5 @@
 /**
- * Checks if the user is visiting for the first time.
+ * Checks if the user is visiting for the first time using system cookies.
  */
 function initCookies() {
   getBrowserUUID()
