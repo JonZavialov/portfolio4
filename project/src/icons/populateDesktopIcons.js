@@ -10,9 +10,15 @@ function populateDesktopIcons() {
   $.getJSON('/assets/json/desktop.json', (data) => {
     const keys = Object.keys(data);
     let iconsColumn = makeIconsColumn();
+
+    let counter = 1;
     for (let i = 0; i < keys.length; i += 1) {
       const key = keys[i];
       const icon = data[key];
+
+      // eslint-disable-next-line no-continue
+      if (icon.game) continue
+
       const iconClass = new Icon(
         icon.displayName,
         icon.iconImage,
@@ -24,7 +30,8 @@ function populateDesktopIcons() {
       iconClass.renderIntoColumn(iconsColumn);
       iconClass.makeDraggable();
       iconClasses.push(iconClass);
-      if ((i + 1) % 4 === 0) iconsColumn = makeIconsColumn();
+      if (counter % 4 === 0) iconsColumn = makeIconsColumn();
+      counter += 1;
     }
   });
   // TODO: add about me folder
