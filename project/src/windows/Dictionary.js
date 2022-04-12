@@ -88,16 +88,13 @@ class Dictionary extends Window {
   getRandomWord(callback) {
     // TODO: load time can be reduced by querying multiple words in one request.
     // TODO: This can be done in the backend.
-    $.getJSON(
-      'https://random-word-api.herokuapp.com/word?number=1&swear=0',
-      (data) => {
-        this.getWordData(
-          data[0],
-          () => callback(data[0]),
-          () => this.getRandomWord(callback)
-        );
-      }
-    );
+    $.getJSON('https://random-word-api.herokuapp.com/word', (data) => {
+      this.getWordData(
+        data[0],
+        () => callback(data[0]),
+        () => this.getRandomWord(callback)
+      );
+    });
   }
 
   /**
