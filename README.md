@@ -13,7 +13,7 @@
 
 ## 👨‍💻 Development
 
-This project is currently in progress by Jonathan.
+This project is mostly finished. I may add more features in the future, and occasionaly commit some bug fixes.
 
 ## 🧪 Try It
 
