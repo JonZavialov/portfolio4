@@ -1,5 +1,6 @@
 /**
  * The page's boot sequence.
+ * TODO: add custom 404 windows error page
  */
 async function boot() {
   const bootList = [
