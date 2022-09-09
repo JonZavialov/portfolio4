@@ -50,4 +50,5 @@
   width: 114px;
   position: absolute;
   transform: translateX(206px);
+  z-index: 100;
 }
