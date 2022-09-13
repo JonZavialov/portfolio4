@@ -136,7 +136,7 @@ function startMenuButton(button) {
     'linkedin': () => {
       window
         .open(
-          'https://www.linkedin.com/in/jonathan-zavialov-6404b61bb/',
+          'https://www.linkedin.com/in/jonzav/',
           '_blank'
         )
         .focus();
