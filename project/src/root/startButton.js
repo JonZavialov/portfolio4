@@ -70,7 +70,6 @@ function startButton() {
 
 /**
  * Called when the options button is hovered over.
- * TODO: Options menu shows up under application windows. 
  */
 function optionsIn() {
   if ($('#optionsMenu').length !== 0) return;
