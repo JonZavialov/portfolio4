@@ -120,5 +120,11 @@
     "iconImage": "/assets/images/icons/page.png",
     "clickFunction": "openResume",
     "type": "document"
+  },
+  "docs": {
+    "displayName": "docs.pdf",
+    "iconImage": "/assets/images/icons/page.png",
+    "clickFunction": "openDocumentation",
+    "type": "document"
   }
 }
