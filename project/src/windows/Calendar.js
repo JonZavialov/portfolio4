@@ -29,18 +29,13 @@ class Calendar extends Window {
       'December',
     ];
 
-    this.IMPORTANTDAYS = [{
-        '1 4': "Zae's birthday"
-      },
+    this.IMPORTANTDAYS = [
       {
         '3 21': "Jon's Birthday"
       },
       {
-        '3 8': "Preslee's Birthday"
-      },
-      {
-        '11 3': "Meatball's Birthday"
-      },
+        '0 12': "Ariana's Birthday"
+      }
     ];
 
     this.setCalendar();
