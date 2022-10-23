@@ -24,7 +24,7 @@ body {
   margin: 20px auto 0;
 }
 
-#handle {
+p {
   width: fit-content;
   margin: 10px auto 30px;
   font-family: 'M PLUS 1', sans-serif;
@@ -48,4 +48,10 @@ button:active {
   box-shadow: none;
   background-color: #063d54;
   color: white;
+}
+
+#footer {
+  margin-top: 35px;
+  font-size: 16px;
+  display: none;
 }
