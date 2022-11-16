@@ -4,7 +4,7 @@
 
 .snakeGame {
   width: 374px;
-  height: 340px;
+  height: 347px;
 }
 
 #snake {
@@ -37,12 +37,12 @@
 
 .snakeLostText {
   position: absolute;
-  transform: translate(429px,186px);
+  transform: translate(429px, 186px);
   color: red;
   font-size: 15px;
 }
 
-#snakeSpeedSelector{
+#snakeSpeedSelector {
   width: 150px;
   position: absolute;
   transform: translate(386px, 1px);
