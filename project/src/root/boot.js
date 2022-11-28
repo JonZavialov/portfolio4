@@ -35,7 +35,7 @@ async function boot() {
             Driver Version&nbsp&nbsp&nbsp&nbsp: V340<br>
             Device Name&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: JONATHAN<br>
             Transfer Mode&nbsp&nbsp&nbsp&nbsp&nbsp: Programmed I/O<br>
-            Drive 0: Port= 1f0  (Primary Channel), Slave IRQ= 14<br>
+            Drive 0: Port= 1f0  (Primary Channel), Raised IRQ= 14<br>
             Firmware version&nbsp&nbsp: ALPH
         </p>
     </div>
