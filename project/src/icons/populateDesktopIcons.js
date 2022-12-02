@@ -27,6 +27,7 @@ function populateDesktopIcons() {
         window[icon.clickFunction]
       );
       iconClass.generateElement();
+      $(iconClass.iconElem).attr('tabindex', i+1)
       iconClass.renderIntoColumn(iconsColumn);
       iconClass.makeDraggable();
       iconClasses.push(iconClass);
@@ -38,6 +39,9 @@ function populateDesktopIcons() {
   $('#desktop').mouseup(() =>
     iconClasses.forEach((icon) => icon.checkForReleasedOverRecycle())
   );
+  $(document).keypress((event) => {
+    if (event.keyCode === 13 && document.activeElement.classList.contains('desktopIcon')) openFocusedApp(document.activeElement, event);
+  })
 }
 
 /**
