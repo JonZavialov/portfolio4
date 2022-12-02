@@ -137,8 +137,10 @@ class Icon {
     this.iconElem.style.transform = 'scale(0)';
     iconClasses.splice(iconClasses.indexOf(this), 1);
     recycledIcons.push(this);
+    $(this.iconElem).attr('tabindex', '')
 
     try {
+      generateNewTabs()
       recycleBinWindows.forEach((recycleClass) => {
         const newIcon = recycleClass.generateRecycledIcon(this);
         newIcon.generateElement();
