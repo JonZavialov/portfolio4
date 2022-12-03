@@ -1,0 +1,38 @@
+.internet-explorer-iframe {
+  width: 450px;
+  height: 300px;
+}
+
+.internet-explorer-widgets-bar#buttonsHeader #outlookHeaderButton img {
+  width: 25px;
+  margin: auto;
+}
+
+.internet-explorer-widgets-bar#buttonsHeader p {
+  width: fit-content;
+  margin: auto;
+}
+
+.internet-explorer-widgets-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.internet-explorer-widgets-bar #outlookHeaderButton {
+  margin: 2px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.internet-explorer-widgets-bar hr {
+  height: 37px;
+  position: fixed;
+}
+
+.internet-explorer-widgets-bar .msn-butterfly {
+  position: absolute;
+  right: 20px;
+  width: 32px;
+}
