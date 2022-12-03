@@ -59,6 +59,12 @@
     "clickFunction": "openOutlookExpress",
     "type": "app"
   },
+  "docs": {
+    "displayName": "Docs",
+    "iconImage": "/assets/images/icons/internet.png",
+    "clickFunction": "openDocumentation",
+    "type": "app"
+  },
   "calendar": {
     "displayName": "Calendar",
     "iconImage": "/assets/images/icons/calendar.png",
@@ -119,12 +125,6 @@
     "displayName": "resume.pdf",
     "iconImage": "/assets/images/icons/page.png",
     "clickFunction": "openResume",
-    "type": "document"
-  },
-  "docs": {
-    "displayName": "docs.pdf",
-    "iconImage": "/assets/images/icons/page.png",
-    "clickFunction": "openDocumentation",
     "type": "document"
   }
 }
