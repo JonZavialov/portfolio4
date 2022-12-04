@@ -1,0 +1,30 @@
+#google-body {
+  background-color: white;
+  display: flex;
+  height: 100vh;
+}
+
+#google-body #google-main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#google-body #google-main p {
+  margin: auto;
+  margin-top: 15px;
+}
+
+#google-body #google-main button {
+  margin: auto;
+  width: fit-content;
+}
+
+#google-body #copyright {
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
