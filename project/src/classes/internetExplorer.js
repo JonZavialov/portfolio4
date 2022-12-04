@@ -9,6 +9,8 @@ class InternetExplorer extends Window {
   constructor(pageName, id, url) {
     super(`${pageName} - Microsoft Internet Explorer`, id, true, 'assets/images/icons/internet.png');
     this.generateElement(this.generateHTML(url));
+    // TODO: Add bookmarks tab
+    // TODO: change page title when page is changed
   }
 
   /**
