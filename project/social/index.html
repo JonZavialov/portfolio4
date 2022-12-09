@@ -14,26 +14,24 @@
     <script>
       socials = {
         'github': 'https://github.com/jonzavialov',
-        'instagram': 'https://www.instagram.com/jonzavialov/',
+        'resume': '../assets/text/resume.pdf',
         'youtube': 'https://www.youtube.com/channel/UCfQ1TVBmS1uE6GX6S4h0q-g',
-        'discord': 'https://discordapp.com/users/384767042525331458',
         'linkedin': 'https://www.linkedin.com/in/jonzav',
       };
 
       $(document).ready(() => {
         if (detectMob()) $('#footer').show();
       });
+
+      function downloadResume() {}
     </script>
 
     <div id="root">
       <img id="logo" src="../assets/images/full-logo.png" />
       <p>@jonzavialov</p>
       <button onclick="window.location.href=socials.github">GitHub</button>
-      <button onclick="window.location.href=socials.instagram">
-        Instagram
-      </button>
+      <button onclick="window.location.href=socials.resume">Resume</button>
       <button onclick="window.location.href=socials.youtube">YouTube</button>
-      <button onclick="window.location.href=socials.discord">Discord</button>
       <button onclick="window.location.href=socials.linkedin">LinkedIn</button>
       <button onclick="window.location.assign('mailto: jonzavialov@gmail.com')">
         Email
