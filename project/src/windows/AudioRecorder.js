@@ -100,8 +100,9 @@ class AudioRecorder extends Window {
    * @param  {Blob[]} chunks - The audio data.
    */
   convertData(chunks) {
+    console.log(chunks)
     const blob = new Blob(chunks, {
-      'type': 'audio/ogg; codecs=opus',
+      'type': 'audio/mpeg-3',
     });
     const audioURL = window.URL.createObjectURL(blob);
     this.addAudioToList(audioURL);
@@ -168,7 +169,7 @@ class AudioRecorder extends Window {
   saveAudio(url, name) {
     const pom = document.createElement('a');
     pom.setAttribute('href', url);
-    pom.setAttribute('download', `${name}.ogg`);
+    pom.setAttribute('download', `${name}.mp3`);
 
     pom.style.display = 'none';
     document.body.appendChild(pom);
