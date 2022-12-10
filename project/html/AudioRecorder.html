@@ -1,0 +1,34 @@
+<p class="requestMicPermsPara">
+  Requesting microphone permissions...
+  <br />
+  If you don't see a popup, check that your browser hasn't blocked it.
+</p>
+
+<div class="recorderBody">
+  <p id="micTimer">0:00</p>
+
+  <p id="recordLabel"></p>
+
+  <button class="recordButton" var="recordButton">Record</button>
+
+  <meter
+    id="volumeMeter"
+    max="100"
+    value="0"
+    low="30"
+    high="60"
+    optimum="80"
+  ></meter>
+
+  <meter
+    id="volumeMeter"
+    max="100"
+    value="0"
+    low="30"
+    high="60"
+    optimum="80"
+    style="transform: translate(-250px, 45px) rotate(-90deg)"
+  ></meter>
+
+  <div id="audioList"></div>
+</div>

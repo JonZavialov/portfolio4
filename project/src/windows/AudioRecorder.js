@@ -25,14 +25,7 @@ class AudioRecorder extends Window {
    */
   getHTML() {
     const container = document.createElement('div');
-
-    const requestPerms = document.createElement('p');
-    requestPerms.className = 'requestMicPermsPara';
-    requestPerms.innerHTML = `
-        Requesting microphone permissions...<br>
-        If you don't see a popup, check that your browser hasn't blocked it.`;
-    container.append(requestPerms);
-
+    addNodesToDom(container, 'audioRecorder.html .requestMicPermsPara');
     return container;
   }
 
@@ -59,43 +52,21 @@ class AudioRecorder extends Window {
       this.convertData(chunks);
     };
 
-    const timer = document.createElement('p');
-    timer.id = 'micTimer';
-    timer.innerHTML = '0:00';
-    $(this.elem).find('.window-body').append(timer);
-
-    const recordLabel = document.createElement('p');
-    recordLabel.id = 'recordLabel';
-    $(this.elem).find('.window-body').append(recordLabel);
-
-    const recordButton = document.createElement('button');
-    recordButton.className = 'recordButton';
-    recordButton.innerHTML = 'Record';
-    recordButton.onclick = () => {
-      if (mediaRecorder.state === 'inactive') {
-        this.initRecording(mediaRecorder);
-        recordButton.innerHTML = 'Stop';
-      } else {
-        this.stopRecording(mediaRecorder);
-        recordButton.innerHTML = 'Record';
+    addNodesToDom(
+      $(this.elem).find('.window-body')[0], 
+      'audioRecorder.html .recorderBody', 
+      (vars) => {
+        vars.recordButton.onclick = () => {
+          if (mediaRecorder.state === 'inactive') {
+            this.initRecording(mediaRecorder);
+            vars.recordButton.innerHTML = 'Stop';
+          } else {
+            this.stopRecording(mediaRecorder);
+            vars.recordButton.innerHTML = 'Record';
+          }
+        };
       }
-    };
-    $(this.elem).find('.window-body').append(recordButton);
-
-    const meter = document.createElement('meter');
-    meter.id = 'volumeMeter';
-    meter.max = 100;
-    meter.value = 0;
-    meter.low = 30;
-    meter.high = 60;
-    meter.optimum = 80;
-    const secondMeter = meter.cloneNode();
-    secondMeter.style.transform = 'translate(-250px, 45px) rotate(-90deg)';
-    $(this.elem).find('.window-body').append(meter, secondMeter);
-
-    const audioList = document.createElement('div');
-    audioList.id = 'audioList';
-    $(this.elem).find('.window-body').append(audioList);
+    );
   }
 
   /**
