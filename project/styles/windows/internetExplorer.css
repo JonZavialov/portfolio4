@@ -20,8 +20,8 @@
 }
 
 .internet-explorer-widgets-bar #outlookHeaderButton {
-  margin: 2px;
-  padding: 3px;
+  margin: 1px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
 }
