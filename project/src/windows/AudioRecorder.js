@@ -131,8 +131,6 @@ class AudioRecorder extends Window {
     listItem.append(time);
 
     $(this.elem).find('#audioList').append(listItem);
-
-    $(this.elem).find('#audioList').append(listItem);
     this.timer = 0;
   }
 
