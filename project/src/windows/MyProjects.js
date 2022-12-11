@@ -11,7 +11,6 @@ class MyProjects extends Window {
       'assets/images/icons/myprojects.png'
     );
     this.generateElement(this.generateHTML());
-    this.getTopProjects();
   }
 
   /**
@@ -20,28 +19,10 @@ class MyProjects extends Window {
   generateHTML() {
     const container = document.createElement('div');
 
-    const rowOne = document.createElement('div');
-    rowOne.id = 'projectsWindowContainer';
-    const windowOne = document.createElement('div');
-    windowOne.id = 'projectWindow1';
-    const windowTwo = document.createElement('div');
-    windowTwo.id = 'projectWindow2';
-    rowOne.append(windowOne, windowTwo);
-
-    const rowTwo = document.createElement('div');
-    rowTwo.id = 'projectsWindowContainer';
-    const windowThree = document.createElement('div');
-    windowThree.id = 'projectWindow3';
-    const windowFour = document.createElement('div');
-    windowFour.id = 'projectWindow4';
-    rowTwo.append(windowThree, windowFour);
-
-    const contribsImage = document.createElement('img');
-    contribsImage.src = 'https://ghchart.rshah.org/jonzavialov';
-    contribsImage.alt = 'Contributions Graph';
-    contribsImage.style.width = '500px';
-
-    container.append(rowOne, rowTwo, contribsImage);
+    addNodesToDom(container, 'MyProjects.html', () => {
+      this.getTopProjects();
+    })
+    
     return container;
   }
 
