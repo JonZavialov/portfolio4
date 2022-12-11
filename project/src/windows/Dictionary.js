@@ -104,46 +104,9 @@ class Dictionary extends Window {
   getHTML() {
     const container = document.createElement('div');
 
-    const input = document.createElement('input');
-    input.id = 'wordInput';
-    input.type = 'text';
-    input.placeholder = 'Enter a word';
-    container.append(input);
-
-    const searchButton = document.createElement('button');
-    searchButton.id = 'searchButton';
-    searchButton.onclick = () => this.searchTerm();
-    const searchImg = document.createElement('img');
-    searchImg.src = 'assets/images/icons/search.png';
-    searchImg.alt = 'Search';
-    searchButton.append(searchImg);
-    container.append(searchButton);
-
-    const randomWord = document.createElement('p');
-    randomWord.id = 'randomWord';
-    randomWord.innerHTML = 'Random Word!';
-    container.append(randomWord);
-
-    const word = document.createElement('p');
-    word.id = 'word';
-    word.innerHTML = 'Loading...';
-    container.append(word);
-
-    const pronounce = document.createElement('p');
-    pronounce.id = 'pronounce';
-    container.append(pronounce);
-
-    const partOfSpeech = document.createElement('p');
-    partOfSpeech.id = 'partOfSpeech';
-    container.append(partOfSpeech);
-
-    const definition = document.createElement('p');
-    definition.id = 'definition';
-    container.append(definition);
-
-    const example = document.createElement('p');
-    example.id = 'example';
-    container.append(example);
+    addNodesToDom(container, 'Dictionary.html', (vars) => {
+      vars.searchButton.onclick = () => this.searchTerm();
+    })
 
     return container;
   }
