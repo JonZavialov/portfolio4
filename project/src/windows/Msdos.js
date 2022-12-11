@@ -10,7 +10,6 @@ class Msdos extends Window {
     this.inputtedCommands = [];
     this.commandIndex = 0;
     this.generateElement(this.generateHTML());
-    this.addNewInput();
   }
 
   /**
@@ -19,12 +18,10 @@ class Msdos extends Window {
   generateHTML() {
     const container = document.createElement('div');
     container.className = 'msdosDisplay';
-    container.innerHTML = `
-    <p style="padding-top: 30px">
-        Microsoft(R) Windows 98 <br>
-        &nbsp&nbsp&nbsp(C)Copyright Microsoft Corp 1981-1999. <br>
-        &nbsp&nbsp&nbspEnter 'help' for a list of commands.
-    </p>`;
+    
+    addNodesToDom(container, 'Msdos.html', () => {
+      this.addNewInput();
+    })
 
     return container;
   }
