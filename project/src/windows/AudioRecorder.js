@@ -55,6 +55,7 @@ class AudioRecorder extends Window {
       $(this.elem).find('.window-body')[0], 
       'audioRecorder.html .recorderBody', 
       (vars) => {
+        this.vars = vars
         vars.recordButton.onclick = () => {
           if (mediaRecorder.state === 'inactive') {
             this.initRecording(mediaRecorder);
@@ -76,7 +77,7 @@ class AudioRecorder extends Window {
     mediaRecorder.start();
     this.initVolMeter();
     this.initTimer();
-    $(this.elem).find('#recordLabel').html('🔴REC');
+    $(this.vars.recordLabel).html('🔴REC');
   }
 
   /**
@@ -87,7 +88,7 @@ class AudioRecorder extends Window {
     mediaRecorder.stop();
     this.stopTimer();
     clearInterval(this.volumeInterval);
-    $(this.elem).find('#recordLabel').html('');
+    $(this.vars.recordLabel).html('');
 
     $(this.elem)
       .find('meter')
@@ -130,7 +131,7 @@ class AudioRecorder extends Window {
     time.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     listItem.append(time);
 
-    $(this.elem).find('#audioList').append(listItem);
+    $(this.vars.audioList).append(listItem);
     this.timer = 0;
   }
 
@@ -148,16 +149,14 @@ class AudioRecorder extends Window {
     this.timer += 10;
     const minutes = Math.floor(Math.floor(this.timer/1000) / 60);
     const seconds = Math.floor(this.timer/1000) % 60;
-    $(this.elem)
-      .find('#micTimer')
-      .html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+    $(this.vars.micTimer).html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
   }
 
   /**
    * Stops the recording timer.
    */
   stopTimer() {
-    $(this.elem).find('#micTimer').html('0:00');
+    $(this.vars.micTimer).html('0:00');
     clearInterval(this.timerInterval);
   }
 
