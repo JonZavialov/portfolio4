@@ -43,11 +43,10 @@ class AudioRecorder extends Window {
    * Sets the window to record mode.
    */
   setRecorder() {
-    $(this.elem).find('.requestMicPermsPara').parent().remove();
-
     const mediaRecorder = new MediaRecorder(this.stream);
-    const chunks = [];
+    let chunks;
     mediaRecorder.ondataavailable = (e) => {
+      chunks = []
       chunks.push(e.data);
       this.convertData(chunks);
     };
@@ -100,12 +99,14 @@ class AudioRecorder extends Window {
    * @param  {Blob[]} chunks - The audio data.
    */
   convertData(chunks) {
-    console.log(chunks)
     const blob = new Blob(chunks, {
       'type': 'audio/mpeg-3',
     });
-    const audioURL = window.URL.createObjectURL(blob);
-    this.addAudioToList(audioURL);
+
+    ysFixWebmDuration(blob, this.timer, (fixedBlob) => {
+        const audioURL = window.URL.createObjectURL(fixedBlob);
+        this.addAudioToList(audioURL);
+    });
   }
 
   /**
@@ -115,8 +116,8 @@ class AudioRecorder extends Window {
   addAudioToList(url) {
     this.recordedAudios += 1;
 
-    const minutes = Math.floor(this.timer / 60);
-    const seconds = this.timer % 60;
+    const minutes = Math.floor(Math.floor(this.timer/1000) / 60);
+    const seconds = Math.floor(this.timer/1000) % 60;
     const name = `Audio ${this.recordedAudios}`;
 
     const listItem = document.createElement('div');
@@ -139,16 +140,16 @@ class AudioRecorder extends Window {
    * Initializes the recording timer.
    */
   initTimer() {
-    this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+    this.timerInterval = setInterval(() => this.updateTimer(), 10);
   }
 
   /**
-   * Called every second to update the timer.
+   * Called every 10 milliseconds to update the timer.
    */
   updateTimer() {
-    this.timer += 1;
-    const minutes = Math.floor(this.timer / 60);
-    const seconds = this.timer % 60;
+    this.timer += 10;
+    const minutes = Math.floor(Math.floor(this.timer/1000) / 60);
+    const seconds = Math.floor(this.timer/1000) % 60;
     $(this.elem)
       .find('#micTimer')
       .html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
