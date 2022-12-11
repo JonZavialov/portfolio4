@@ -1,0 +1,28 @@
+<div style="display: flex">
+  <iframe class="snakeGame" var="frame"></iframe>
+  <div id="snakeSpeedSelector" class="field-row" var="speedSelector">
+    <label for="range23">Slow</label>
+    <input id="range23" type="range" min="0" max="249" value="125" />
+    <label for="range24">Fast</label>
+  </div>
+  <button class="snakeButton" var="resetButton">Reset</button>
+  <p class="snakeScoreLabel" style="transform: translate(393px, 69px)">
+    Score:
+  </p>
+  <p
+    class="snakeScore"
+    id="snakeScore"
+    style="transform: translate(395px, 81px)"
+    var="snakeScore"
+  ></p>
+  <p class="snakeScoreLabel" style="transform: translate(458px, 69px)">
+    High Score:
+  </p>
+  <p
+    class="snakeScore"
+    id="snakeHighScore"
+    style="transform: translate(475px, 81px)"
+    var="highScore"
+  ></p>
+  <p class="snakeLostText"></p>
+</div>

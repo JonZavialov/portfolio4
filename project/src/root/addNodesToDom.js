@@ -13,7 +13,7 @@ function addNodesToDom(container, name, callback) {
 }
 
 function toScope(node, scope) {
-    const {children} = node;
+  const {children} = node;
     for (let iChild = 0; iChild < children.length; iChild+=1) {
         if (children[iChild].getAttribute('var')) {
             const name = children[iChild].getAttribute('var');

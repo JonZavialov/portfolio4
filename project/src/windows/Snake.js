@@ -20,59 +20,20 @@ class Snake extends Window {
    */
   getHTML() {
     const container = document.createElement('div');
-    container.style.display = 'flex';
 
-    const frame = document.createElement('iframe');
-    frame.src = `/snake/index.html?id=${this.gameId}&tickSpeed=${this.tickSpeed}`;
-    frame.className = 'snakeGame';
-    container.append(frame);
+    addNodesToDom(container, 'Snake.html', (vars) => {
+      const { frame,speedSelector,resetButton,snakeScore,highScore  } = vars
+      
+      speedSelector.onchange = () =>
+        this.changeSpeed(speedSelector.children[1].value);
+      
+      resetButton.onclick = () => this.reset();
 
-    const speedSelector = document.createElement('div');
-    speedSelector.innerHTML = `
-    <label for="range23">Slow</label> 
-    <input id="range23" type="range" min="0" max="249" value="125" />
-    <label for="range24">Fast</label>`;
-    speedSelector.id = 'snakeSpeedSelector';
-    speedSelector.className = 'field-row';
-    speedSelector.onchange = () =>
-      this.changeSpeed(speedSelector.children[1].value);
-    container.append(speedSelector);
+      snakeScore.innerText = this.length - 3;
+      highScore.innerText = this.highScore;
 
-    const resetButton = document.createElement('button');
-    resetButton.className = 'snakeButton';
-    resetButton.innerText = 'Reset';
-    resetButton.onclick = () => this.reset();
-    container.append(resetButton);
-
-    const scoreLabel = document.createElement('p');
-    scoreLabel.className = 'snakeScoreLabel';
-    scoreLabel.innerText = 'Score:';
-    scoreLabel.style.transform = 'translate(393px, 69px)';
-    container.append(scoreLabel);
-
-    const score = document.createElement('p');
-    score.className = 'snakeScore';
-    score.id = 'snakeScore';
-    score.innerText = this.length - 3;
-    score.style.transform = 'translate(395px, 81px)';
-    container.append(score);
-
-    const highScoreLabel = document.createElement('p');
-    highScoreLabel.className = 'snakeScoreLabel';
-    highScoreLabel.innerText = 'High Score:';
-    highScoreLabel.style.transform = 'translate(458px, 69px)';
-    container.append(highScoreLabel);
-
-    const highScore = document.createElement('p');
-    highScore.className = 'snakeScore';
-    highScore.id = 'snakeHighScore';
-    highScore.innerText = this.highScore;
-    highScore.style.transform = 'translate(475px, 81px)';
-    container.append(highScore);
-
-    const lostText = document.createElement('p');
-    lostText.className = 'snakeLostText';
-    container.append(lostText);
+      frame.src = `/snake/index.html?id=${this.gameId}&tickSpeed=${this.tickSpeed}`;
+    })
 
     return container;
   }
