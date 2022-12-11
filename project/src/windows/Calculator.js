@@ -130,16 +130,10 @@ class Calculator extends Window {
     const calculatorContainer = document.createElement('div');
     this.container = calculatorContainer;
 
-    const display = document.createElement('div');
-    display.className = 'calculatorDisplay';
-    display.innerHTML = '0';
-    this.display = display;
-
-    const mainButtonsContainer = document.createElement('div');
-    mainButtonsContainer.className = 'calculatorMainButtons';
-
-    this.generateButtons(mainButtonsContainer);
-    this.container.append(display, mainButtonsContainer);
+    addNodesToDom(calculatorContainer, 'Calculator.html', (vars) => {
+      this.display = vars.display
+      this.generateButtons(vars.mainButtonsContainer);
+    })
   }
 
   /**

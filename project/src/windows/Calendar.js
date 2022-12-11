@@ -1,12 +1,13 @@
 class Calendar extends Window {
   /**
    * The Calendar app.
+   * @param {boolean} [time=false] - Whether or not to show the time tab.
    * @constructor
    */
-  constructor() {
+  constructor(time=false) {
     super('Calendar', 'calendar', true, 'assets/images/icons/calendar.png');
 
-    this.generateElement(this.generateHTML());
+    this.generateElement(this.generateHTML(time));
     this.state = 'date';
 
     const d = new Date();
@@ -37,9 +38,6 @@ class Calendar extends Window {
         '0 12': "Ariana's Birthday"
       }
     ];
-
-    this.setCalendar();
-    this.setToStoredDate();
   }
 
   /**
@@ -416,28 +414,21 @@ class Calendar extends Window {
 
   /**
    * Generates the outer DOM elements for the window.
+   * @param {boolean} time - Whether to show the time tab or not.
    * @returns {HTMLElement} - The outer DOM elements for the window.
    */
-  generateHTML() {
+  generateHTML(time) {
     const container = document.createElement('div');
 
-    const dateButton = document.createElement('button');
-    dateButton.id = 'dateButton';
-    dateButton.onclick = () => this.toggleCalendarTab('date');
-    dateButton.innerHTML = 'Date';
-    dateButton.style.outline = 'none';
-    container.append(dateButton);
+    addNodesToDom(container, 'Calendar.html', (vars) => {
+      vars.dateButton.onclick = () => this.toggleCalendarTab('date');
+      vars.timeButton.onclick = () => this.toggleCalendarTab('time');
+      
+      this.setCalendar()
+      this.setToStoredDate();
 
-    const timeButton = document.createElement('button');
-    timeButton.id = 'timeButton';
-    timeButton.onclick = () => this.toggleCalendarTab('time');
-    timeButton.innerHTML = 'Time';
-    timeButton.style.outline = 'none';
-    container.append(timeButton);
-
-    const calendarContainer = document.createElement('div');
-    calendarContainer.id = 'calendarBody';
-    container.append(calendarContainer);
+      if (time) this.toggleCalendarTab('time')
+    });
 
     return container;
   }
@@ -508,8 +499,9 @@ class Calendar extends Window {
 
 /**
  * Opens the Calendar app.
+ * @param {boolean} [time=false] - Whether or not to show the time tab.
  */
-function openCalendar() {
-  const calendar = new Calendar();
+function openCalendar(time=false) {
+  const calendar = new Calendar(time);
   calendar.render();
 }
