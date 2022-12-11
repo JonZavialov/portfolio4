@@ -101,7 +101,6 @@ class InternetExplorer extends Window {
     const iframe = document.createElement('iframe')
     iframe.className = "internet-explorer-iframe"
     iframe.src=url
-    iframe.style.pointerEvents = 'none'
     this.frame = iframe
     return iframe
   }
