@@ -21,9 +21,6 @@ class ChatRoom extends Window {
     this.OAUTH_CLIENT_ID = '6da3220d3b137f82e57b';
     this.generateElement(this.getHTML());
     this.initLiveChat();
-
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('code')) this.getClientToken(params.get('code'));
   }
 
   /**
@@ -197,54 +194,22 @@ class ChatRoom extends Window {
   getHTML() {
     const container = document.createElement('div');
 
-    const chatWindow = document.createElement('div');
-    chatWindow.className = 'chatWindow';
-    container.append(chatWindow);
+    addNodesToDom(container, 'ChatRoom.html', (vars) => {
+      vars.loginButton.onclick = () => window.location.replace(this.getOAuthURL());
+      vars.sendChatButton.onclick = () => this.sendComment();
+      const {inputChat} = vars
 
-    const buttonsArea = document.createElement('div');
-    buttonsArea.className = 'buttonsArea';
+      $(inputChat).on('focus', () => {
+        if (inputChat.innerHTML === 'Type here...') inputChat.innerHTML = '';
+      });
+      $(inputChat).on('focusout', () => {
+        if (inputChat.innerHTML === '') inputChat.innerHTML = 'Type here...';
+      });
 
-    const chatArea = document.createElement('div');
-    chatArea.className = 'chatArea';
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('code')) this.getClientToken(params.get('code'));
+    })
 
-    const loggedInLabel = document.createElement('p');
-    loggedInLabel.className = 'loggedInLabel';
-    $(loggedInLabel).hide();
-    buttonsArea.append(loggedInLabel);
-
-    const githubLogo = document.createElement('img');
-    githubLogo.src = 'assets/images/github.png';
-
-    const buttonText = document.createElement('p');
-    buttonText.innerText = 'Login with GitHub';
-
-    const loginButton = document.createElement('button');
-    loginButton.className = 'loginButton';
-    loginButton.onclick = () => window.location.replace(this.getOAuthURL());
-    loginButton.append(githubLogo, buttonText);
-    buttonsArea.append(loginButton);
-
-    const sendChatButton = document.createElement('button');
-    sendChatButton.className = 'sendChatButton';
-    sendChatButton.innerText = 'Send';
-    sendChatButton.disabled = true;
-    sendChatButton.onclick = () => this.sendComment();
-    buttonsArea.append(sendChatButton);
-    chatArea.append(buttonsArea);
-
-    const inputChat = document.createElement('div');
-    inputChat.contentEditable = true;
-    inputChat.innerText = 'Type here...';
-    inputChat.className = 'inputChat';
-    $(inputChat).on('focus', () => {
-      if (inputChat.innerHTML === 'Type here...') inputChat.innerHTML = '';
-    });
-    $(inputChat).on('focusout', () => {
-      if (inputChat.innerHTML === '') inputChat.innerHTML = 'Type here...';
-    });
-    chatArea.append(inputChat);
-
-    container.append(chatArea);
     return container;
   }
 
