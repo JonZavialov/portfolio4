@@ -14,13 +14,13 @@ function help(shell, args) {
       const commands = Object.keys(data);
       for (let i = 0; i < commands.length; i += 1) {
         const command = commands[i];
-        helpString += `${command.toUpperCase()} - ${data[command].desc}<br>`;
+        helpString += `${command} - ${data[command].desc}<br>`;
       }
     } else {
       const command = args[0];
       if (data[command]) {
         const commandObj = data[command];
-        helpString += `${command.toUpperCase()} - ${commandObj.desc}`;
+        helpString += `${command} - ${commandObj.desc}`;
         if (commandObj.args) {
           const argsKeys = Object.keys(commandObj.args);
           helpString += '<br>Arguments:<br>';

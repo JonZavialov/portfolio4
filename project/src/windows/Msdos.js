@@ -22,7 +22,8 @@ class Msdos extends Window {
     container.innerHTML = `
     <p style="padding-top: 30px">
         Microsoft(R) Windows 98 <br>
-        &nbsp&nbsp&nbsp(C)Copyright Microsoft Corp 1981-1999.
+        &nbsp&nbsp&nbsp(C)Copyright Microsoft Corp 1981-1999. <br>
+        &nbsp&nbsp&nbspEnter 'help' for a list of commands.
     </p>`;
 
     return container;
