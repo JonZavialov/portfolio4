@@ -46,16 +46,16 @@ class AudioRecorder extends Window {
     const mediaRecorder = new MediaRecorder(this.stream);
     let chunks;
     mediaRecorder.ondataavailable = (e) => {
-      chunks = []
+      chunks = [];
       chunks.push(e.data);
       this.convertData(chunks);
     };
 
     addNodesToDom(
-      $(this.elem).find('.window-body')[0], 
-      'audioRecorder.html .recorderBody', 
+      $(this.elem).find('.window-body')[0],
+      'audioRecorder.html .recorderBody',
       (vars) => {
-        this.vars = vars
+        this.vars = vars;
         vars.recordButton.onclick = () => {
           if (mediaRecorder.state === 'inactive') {
             this.initRecording(mediaRecorder);
@@ -105,8 +105,8 @@ class AudioRecorder extends Window {
     });
 
     ysFixWebmDuration(blob, this.timer, (fixedBlob) => {
-        const audioURL = window.URL.createObjectURL(fixedBlob);
-        this.addAudioToList(audioURL);
+      const audioURL = window.URL.createObjectURL(fixedBlob);
+      this.addAudioToList(audioURL);
     });
   }
 
@@ -117,8 +117,8 @@ class AudioRecorder extends Window {
   addAudioToList(url) {
     this.recordedAudios += 1;
 
-    const minutes = Math.floor(Math.floor(this.timer/1000) / 60);
-    const seconds = Math.floor(this.timer/1000) % 60;
+    const minutes = Math.floor(Math.floor(this.timer / 1000) / 60);
+    const seconds = Math.floor(this.timer / 1000) % 60;
     const name = `Audio ${this.recordedAudios}`;
 
     const listItem = document.createElement('div');
@@ -147,9 +147,11 @@ class AudioRecorder extends Window {
    */
   updateTimer() {
     this.timer += 10;
-    const minutes = Math.floor(Math.floor(this.timer/1000) / 60);
-    const seconds = Math.floor(this.timer/1000) % 60;
-    $(this.vars.micTimer).html(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+    const minutes = Math.floor(Math.floor(this.timer / 1000) / 60);
+    const seconds = Math.floor(this.timer / 1000) % 60;
+    $(this.vars.micTimer).html(
+      `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+    );
   }
 
   /**

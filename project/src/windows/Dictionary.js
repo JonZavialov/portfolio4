@@ -106,7 +106,7 @@ class Dictionary extends Window {
 
     addNodesToDom(container, 'Dictionary.html', (vars) => {
       vars.searchButton.onclick = () => this.searchTerm();
-    })
+    });
 
     return container;
   }

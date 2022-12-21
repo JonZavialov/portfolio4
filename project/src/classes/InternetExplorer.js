@@ -7,7 +7,12 @@ class InternetExplorer extends Window {
    * @constructor
    */
   constructor(pageName, id, url) {
-    super(`${pageName} - Microsoft Internet Explorer`, id, true, 'assets/images/icons/internet.png');
+    super(
+      `${pageName} - Microsoft Internet Explorer`,
+      id,
+      true,
+      'assets/images/icons/internet.png'
+    );
     this.generateElement(this.generateHTML(url));
     // TODO: Add bookmarks tab
     // TODO: change page title when page is changed
@@ -19,10 +24,10 @@ class InternetExplorer extends Window {
    * @returns {HTMLElement} - The DOM element of the window.
    */
   generateHTML(url) {
-    const docsBody = document.createElement('div')
-    docsBody.append(this.generateWidgetsBar())
-    docsBody.append(this.generateIFrame(url))
-    return docsBody
+    const docsBody = document.createElement('div');
+    docsBody.append(this.generateWidgetsBar());
+    docsBody.append(this.generateIFrame(url));
+    return docsBody;
   }
 
   /**
@@ -30,66 +35,95 @@ class InternetExplorer extends Window {
    * @returns {HTMLElement} - The DOM element of the bar.
    */
   generateWidgetsBar() {
-    const widgetsBar = document.createElement('div')
-    
+    const widgetsBar = document.createElement('div');
+
     addNodesToDom(widgetsBar, 'InternetExplorer.html', (vars) => {
-      const { backButton, forwardButton, stopButton, refreshButton, searchButton, mailButton, printButton } = vars
+      const {
+        backButton,
+        forwardButton,
+        stopButton,
+        refreshButton,
+        searchButton,
+        mailButton,
+        printButton,
+      } = vars;
 
       backButton.onmousedown = () => {
-        $(backButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(backButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       backButton.onmouseup = () => {
-        $(backButton).css('box-shadow', '')
-      }
+        $(backButton).css('box-shadow', '');
+      };
 
       forwardButton.onmousedown = () => {
-        $(forwardButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(forwardButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       forwardButton.onmouseup = () => {
-        $(forwardButton).css('box-shadow', '')
-      }
+        $(forwardButton).css('box-shadow', '');
+      };
 
       stopButton.onmousedown = () => {
-        $(stopButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(stopButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       stopButton.onmouseup = () => {
-        $(stopButton).css('box-shadow', '')
-        this.close()
-      }
+        $(stopButton).css('box-shadow', '');
+        this.close();
+      };
 
       refreshButton.onmousedown = () => {
-        $(refreshButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(refreshButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       refreshButton.onmouseup = () => {
-        $(refreshButton).css('box-shadow', '')
-        this.frame.src += '' // Refreshes the page
-      }
+        $(refreshButton).css('box-shadow', '');
+        this.frame.src += ''; // Refreshes the page
+      };
 
       searchButton.onmousedown = () => {
-        $(searchButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(searchButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       searchButton.onmouseup = () => {
-        $(searchButton).css('box-shadow', '')
-        this.frame.src = '/google'
-      }
+        $(searchButton).css('box-shadow', '');
+        this.frame.src = '/google';
+      };
 
       mailButton.onmousedown = () => {
-        $(mailButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(mailButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       mailButton.onmouseup = () => {
-        $(mailButton).css('box-shadow', '')
-        openOutlookExpress()
-      }
+        $(mailButton).css('box-shadow', '');
+        openOutlookExpress();
+      };
 
       printButton.onmousedown = () => {
-        $(printButton).css('box-shadow', 'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey')
-      }
+        $(printButton).css(
+          'box-shadow',
+          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey'
+        );
+      };
       printButton.onmouseup = () => {
-        $(printButton).css('box-shadow', '')
-      }
-    })
+        $(printButton).css('box-shadow', '');
+      };
+    });
 
-    return widgetsBar
+    return widgetsBar;
   }
 
   /**
@@ -98,10 +132,10 @@ class InternetExplorer extends Window {
    * @returns {HTMLElement} - The DOM element of the webpage.
    */
   generateIFrame(url) {
-    const iframe = document.createElement('iframe')
-    iframe.className = "internet-explorer-iframe"
-    iframe.src=url
-    this.frame = iframe
-    return iframe
+    const iframe = document.createElement('iframe');
+    iframe.className = 'internet-explorer-iframe';
+    iframe.src = url;
+    this.frame = iframe;
+    return iframe;
   }
 }

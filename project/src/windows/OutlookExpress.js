@@ -104,18 +104,22 @@ class OutlookExpress extends Window {
     const buttonsHeader = document.createElement('div');
     buttonsHeader.id = 'buttonsHeader';
 
-    addNodesToDom(buttonsHeader, 'OutlookExpress.html #buttonsHeader-container', (vars) => {
-      const { composeButton } = vars;
+    addNodesToDom(
+      buttonsHeader,
+      'OutlookExpress.html #buttonsHeader-container',
+      (vars) => {
+        const { composeButton } = vars;
 
-      composeButton.onclick = () => {
-        window.location.assign('mailto: jonzavialov@gmail.com');
-        composeButton.style.boxShadow = null;
-      };
-      composeButton.onmousedown = () => {
-        composeButton.style.boxShadow =
-          'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey';
-      };
-    })
+        composeButton.onclick = () => {
+          window.location.assign('mailto: jonzavialov@gmail.com');
+          composeButton.style.boxShadow = null;
+        };
+        composeButton.onmousedown = () => {
+          composeButton.style.boxShadow =
+            'inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey';
+        };
+      }
+    );
 
     return buttonsHeader;
   }
@@ -128,11 +132,15 @@ class OutlookExpress extends Window {
   generateInbox(email) {
     const inboxDiv = document.createElement('div');
 
-    addNodesToDom(inboxDiv, 'OutlookExpress.html #inboxDiv-container', (vars) => {
-      const { inboxTreeItem } = vars
-      inboxTreeItem.onclick = () => this.clickedInbox();
-      this.getEmails(() => this.setEmail(email));
-    })
+    addNodesToDom(
+      inboxDiv,
+      'OutlookExpress.html #inboxDiv-container',
+      (vars) => {
+        const { inboxTreeItem } = vars;
+        inboxTreeItem.onclick = () => this.clickedInbox();
+        this.getEmails(() => this.setEmail(email));
+      }
+    );
 
     return inboxDiv;
   }

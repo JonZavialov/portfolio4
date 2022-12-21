@@ -4,7 +4,7 @@ class Calendar extends Window {
    * @param {boolean} [time=false] - Whether or not to show the time tab.
    * @constructor
    */
-  constructor(time=false) {
+  constructor(time = false) {
     super('Calendar', 'calendar', true, 'assets/images/icons/calendar.png');
 
     this.generateElement(this.generateHTML(time));
@@ -32,11 +32,11 @@ class Calendar extends Window {
 
     this.IMPORTANTDAYS = [
       {
-        '3 21': "Jon's Birthday"
+        '3 21': "Jon's Birthday",
       },
       {
-        '0 12': "Ariana's Birthday"
-      }
+        '0 12': "Ariana's Birthday",
+      },
     ];
   }
 
@@ -119,12 +119,12 @@ class Calendar extends Window {
     if (elem) this.highlightDay(elem);
     else
       $(this.elem)
-      .find('#days')
-      .find('li')
-      .each((_i, indexElem) => {
-        if (indexElem.innerHTML === day.toString())
-          this.highlightDay(indexElem);
-      });
+        .find('#days')
+        .find('li')
+        .each((_i, indexElem) => {
+          if (indexElem.innerHTML === day.toString())
+            this.highlightDay(indexElem);
+        });
 
     const formattedMonth = this.convert(month, 'month');
 
@@ -169,10 +169,7 @@ class Calendar extends Window {
   updateCalendar(year, month) {
     this.year = year;
     this.month = month;
-    const {
-      firstDay,
-      daysInMonth
-    } = this.getMonthInfo(year, month);
+    const { firstDay, daysInMonth } = this.getMonthInfo(year, month);
     let dates = ``;
     for (let i = 0; i < firstDay; i += 1) dates += `<li>&nbsp</li>`;
 
@@ -339,7 +336,8 @@ class Calendar extends Window {
     const hours = d.getHours();
 
     // Create an object with each hand and it's angle in degrees
-    this.hands = [{
+    this.hands = [
+      {
         hand: 'hours',
         angle: hours * 30 + minutes / 2,
       },
@@ -423,11 +421,11 @@ class Calendar extends Window {
     addNodesToDom(container, 'Calendar.html', (vars) => {
       vars.dateButton.onclick = () => this.toggleCalendarTab('date');
       vars.timeButton.onclick = () => this.toggleCalendarTab('time');
-      
-      this.setCalendar()
+
+      this.setCalendar();
       this.setToStoredDate();
 
-      if (time) this.toggleCalendarTab('time')
+      if (time) this.toggleCalendarTab('time');
     });
 
     return container;
@@ -501,7 +499,7 @@ class Calendar extends Window {
  * Opens the Calendar app.
  * @param {boolean} [time=false] - Whether or not to show the time tab.
  */
-function openCalendar(time=false) {
+function openCalendar(time = false) {
   const calendar = new Calendar(time);
   calendar.render();
 }

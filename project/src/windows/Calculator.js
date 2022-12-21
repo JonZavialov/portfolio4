@@ -131,9 +131,9 @@ class Calculator extends Window {
     this.container = calculatorContainer;
 
     addNodesToDom(calculatorContainer, 'Calculator.html', (vars) => {
-      this.display = vars.display
+      this.display = vars.display;
       this.generateButtons(vars.mainButtonsContainer);
-    })
+    });
   }
 
   /**

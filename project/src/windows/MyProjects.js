@@ -21,8 +21,8 @@ class MyProjects extends Window {
 
     addNodesToDom(container, 'MyProjects.html', () => {
       this.getTopProjects();
-    })
-    
+    });
+
     return container;
   }
 

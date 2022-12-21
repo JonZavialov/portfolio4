@@ -195,9 +195,10 @@ class ChatRoom extends Window {
     const container = document.createElement('div');
 
     addNodesToDom(container, 'ChatRoom.html', (vars) => {
-      vars.loginButton.onclick = () => window.location.replace(this.getOAuthURL());
+      vars.loginButton.onclick = () =>
+        window.location.replace(this.getOAuthURL());
       vars.sendChatButton.onclick = () => this.sendComment();
-      const {inputChat} = vars
+      const { inputChat } = vars;
 
       $(inputChat).on('focus', () => {
         if (inputChat.innerHTML === 'Type here...') inputChat.innerHTML = '';
@@ -208,7 +209,7 @@ class ChatRoom extends Window {
 
       const params = new URLSearchParams(window.location.search);
       if (params.get('code')) this.getClientToken(params.get('code'));
-    })
+    });
 
     return container;
   }

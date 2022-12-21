@@ -18,10 +18,10 @@ class Msdos extends Window {
   generateHTML() {
     const container = document.createElement('div');
     container.className = 'msdosDisplay';
-    
+
     addNodesToDom(container, 'Msdos.html', () => {
       this.addNewInput();
-    })
+    });
 
     return container;
   }
