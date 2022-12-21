@@ -84,6 +84,7 @@
     <script src="./src/classes/InternetExplorer.js"></script>
     <script src="./src/root/addNodesToDom.js"></script>
     <script src="./src/root/webm-duration.min.js"></script>
+    <script src="./src/root/consoleLog.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -100,6 +101,7 @@
         initClock();
         checkURL();
         initCookies();
+        consoleLog();
 
         $('#startButton').click(() => startButton());
         window.addEventListener('message', (e) => snakeEvent(e), false);
