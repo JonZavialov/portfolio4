@@ -22,18 +22,18 @@ class Snake extends Window {
     const container = document.createElement('div');
 
     addNodesToDom(container, 'Snake.html', (vars) => {
-      const { frame,speedSelector,resetButton,snakeScore,highScore  } = vars
-      
+      const { frame, speedSelector, resetButton, snakeScore, highScore } = vars;
+
       speedSelector.onchange = () =>
         this.changeSpeed(speedSelector.children[1].value);
-      
+
       resetButton.onclick = () => this.reset();
 
       snakeScore.innerText = this.length - 3;
       highScore.innerText = this.highScore;
 
       frame.src = `/snake/index.html?id=${this.gameId}&tickSpeed=${this.tickSpeed}`;
-    })
+    });
 
     return container;
   }
@@ -121,12 +121,6 @@ async function openSnake() {
   await sleep(10);
   $('.snakeIcon').draggable('enable');
 
-  try {
-    snakeList;
-  } catch (e) {
-    snakeList = [];
-  }
-
   snakeList.push({
     id: snake.gameId,
     obj: snake,
@@ -144,9 +138,13 @@ function snakeEvent(e) {
   )
     return;
 
-  snakeList.forEach((snakeWindow) => {
-    if (snakeWindow.id.toString() === e.data.split(' ')[1])
-      if (e.data.indexOf('LOST_GAME') !== -1) snakeWindow.obj.lostGame();
-      else if (e.data.indexOf('ATE_APPLE') !== -1) snakeWindow.obj.ateApple();
-  });
+  try {
+    snakeList.forEach((snakeWindow) => {
+      if (snakeWindow.id.toString() === e.data.split(' ')[1])
+        if (e.data.indexOf('LOST_GAME') !== -1) snakeWindow.obj.lostGame();
+        else if (e.data.indexOf('ATE_APPLE') !== -1) snakeWindow.obj.ateApple();
+    });
+  } catch (err) {
+    snakeList = [];
+  }
 }
