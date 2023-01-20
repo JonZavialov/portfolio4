@@ -76,6 +76,9 @@ class ChatRoom extends Window {
     return url.toString();
   }
 
+  /**
+   * Called when the user has successfully logged in with GitHub.
+   */
   userLoggedIn(username) {
     $(this.elem).find('.sendChatButton').removeAttr('disabled');
     $(this.elem).find('.loggedInLabel').text(`Logged in as ${username}`);
