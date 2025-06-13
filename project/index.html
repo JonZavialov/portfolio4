@@ -86,7 +86,6 @@
     <script src="./src/root/addNodesToDom.js"></script>
     <script src="./src/root/webm-duration.min.js"></script>
     <script src="./src/root/consoleLog.js"></script>
-    <script src="./src/root/removeLoadOverlay.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -106,13 +105,9 @@
         consoleLog();
 
         window.addEventListener('message', (e) => snakeEvent(e));
-        window.addEventListener('load', removeLoadOverlay);
       });
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="loadingOverlay">
-      <div class="lds-dual-ring"></div>
-    </div>
     <div id="volumeContainer"></div>
     <div id="root">
       <ul id="treeDisplay" class="tree-view"></ul>
